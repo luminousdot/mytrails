@@ -57,7 +57,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
             ]}
           />
 
-          <Row gap="24" vertical="end" horizontal="between" s={{ direction: "column", vertical: "start" }}>
+          <Row gap="24" vertical="end" horizontal="between" s={{ direction: "column", horizontal: "start" }}>
             <Column gap="12">
               <Text textVariant="label-default-s" onBackground="brand-medium">
                 {formatDates(race, true)} · {place(race)}

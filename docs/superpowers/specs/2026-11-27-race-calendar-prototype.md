@@ -13,9 +13,9 @@
 Each race gets a cover, tried in this order:
 1. The first race photo on its ITRA page (`/Files/Photos/…`), 13 of 103 races today.
 2. The `og:image` of the race's own website (or its registration page), 26 races. Logos, icons and images shared by several races (platform defaults such as raceresult's share card) are skipped.
-3. A topo cover drawn in the app (`TopoCover`): contour rings around seeded summits, tighter the more the race climbs per km, coloured by distance bucket. The same race always draws the same cover.
+3. A map of the start area (`MapCover`): Esri's light or dark grey canvas tiles at zoom 10, centred on the race with a pin in its distance colour. It is a static tile mosaic, not a live map, because dozens of cards would each need a WebGL context. No API key needed.
 
-Photos are hotlinked, so the topo cover shows until a photo has actually loaded.
+Photos are hotlinked, so the map shows until a photo has actually loaded.
 
 ## Screens
 
