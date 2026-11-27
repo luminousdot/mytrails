@@ -1,8 +1,8 @@
 "use client";
 
 import { Column, Heading, Row, SegmentedControl, Text } from "@once-ui-system/core";
-import { useSyncExternalStore } from "react";
-import { readLook, saveLook, subscribeLook, type Look } from "../lib/backdrop";
+import { saveHeaderLayout, saveLook, useHeaderLayout, useLook, type HeaderLayout, type Look } from "../lib/backdrop";
+import { SectionBackdrop } from "./SectionBackdrop";
 import { daysUntil } from "../lib/race-utils";
 import type { Race } from "../lib/types";
 
@@ -19,13 +19,14 @@ export function RaceHeader({
   crawledAt: string;
   photo?: string;
 }) {
-  const look = useSyncExternalStore(subscribeLook, readLook, () => "gradient" as Look);
+  const look = useLook();
+  const layout = useHeaderLayout();
   const next = races.find((r) => daysUntil(r.date_start) >= 0);
   const days = next ? daysUntil(next.date_start) : null;
   const nextLine =
     days === null ? "no upcoming starts" : days === 0 ? `${next?.name} is today` : `next start in ${days} ${days === 1 ? "day" : "days"}`;
 
-  return (
+  const content = (
     <Column gap="24">
       <Column gap="12">
         <Text textVariant="label-default-s" onBackground="brand-medium">
@@ -42,11 +43,26 @@ export function RaceHeader({
 
       <Row gap="8" vertical="center" wrap>
         <Text textVariant="label-default-s" onBackground="neutral-weak">
+          Layout
+        </Text>
+        <SegmentedControl
+          key={`layout-${layout}`}
+          fillWidth={false}
+          compact
+          aria-label="Header layout"
+          value={layout}
+          onValueChange={(v) => saveHeaderLayout(v as HeaderLayout)}
+          buttons={[
+            { value: "section", label: "Section" },
+            { value: "hero", label: "Hero" },
+          ]}
+        />
+        <Text textVariant="label-default-s" onBackground="neutral-weak" marginLeft="8">
           Background
         </Text>
         <SegmentedControl
           // The saved look is only known after hydration; remount so the indicator follows it.
-          key={look}
+          key={`look-${look}`}
           fillWidth={false}
           compact
           aria-label="Background"
@@ -62,6 +78,37 @@ export function RaceHeader({
           ]}
         />
       </Row>
+    </Column>
+  );
+
+  if (layout === "hero") {
+    // Full width under the top bar; the layer runs edge to edge.
+    return (
+      <Column as="section" fillWidth horizontal="center" overflow="hidden" borderBottom>
+        <SectionBackdrop photo={photo} />
+        <Column maxWidth="l" paddingX="24" paddingTop="80" paddingBottom="56">
+          {content}
+        </Column>
+      </Column>
+    );
+  }
+
+  // A rounded section inside the page width.
+  return (
+    <Column fillWidth horizontal="center" paddingX="24" paddingTop="32">
+      <Column
+        as="section"
+        maxWidth="l"
+        overflow="hidden"
+        radius="xl"
+        border
+        paddingX="32"
+        paddingY="40"
+        s={{ paddingX: "20", paddingY: "24" }}
+      >
+        <SectionBackdrop photo={photo} />
+        <Column>{content}</Column>
+      </Column>
     </Column>
   );
 }

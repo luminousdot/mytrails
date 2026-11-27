@@ -1,15 +1,14 @@
 "use client";
 
 import { Background, Column, Mask, Media } from "@once-ui-system/core";
-import { useSyncExternalStore } from "react";
-import { readLook, subscribeLook, type Look } from "../lib/backdrop";
+import { useLook } from "../lib/backdrop";
 
 /**
  * A decorative layer behind one section. Put it first inside a section that
  * clips (overflow hidden); the section's content follows it and paints above it.
  */
 export function SectionBackdrop({ photo }: { photo?: string }) {
-  const look = useSyncExternalStore(subscribeLook, readLook, () => "gradient" as Look);
+  const look = useLook();
   return (
     <>
       {look === "photo" && photo ? (
