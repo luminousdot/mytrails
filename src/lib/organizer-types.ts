@@ -52,7 +52,11 @@ export type Submission = {
   published_slug?: string;
 };
 
-export type DraftErrors = Partial<Record<string, string>>;
+import type { Dictionary } from "../i18n";
+
+/** Field path → error code; the form shows t.errors[code] in the visitor's language. */
+export type ErrorCode = keyof Dictionary["errors"];
+export type DraftErrors = Partial<Record<string, ErrorCode>>;
 
 export const emptyDistance = (): DraftDistance => ({
   name: "",
@@ -78,7 +82,7 @@ export const emptyDraft = (): RaceDraft => ({
 
 const isUrl = (s: string) => /^https?:\/\/\S+\.\S+/.test(s);
 
-/** Checked in the form and again on the server. Keys are field paths. */
+/** Checked in the form and again on the server. Keys are field paths, values error codes. */
 export function validate(
   race: RaceDraft,
   organizer: OrganizerContact,
@@ -86,30 +90,30 @@ export function validate(
   claimNote: string,
 ): DraftErrors {
   const e: DraftErrors = {};
-  if (!race.name.trim()) e.name = "Enter the race name.";
-  if (!race.date_start) e.date_start = "Pick the race date.";
+  if (!race.name.trim()) e.name = "name";
+  if (!race.date_start) e.date_start = "date_start";
   if (race.date_end && race.date_start && race.date_end < race.date_start)
-    e.date_end = "The last day can't be before the first.";
-  if (!race.country.trim()) e.country = "Choose the country.";
-  if (!race.city.trim()) e.city = "Enter the town or place of the start.";
-  if (race.website && !isUrl(race.website)) e.website = "Enter a full link, starting with https://";
+    e.date_end = "date_end";
+  if (!race.country.trim()) e.country = "country";
+  if (!race.city.trim()) e.city = "city";
+  if (race.website && !isUrl(race.website)) e.website = "url";
   if (race.registration_url && !isUrl(race.registration_url))
-    e.registration_url = "Enter a full link, starting with https://";
-  if (race.distances.length === 0) e.distances = "Add at least one distance.";
+    e.registration_url = "url";
+  if (race.distances.length === 0) e.distances = "distances";
   race.distances.forEach((d, i) => {
-    if (!d.distance_km || d.distance_km <= 0) e[`distances.${i}.distance_km`] = "Enter the distance in km.";
-    if (d.elevation_gain_m != null && d.elevation_gain_m < 0) e[`distances.${i}.elevation_gain_m`] = "Climb can't be negative.";
+    if (!d.distance_km || d.distance_km <= 0) e[`distances.${i}.distance_km`] = "distance_km";
+    if (d.elevation_gain_m != null && d.elevation_gain_m < 0) e[`distances.${i}.elevation_gain_m`] = "elevation_gain_m";
     if (d.start_time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(d.start_time))
-      e[`distances.${i}.start_time`] = "Use 24-hour time, like 07:30.";
+      e[`distances.${i}.start_time`] = "start_time";
     d.aid_stations.forEach((a, j) => {
-      if (!a.name.trim()) e[`distances.${i}.aid.${j}.name`] = "Name the aid station.";
+      if (!a.name.trim()) e[`distances.${i}.aid.${j}.name`] = "aidName";
       if (a.km == null || a.km < 0 || (d.distance_km != null && a.km > d.distance_km))
-        e[`distances.${i}.aid.${j}.km`] = "Km must be on the course.";
+        e[`distances.${i}.aid.${j}.km`] = "aidKm";
     });
   });
-  if (!organizer.name.trim()) e["organizer.name"] = "Enter your name.";
-  if (!/^\S+@\S+\.\S+$/.test(organizer.email)) e["organizer.email"] = "Enter an email we can reach you at.";
+  if (!organizer.name.trim()) e["organizer.name"] = "organizerName";
+  if (!/^\S+@\S+\.\S+$/.test(organizer.email)) e["organizer.email"] = "organizerEmail";
   if (kind === "claim" && !claimNote.trim())
-    e.claim_note = "Tell us how we can confirm you organise this race.";
+    e.claim_note = "claimNote";
   return e;
 }

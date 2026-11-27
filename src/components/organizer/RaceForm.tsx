@@ -20,7 +20,10 @@ import { Map as PinMap, MapMarkers, MapPin } from "@once-ui-system/core/map";
 import { MediaUpload } from "@once-ui-system/core/media";
 import { useRouter } from "next/navigation";
 import { useMemo, useRef, useState } from "react";
-import { submitRace } from "../../app/organizers/actions";
+import { fill, intlLocale, localePath, type Dictionary } from "../../i18n";
+import { useI18n } from "../../i18n/I18nProvider";
+import { countryName } from "../../lib/race-utils";
+import { submitRace } from "../../server/organizer-actions";
 import {
   emptyDistance,
   validate,
@@ -63,6 +66,7 @@ const str = (v: number | null) => (v == null ? "" : String(v));
 
 /** One form for adding a race and for claiming a listed one (pre-filled). */
 export function RaceForm(props: Props) {
+  const { lang, t } = useI18n();
   const router = useRouter();
   const [race, setRace] = useState<RaceDraft>(props.initial);
   const [organizer, setOrganizer] = useState<OrganizerContact>({
@@ -90,7 +94,7 @@ export function RaceForm(props: Props) {
     [race, organizer, props.mode, claimNote],
   );
   const errors: DraftErrors = attempted ? { ...serverErrors, ...live } : {};
-  const err = (key: string) => errors[key];
+  const err = (key: string) => (errors[key] ? t.errors[errors[key]!] : undefined);
 
   const set = (patch: Partial<RaceDraft>) =>
     setRace((r) => ({ ...r, ...patch }));
@@ -105,7 +109,7 @@ export function RaceForm(props: Props) {
     setAttempted(true);
     setMessage(null);
     if (Object.keys(live).length) {
-      showMessage("Some fields need a look. They're marked below.");
+      showMessage(t.form.fixFields);
       return;
     }
     setPending(true);
@@ -125,16 +129,16 @@ export function RaceForm(props: Props) {
     try {
       const result = await submitRace(form);
       if (result.ok) {
-        router.push(`/organizers/thanks?id=${result.id}`);
+        router.push(localePath(lang, `/organizers/thanks?id=${result.id}`));
         return;
       }
       setServerErrors(result.errors);
       setMessage(
-        result.message ?? "Some fields need a look. They're marked below.",
+        result.message ? t.errors[result.message] : t.form.fixFields,
       );
     } catch {
       setMessage(
-        "We couldn't send your race. Check your connection and try again; nothing was lost.",
+        t.form.offline,
       );
     }
     setPending(false);
@@ -147,13 +151,13 @@ export function RaceForm(props: Props) {
       {message && <Feedback tone="danger" title={message} />}
 
         <Section
-          title="The race"
-          description="What runners see first on the race page."
+          title={t.form.raceTitle}
+          description={t.form.raceText}
         >
           <Form columns={{ xl: 2, s: 1 }}>
             <Input
               id="race-name"
-              label="Race name"
+              label={t.form.name}
               value={race.name}
               onValueChange={(v) => set({ name: v })}
               errorMessage={err("name")}
@@ -162,14 +166,14 @@ export function RaceForm(props: Props) {
             />
             <DateField
               id="race-date-start"
-              label="Race day (first day)"
+              label={t.form.dateStart}
               value={race.date_start}
               onChange={(v) => set({ date_start: v })}
               error={err("date_start")}
             />
             <DateField
               id="race-date-end"
-              label="Last day, if more than one"
+              label={t.form.dateEnd}
               value={race.date_end}
               onChange={(v) => set({ date_end: v })}
               error={err("date_end")}
@@ -177,15 +181,15 @@ export function RaceForm(props: Props) {
             />
             <Select
               id="race-country"
-              label="Country"
+              label={t.form.country}
               searchable
               value={race.country}
               onValueChange={(v) => set({ country: v as string })}
-              options={COUNTRIES.map((c) => ({ value: c, label: c }))}
+              options={COUNTRIES.map((c) => ({ value: c, label: countryName(c, lang) }))}
             />
             <Input
               id="race-city"
-              label="Town or place of the start"
+              label={t.form.city}
               value={race.city}
               onValueChange={(v) => set({ city: v })}
               errorMessage={err("city")}
@@ -193,7 +197,7 @@ export function RaceForm(props: Props) {
             />
             <Input
               id="race-website"
-              label="Race website (optional)"
+              label={t.form.website}
               value={race.website}
               onValueChange={(v) => set({ website: v })}
               errorMessage={err("website")}
@@ -201,7 +205,7 @@ export function RaceForm(props: Props) {
             />
             <Input
               id="race-registration"
-              label="Registration link (optional)"
+              label={t.form.registration}
               value={race.registration_url}
               onValueChange={(v) => set({ registration_url: v })}
               errorMessage={err("registration_url")}
@@ -209,7 +213,7 @@ export function RaceForm(props: Props) {
             />
             <Textarea
               id="race-description"
-              label="About the race (optional)"
+              label={t.form.description}
               lines={4}
               value={race.description}
               onValueChange={(v) => set({ description: v })}
@@ -223,8 +227,8 @@ export function RaceForm(props: Props) {
         </Section>
 
         <Section
-          title="Distances"
-          description="Add every distance runners can enter. A GPX file gives the race page its elevation profile."
+          title={t.form.distancesTitle}
+          description={t.form.distancesText}
         >
           {err("distances") && (
             <Feedback tone="danger" title={err("distances")} />
@@ -277,14 +281,14 @@ export function RaceForm(props: Props) {
                 set({ distances: [...race.distances, emptyDistance()] })
               }
             >
-              Add a distance
+              {t.form.addDistance}
             </Button>
           </Row>
         </Section>
 
         <Section
-          title="Photos"
-          description={`Up to ${MAX_PHOTOS}. The first one becomes the cover. Use photos you have the right to publish.`}
+          title={t.form.photosTitle}
+          description={fill(t.form.photosText, { n: MAX_PHOTOS })}
         >
           {err("photos") && <Feedback tone="danger" title={err("photos")} />}
           <Row gap="12" wrap>
@@ -293,7 +297,7 @@ export function RaceForm(props: Props) {
                 <Column radius="m" overflow="hidden" border>
                   <Media
                     src={p.url}
-                    alt={`Photo ${i + 1}`}
+                    alt={fill(t.form.photoN, { n: i + 1 })}
                     aspectRatio="16 / 9"
                     unoptimized
                   />
@@ -303,15 +307,15 @@ export function RaceForm(props: Props) {
                     textVariant="label-default-s"
                     onBackground="neutral-weak"
                   >
-                    {i === 0 ? "Cover" : `Photo ${i + 1}`}
+                    {i === 0 ? t.form.cover : fill(t.form.photoN, { n: i + 1 })}
                   </Text>
                   <IconButton
                     type="button"
                     icon="trash"
                     variant="tertiary"
                     size="s"
-                    tooltip="Remove photo"
-                    aria-label={`Remove photo ${i + 1}`}
+                    tooltip={fill(t.form.removePhoto, { n: i + 1 })}
+                    aria-label={fill(t.form.removePhoto, { n: i + 1 })}
                     onClick={() =>
                       setPhotos((ps) => ps.filter((_, j) => j !== i))
                     }
@@ -325,7 +329,7 @@ export function RaceForm(props: Props) {
                   key={photos.length}
                   aspectRatio="16 / 9"
                   emptyState={
-                    photos.length === 0 ? "Add a cover photo" : "Add a photo"
+                    photos.length === 0 ? t.form.addCover : t.form.addPhoto
                   }
                   onFileUpload={async (file) => {
                     setPhotos((ps) => [
@@ -341,13 +345,13 @@ export function RaceForm(props: Props) {
 
         {props.mode === "claim" && (
           <Section
-            title="Show it's your race"
-            description={`We check every claim before ${props.claim.name} changes hands.`}
+            title={t.form.proofTitle}
+            description={fill(t.form.proofText, { name: props.claim.name })}
           >
             <Textarea
               id="claim-note"
-              label="How can we confirm you organise this race?"
-              description="For example: write from an email on the race's own website, or tell us where your name appears as organiser."
+              label={t.form.proofLabel}
+              description={t.form.proofHelp}
               lines={3}
               value={claimNote}
               onValueChange={setClaimNote}
@@ -358,13 +362,13 @@ export function RaceForm(props: Props) {
         )}
 
         <Section
-          title="You"
-          description="Only the My Trails team sees this. We use it to confirm the race and reach you."
+          title={t.form.youTitle}
+          description={t.form.youText}
         >
           <Form columns={{ xl: 2, s: 1 }}>
             <Input
               id="organizer-name"
-              label="Your name"
+              label={t.form.yourName}
               value={organizer.name}
               onValueChange={(v) => setOrganizer((o) => ({ ...o, name: v }))}
               errorMessage={err("organizer.name")}
@@ -373,7 +377,7 @@ export function RaceForm(props: Props) {
             <Input
               id="organizer-email"
               type="email"
-              label="Email"
+              label={t.form.email}
               value={organizer.email}
               onValueChange={(v) => setOrganizer((o) => ({ ...o, email: v }))}
               errorMessage={err("organizer.email")}
@@ -382,12 +386,12 @@ export function RaceForm(props: Props) {
           </Form>
           <Column gap="8">
             <Text textVariant="label-default-s" onBackground="neutral-weak">
-              Your role
+              {t.form.role}
             </Text>
             <SegmentedControl
               fillWidth={false}
               semantics="radio"
-              aria-label="Your role"
+              aria-label={t.form.role}
               value={organizer.role}
               onValueChange={(v) =>
                 setOrganizer((o) => ({
@@ -396,9 +400,9 @@ export function RaceForm(props: Props) {
                 }))
               }
               buttons={[
-                { value: "director", label: "Race director" },
-                { value: "team", label: "Organising team" },
-                { value: "other", label: "Other" },
+                { value: "director", label: t.form.roleDirector },
+                { value: "team", label: t.form.roleTeam },
+                { value: "other", label: t.form.roleOther },
               ]}
             />
           </Column>
@@ -412,13 +416,11 @@ export function RaceForm(props: Props) {
           s={{ direction: "column-reverse", horizontal: "start" }}
         >
           <Text textVariant="body-default-s" onBackground="neutral-weak">
-            Nothing goes live until we’ve reviewed it, usually within a few
-            days.
+            {t.form.reviewNote}
           </Text>
           <Button type="submit" size="l" loading={pending} disabled={pending}>
             {props.mode === "claim"
-              ? "Send claim for review"
-              : "Send race for review"}
+              ? t.form.sendClaim : t.form.sendRace}
           </Button>
         </Row>
       </Column>
@@ -449,6 +451,7 @@ function DateField({
   error?: string;
   clearable?: boolean;
 }) {
+  const { lang, t } = useI18n();
   return (
     <Column gap="4">
       <Row gap="8" vertical="center">
@@ -458,13 +461,13 @@ function DateField({
             fillWidth
             id={id}
             label={label}
-            locale="en-GB"
+            locale={intlLocale[lang]}
             value={value ? fromIso(value) : undefined}
             onValueChange={(d: Date) => onChange(isoDay(d))}
           />
         </Row>
         {clearable && value && (
-          <IconButton type="button" icon="close" variant="tertiary" tooltip="Clear date" aria-label="Clear date" onClick={() => onChange("")} />
+          <IconButton type="button" icon="close" variant="tertiary" tooltip={t.form.clearDate} aria-label={t.form.clearDate} onClick={() => onChange("")} />
         )}
       </Row>
       {error && (
@@ -529,6 +532,8 @@ function DistanceFields({
   onGpx: (file: File | null) => void;
   onRemove?: () => void;
 }) {
+  const { t } = useI18n();
+  const msg = (code?: keyof Dictionary["errors"]) => (code ? t.errors[code] : undefined);
   const fileRef = useRef<HTMLInputElement>(null);
   const k = (f: string) => `distances.${index}.${f}`;
   const setAid = (
@@ -544,7 +549,7 @@ function DistanceFields({
   return (
     <Column border radius="m" padding="16" gap="16">
       <Row horizontal="between" vertical="center">
-        <Text textVariant="label-strong-m">Distance {index + 1}</Text>
+        <Text textVariant="label-strong-m">{fill(t.form.distanceN, { n: index + 1 })}</Text>
         {onRemove && (
           <Button
             type="button"
@@ -553,14 +558,14 @@ function DistanceFields({
             prefixIcon="trash"
             onClick={onRemove}
           >
-            Remove
+            {t.common.remove}
           </Button>
         )}
       </Row>
       <Form columns={{ xl: 3, s: 1 }}>
         <Input
           id={`d${index}-name`}
-          label="Name (e.g. Ultra 50K)"
+          label={t.form.distanceName}
           value={d.name}
           onValueChange={(v) => onChange({ name: v })}
           span={3}
@@ -568,34 +573,34 @@ function DistanceFields({
         <Input
           id={`d${index}-km`}
           type="number"
-          label="Distance (km)"
+          label={t.form.km}
           value={str(d.distance_km)}
           onValueChange={(v) => onChange({ distance_km: num(v) })}
-          errorMessage={errors[k("distance_km")]}
+          errorMessage={msg(errors[k("distance_km")])}
           error={!!errors[k("distance_km")]}
         />
         <Input
           id={`d${index}-gain`}
           type="number"
-          label="Climb (m D+)"
+          label={t.form.gain}
           value={str(d.elevation_gain_m)}
           onValueChange={(v) => onChange({ elevation_gain_m: num(v) })}
-          errorMessage={errors[k("elevation_gain_m")]}
+          errorMessage={msg(errors[k("elevation_gain_m")])}
           error={!!errors[k("elevation_gain_m")]}
         />
         <Input
           id={`d${index}-cutoff`}
           type="number"
-          label="Cut-off (hours)"
+          label={t.form.cutoff}
           value={str(d.time_limit_hours)}
           onValueChange={(v) => onChange({ time_limit_hours: num(v) })}
         />
         <Input
           id={`d${index}-start`}
-          label="Start time (07:30)"
+          label={t.form.startTime}
           value={d.start_time}
           onValueChange={(v) => onChange({ start_time: v })}
-          errorMessage={errors[k("start_time")]}
+          errorMessage={msg(errors[k("start_time")])}
           error={!!errors[k("start_time")]}
         />
       </Form>
@@ -619,13 +624,13 @@ function DistanceFields({
           prefixIcon="upload"
           onClick={() => fileRef.current?.click()}
         >
-          {gpx ? "Replace GPX" : "Upload GPX"}
+          {gpx ? t.form.replaceGpx : t.form.uploadGpx}
         </Button>
         <Text
           textVariant="body-default-s"
           onBackground={errors[k("gpx")] ? "danger-medium" : "neutral-weak"}
         >
-          {errors[k("gpx")] ?? (gpx ? gpx.name : "No course file yet")}
+          {errors[k("gpx")] ? t.errors[errors[k("gpx")]!] : gpx ? gpx.name : t.form.noGpx}
         </Text>
         {gpx && (
           <IconButton
@@ -633,8 +638,8 @@ function DistanceFields({
             icon="close"
             variant="tertiary"
             size="s"
-            tooltip="Remove GPX"
-            aria-label="Remove GPX"
+            tooltip={t.form.removeGpx}
+            aria-label={t.form.removeGpx}
             onClick={() => onGpx(null)}
           />
         )}
@@ -642,7 +647,7 @@ function DistanceFields({
 
       <Column gap="8">
         <Text textVariant="label-default-s" onBackground="neutral-weak">
-          Aid stations
+          {t.form.aidStations}
         </Text>
         {d.aid_stations.map((a, j) => (
           <Row key={j} gap="8" vertical="start">
@@ -650,10 +655,10 @@ function DistanceFields({
               <Input
                 id={`d${index}-aid${j}-name`}
                 size="s"
-                label="Name"
+                label={t.form.aidName}
                 value={a.name}
                 onValueChange={(v) => setAid(j, { name: v })}
-                errorMessage={errors[k(`aid.${j}.name`)]}
+                errorMessage={msg(errors[k(`aid.${j}.name`)])}
                 error={!!errors[k(`aid.${j}.name`)]}
               />
             </Row>
@@ -662,10 +667,10 @@ function DistanceFields({
                 id={`d${index}-aid${j}-km`}
                 size="s"
                 type="number"
-                label="Km"
+                label={t.form.aidKm}
                 value={str(a.km)}
                 onValueChange={(v) => setAid(j, { km: num(v) })}
-                errorMessage={errors[k(`aid.${j}.km`)]}
+                errorMessage={msg(errors[k(`aid.${j}.km`)])}
                 error={!!errors[k(`aid.${j}.km`)]}
               />
             </Row>
@@ -673,8 +678,8 @@ function DistanceFields({
               type="button"
               icon="trash"
               variant="tertiary"
-              tooltip="Remove aid station"
-              aria-label={`Remove aid station ${j + 1}`}
+              tooltip={fill(t.form.removeAid, { n: j + 1 })}
+              aria-label={fill(t.form.removeAid, { n: j + 1 })}
               onClick={() =>
                 onChange({
                   aid_stations: d.aid_stations.filter((_, x) => x !== j),
@@ -695,7 +700,7 @@ function DistanceFields({
               })
             }
           >
-            Add aid station
+            {t.form.addAid}
           </Button>
         </Row>
       </Column>
@@ -711,14 +716,14 @@ function StartPicker({
   position: [number, number] | null;
   onChange: (p: [number, number] | null) => void;
 }) {
+  const { t } = useI18n();
   return (
     <Column gap="8">
       <Row horizontal="between" vertical="end" gap="8" wrap>
         <Column gap="2">
-          <Text textVariant="label-strong-s">Start location (optional)</Text>
+          <Text textVariant="label-strong-s">{t.form.startTitle}</Text>
           <Text textVariant="body-default-s" onBackground="neutral-weak">
-            Click the map to pin the start. Without a pin we use your GPX, then
-            the town.
+            {t.form.startText}
           </Text>
         </Column>
         {position && (
@@ -729,7 +734,7 @@ function StartPicker({
             prefixIcon="close"
             onClick={() => onChange(null)}
           >
-            Clear pin
+            {t.form.clearPin}
           </Button>
         )}
       </Row>
@@ -748,7 +753,7 @@ function StartPicker({
             <MapMarkers
               items={[{ id: "start", position }]}
               renderItem={() => (
-                <MapPin icon="flag" tone="brand" aria-label="Start" />
+                <MapPin icon="flag" tone="brand" aria-label={t.form.startPin} />
               )}
             />
           )}

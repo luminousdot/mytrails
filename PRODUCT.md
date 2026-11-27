@@ -32,7 +32,8 @@ The one place that covers the whole region with real course detail (elevation pr
 - **Data today:** a frozen demo dataset (27 November 2026) crawled from ITRA (Crawl4AI) and mountain-race.rs. 103 races; 39 have a real photo, 7 have a GPX profile. Do not present it as live or complete.
 - **Needed next (confirmed):** organiser tools to create and edit their race page; race results and rankings.
 - **Stack:** Next.js (App Router) with Once UI only; Python crawlers in `crawler/`.
-- **Open decisions:** languages (English today; Serbian not decided); runner accounts or Strava sign-in (not decided).
+- **Languages (decided 27 Nov 2026):** Serbian in Latin script is the default (`/sr`), English second (`/en`); every competitor in Serbia is in Serbian. Cyrillic not planned.
+- **Open decisions:** runner accounts or Strava sign-in (not decided).
 
 ## Brand Commitments
 

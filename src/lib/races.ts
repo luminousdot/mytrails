@@ -4,7 +4,8 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import dataset from "../../data/races.json";
-import { getPublished, ORGANIZER_PROFILES } from "./organizer";
+import { cacheTag } from "next/cache";
+import { getPublished, ORGANIZER_PROFILES, PUBLISHED_TAG } from "./organizer";
 import type { Race, RaceDataset } from "./types";
 
 // The one place the app reads race data: the crawled demo dataset with races
@@ -33,6 +34,8 @@ export async function getRace(slug: string) {
 
 /** [km, metres] points along the race's GPX track, or null when it has none. */
 export async function getProfile(raceId: string): Promise<[number, number][] | null> {
+  "use cache";
+  cacheTag(PUBLISHED_TAG);
   // An organiser's own track wins over the crawled one.
   for (const dir of [ORGANIZER_PROFILES, path.join(process.cwd(), "data", "profiles")]) {
     try {

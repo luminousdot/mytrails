@@ -1,10 +1,11 @@
 "use server";
 
-import { createSubmission, newSubmissionId, storeUpload } from "../../lib/organizer";
-import { validate, type DraftErrors, type OrganizerContact, type RaceDraft, type Submission } from "../../lib/organizer-types";
-import { getRace } from "../../lib/races";
+import { updateTag } from "next/cache";
+import { createSubmission, newSubmissionId, storeUpload, SUBMISSIONS_TAG } from "../lib/organizer";
+import { validate, type DraftErrors, type ErrorCode, type OrganizerContact, type RaceDraft, type Submission } from "../lib/organizer-types";
+import { getRace } from "../lib/races";
 
-export type SubmitResult = { ok: true; id: string } | { ok: false; errors: DraftErrors; message?: string };
+export type SubmitResult = { ok: true; id: string } | { ok: false; errors: DraftErrors; message?: ErrorCode };
 
 const MAX_PHOTO = 8 * 1024 * 1024;
 const MAX_GPX = 15 * 1024 * 1024;
@@ -18,22 +19,22 @@ export async function submitRace(form: FormData): Promise<SubmitResult> {
   try {
     payload = JSON.parse(String(form.get("payload")));
   } catch {
-    return { ok: false, errors: {}, message: "The form didn't arrive in one piece. Please try again." };
+    return { ok: false, errors: {}, message: "broken" };
   }
   const { kind, race, organizer, claimNote } = payload;
   const errors = validate(race, organizer, kind, claimNote);
 
   const claimed = kind === "claim" && payload.claimSlug ? await getRace(payload.claimSlug) : null;
-  if (kind === "claim" && !claimed) return { ok: false, errors, message: "We couldn't find the race you're claiming." };
+  if (kind === "claim" && !claimed) return { ok: false, errors, message: "noClaimTarget" };
 
   const photos = [...form.entries()].filter(([k, v]) => k.startsWith("photo-") && v instanceof File) as [string, File][];
   for (const [, f] of photos) {
-    if (!f.type.startsWith("image/") || f.size > MAX_PHOTO) errors.photos = "Photos must be images under 8 MB.";
+    if (!f.type.startsWith("image/") || f.size > MAX_PHOTO) errors.photos = "photos";
   }
   race.distances.forEach((_, i) => {
     const gpx = form.get(`gpx-${i}`);
     if (gpx instanceof File && (gpx.size > MAX_GPX || !/\.gpx$/i.test(gpx.name)))
-      errors[`distances.${i}.gpx`] = "Upload a .gpx file under 15 MB.";
+      errors[`distances.${i}.gpx`] = "gpx";
   });
   if (Object.keys(errors).length) return { ok: false, errors };
 
@@ -57,5 +58,6 @@ export async function submitRace(form: FormData): Promise<SubmitResult> {
     organizer: { ...organizer, name: organizer.name.trim(), email: organizer.email.trim() },
     race,
   });
+  updateTag(SUBMISSIONS_TAG);
   return { ok: true, id };
 }

@@ -15,8 +15,10 @@ import {
 } from "@once-ui-system/core";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState, useSyncExternalStore } from "react";
-import { buckets, matches, seriesName, toDate } from "../lib/race-utils";
-import type { DistanceBucket, Race, RaceFilters, RaceSeries } from "../lib/types";
+import { fill, plural } from "../i18n";
+import { useI18n } from "../i18n/I18nProvider";
+import { bucketKeys, countryName, formatDate, matches, seriesName, toDate } from "../lib/race-utils";
+import type { Race, RaceFilters, RaceSeries } from "../lib/types";
 import { RaceAgenda } from "./RaceAgenda";
 import { RaceCards } from "./RaceCards";
 import { RaceList } from "./RaceList";
@@ -58,8 +60,6 @@ function saveView(view: View) {
 
 const defaultFilters: RaceFilters = { country: "all", series: "all", distance: "all", itraOnly: false, search: "" };
 
-const monthName = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" });
-
 export function RaceExplorer({
   races,
   series,
@@ -67,6 +67,7 @@ export function RaceExplorer({
   races: Race[];
   series: RaceSeries[];
 }) {
+  const { lang, t } = useI18n();
   const view = useSyncExternalStore(subscribeView, readView, () => "list" as View);
   // A race page links here with ?series=wst to show that series.
   const seriesParam = useSearchParams().get("series");
@@ -85,9 +86,9 @@ export function RaceExplorer({
   const countries = useMemo(
     () =>
       [...new Set(races.map((r) => r.country))]
-        .sort()
-        .map((c) => ({ value: c, label: `${c} (${races.filter((r) => r.country === c).length})` })),
-    [races],
+        .map((c) => ({ value: c, label: `${countryName(c, lang)} (${races.filter((r) => r.country === c).length})` }))
+        .sort((a, b) => a.label.localeCompare(b.label, lang)),
+    [races, lang],
   );
   const matching = useMemo(() => races.filter((r) => matches(r, filters)), [races, filters]);
   const shown = useMemo(() => {
@@ -113,7 +114,7 @@ export function RaceExplorer({
     <Input
       id={`race-search-${where}`}
       size="xxs"
-      label="Search races, towns, countries"
+      label={t.filters.search}
       prefix={<Icon name="search" size="s" onBackground="neutral-weak" />}
       value={filters.search}
       onValueChange={(v) => set({ search: v })}
@@ -123,22 +124,22 @@ export function RaceExplorer({
     <Select
       id={`race-country-${where}`}
       size={where === "sheet" ? "s" : "xxs"}
-      label="Country"
+      label={t.filters.country}
       searchable
       value={filters.country}
       onValueChange={(v) => set({ country: v as string })}
-      options={[{ value: "all", label: "All countries" }, ...countries]}
+      options={[{ value: "all", label: t.filters.allCountries }, ...countries]}
     />
   );
   const seriesSelect = (where: Place) => (
     <Select
       id={`race-series-${where}`}
       size={where === "sheet" ? "s" : "xxs"}
-      label="Series"
+      label={t.filters.series}
       value={filters.series}
       onValueChange={(v) => set({ series: v as string })}
       options={[
-        { value: "all", label: "All series" },
+        { value: "all", label: t.filters.allSeries },
         ...series.map((s) => ({
           value: s.slug,
           label: seriesName(s.title).short,
@@ -150,41 +151,41 @@ export function RaceExplorer({
   const itraCheckbox = (where: Place) => (
     <Checkbox
       id={`race-itra-${where}`}
-      label="ITRA points only"
+      label={t.filters.itraOnly}
       checked={filters.itraOnly}
       onCheckedChange={(checked) => set({ itraOnly: checked })}
     />
   );
-  const distanceControl = (fill: boolean) => (
+  const distanceControl = (wide: boolean) => (
     <SegmentedControl
-      fillWidth={fill}
+      fillWidth={wide}
       semantics="radio"
-      aria-label="Distance"
+      aria-label={t.filters.distance}
       value={filters.distance}
       onValueChange={(v) => set({ distance: v as RaceFilters["distance"] })}
       buttons={[
-        { value: "all", label: fill ? "Any" : "Any distance" },
-        ...(Object.keys(buckets) as DistanceBucket[]).map((b) => ({
+        { value: "all", label: wide ? t.filters.any : t.filters.anyDistance },
+        ...bucketKeys.map((b) => ({
           value: b,
-          label: buckets[b].label,
-          tooltip: buckets[b].range,
+          label: t.buckets[b].label,
+          tooltip: t.buckets[b].range,
         })),
       ]}
     />
   );
-  const viewControl = (fill: boolean) => (
+  const viewControl = (wide: boolean) => (
     <SegmentedControl
       // The saved view is only known after hydration; remount so the indicator follows it.
       key={`view-${view}`}
-      fillWidth={fill}
-      aria-label="View"
+      fillWidth={wide}
+      aria-label={t.filters.view}
       value={view}
       onValueChange={(v) => saveView(v as View)}
       buttons={[
-        { value: "list", label: "List", prefixIcon: "list" },
-        { value: "cards", label: "Cards", prefixIcon: "grid" },
-        { value: "map", label: "Map", prefixIcon: "map" },
-        { value: "calendar", label: "Calendar", prefixIcon: "calendar" },
+        { value: "list", label: t.filters.list, prefixIcon: "list" },
+        { value: "cards", label: t.filters.cards, prefixIcon: "grid" },
+        { value: "map", label: t.filters.map, prefixIcon: "map" },
+        { value: "calendar", label: t.filters.calendar, prefixIcon: "calendar" },
       ]}
     />
   );
@@ -239,7 +240,7 @@ export function RaceExplorer({
               onClick={() => setSheetOpen(true)}
               aria-haspopup="dialog"
             >
-              {activeFilters ? `Filters · ${activeFilters}` : "Filters"}
+              {activeFilters ? fill(t.filters.filtersCount, { n: activeFilters }) : t.filters.filters}
             </Button>
           </Row>
           {viewControl(true)}
@@ -249,14 +250,14 @@ export function RaceExplorer({
           open={sheetOpen}
           onClose={() => setSheetOpen(false)}
           side="bottom"
-          title="Filters"
+          title={t.filters.filters}
           footer={
             <Row gap="8" fillWidth horizontal="between">
               <Button variant="tertiary" onClick={clearAll} disabled={!filtered}>
-                Clear all
+                {t.filters.clearAll}
               </Button>
               <Button onClick={() => setSheetOpen(false)}>
-                {shown.length === 1 ? "Show 1 race" : `Show ${shown.length} races`}
+                {plural(lang, shown.length, t.filters.show)}
               </Button>
             </Row>
           }
@@ -266,7 +267,7 @@ export function RaceExplorer({
             {series.length > 0 && seriesSelect("sheet")}
             <Column gap="8">
               <Text textVariant="label-default-s" onBackground="neutral-weak">
-                Distance
+                {t.filters.distance}
               </Text>
               {distanceControl(true)}
             </Column>
@@ -277,13 +278,15 @@ export function RaceExplorer({
         <Row gap="8" vertical="center" horizontal="between" wrap>
           <Text textVariant="body-default-s" onBackground="neutral-weak" aria-live="polite">
             {shown.length === races.length
-              ? `Showing all ${races.length} races`
-              : `Showing ${shown.length} of ${races.length} races`}
-            {monthOnly && view !== "calendar" ? ` in ${monthName.format(month)}` : ""}
+              ? fill(t.filters.showingAll, { n: races.length })
+              : fill(t.filters.showing, { shown: shown.length, total: races.length })}
+            {monthOnly && view !== "calendar"
+              ? fill(t.filters.inMonth, { month: formatDate(lang, month, { month: "long", year: "numeric" }) })
+              : ""}
           </Text>
           {filtered && (
             <Button size="s" variant="tertiary" prefixIcon="close" onClick={clearAll}>
-              Clear filters
+              {t.filters.clear}
             </Button>
           )}
         </Row>
@@ -293,11 +296,11 @@ export function RaceExplorer({
         <Column background="surface" border radius="l" padding="40">
           <EmptyState
             icon="search"
-            title="No races match these filters"
-            description="Try another country or distance, or clear the filters to see the whole season."
+            title={t.filters.emptyTitle}
+            description={t.filters.emptyText}
             action={
               <Button variant="secondary" onClick={clearAll}>
-                Show all races
+                {t.filters.showAllRaces}
               </Button>
             }
           />

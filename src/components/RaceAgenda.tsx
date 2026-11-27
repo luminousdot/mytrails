@@ -2,13 +2,14 @@
 
 import { Button, Column, Heading, IconButton, Row, SmartLink, Tag, Text } from "@once-ui-system/core";
 import { useMemo } from "react";
-import { buckets, formatGain, formatKm, longest, place, raceBucket, seriesName, toDate } from "../lib/race-utils";
+import { buckets, formatDate, formatGain, formatKm, longest, place, raceBucket, seriesName, toDate } from "../lib/race-utils";
+import { fill, localePath, plural, type Locale } from "../i18n";
+import { useI18n } from "../i18n/I18nProvider";
 import type { Race } from "../lib/types";
 import { DistanceLegend } from "./DistanceLegend";
 
-const monthFmt = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" });
-const weekdayFmt = new Intl.DateTimeFormat("en-GB", { weekday: "short" });
-const dayFmt = new Intl.DateTimeFormat("en-GB", { day: "numeric" });
+// Serbian month names are lower case ("mart 2027."); a heading starts with a capital.
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const sameMonth = (d: Date, m: Date) => d.getFullYear() === m.getFullYear() && d.getMonth() === m.getMonth();
 const addMonths = (m: Date, n: number) => new Date(m.getFullYear(), m.getMonth() + n, 1);
@@ -26,6 +27,8 @@ export function RaceAgenda({
   month: Date;
   onMonthChange: (month: Date) => void;
 }) {
+  const { lang, t } = useI18n();
+  const monthLabel = (m: Date) => cap(formatDate(lang, m, { month: "long", year: "numeric" }));
   const days = useMemo(() => {
     const byDay = new Map<string, Race[]>();
     for (const race of races) {
@@ -47,25 +50,25 @@ export function RaceAgenda({
       <Row paddingX="20" paddingY="16" gap="12" vertical="center" horizontal="between" borderBottom>
         <Column gap="2">
           <Heading as="h2" textVariant="heading-strong-l">
-            {monthFmt.format(month)}
+            {monthLabel(month)}
           </Heading>
           <Text textVariant="body-default-s" onBackground="neutral-weak">
-            {count === 0 ? "No races" : count === 1 ? "1 race" : `${count} races`}
+            {count === 0 ? t.agenda.none : plural(lang, count, t.common.races)}
           </Text>
         </Column>
         <Row gap="4">
           <IconButton
             icon="chevronLeft"
             variant="secondary"
-            tooltip="Previous month"
-            aria-label="Previous month"
+            tooltip={t.agenda.previous}
+            aria-label={t.agenda.previous}
             onClick={() => onMonthChange(addMonths(month, -1))}
           />
           <IconButton
             icon="chevronRight"
             variant="secondary"
-            tooltip="Next month"
-            aria-label="Next month"
+            tooltip={t.agenda.next}
+            aria-label={t.agenda.next}
             onClick={() => onMonthChange(addMonths(month, 1))}
           />
         </Row>
@@ -74,11 +77,11 @@ export function RaceAgenda({
       {days.length === 0 ? (
         <Column padding="32" gap="12" horizontal="center" align="center">
           <Text textVariant="body-default-m" onBackground="neutral-medium">
-            No races match in {monthFmt.format(month)}.
+            {fill(t.agenda.empty, { month: monthLabel(month) })}
           </Text>
           {nextWithRaces && (
             <Button variant="secondary" size="s" suffixIcon="chevronRight" onClick={() => onMonthChange(nextWithRaces)}>
-              Jump to {monthFmt.format(nextWithRaces)}
+              {fill(t.agenda.jump, { month: monthLabel(nextWithRaces) })}
             </Button>
           )}
         </Column>
@@ -90,13 +93,13 @@ export function RaceAgenda({
               <Row as="li" key={iso} borderTop={i > 0} paddingX="20" paddingY="16" gap="20" vertical="start">
                 <Column width="48px" horizontal="center" gap="2" style={{ flexShrink: 0 }} data-tabular>
                   <Text textVariant="label-default-s" onBackground="neutral-weak">
-                    {weekdayFmt.format(d)}
+                    {formatDate(lang, d, { weekday: "short" })}
                   </Text>
-                  <Text textVariant="heading-strong-l">{dayFmt.format(d)}</Text>
+                  <Text textVariant="heading-strong-l">{formatDate(lang, d, { day: "numeric" })}</Text>
                 </Column>
                 <Column as="ul" flex={1} minWidth="0" gap="16">
                   {list.map((race) => (
-                    <AgendaRace key={race.id} race={race} />
+                    <AgendaRace key={race.id} race={race} lang={lang} />
                   ))}
                 </Column>
               </Row>
@@ -112,22 +115,24 @@ export function RaceAgenda({
   );
 }
 
-function AgendaRace({ race }: { race: Race }) {
-  const b = buckets[raceBucket(race)];
+function AgendaRace({ race, lang }: { race: Race; lang: Locale }) {
+  const { t } = useI18n();
+  const bucket = raceBucket(race);
+  const b = buckets[bucket];
   const top = longest(race);
   return (
     <Column as="li" gap="4">
-      <SmartLink href={`/races/${race.slug}`}>
+      <SmartLink href={localePath(lang, `/races/${race.slug}`)}>
         <Text textVariant="label-strong-m" onBackground="neutral-strong">
           {race.name}
         </Text>
       </SmartLink>
       <Row gap="8" vertical="center" wrap>
         <Text textVariant="body-default-s" onBackground="neutral-weak" data-tabular>
-          {place(race)} · {formatKm(top?.distance_km)} · {formatGain(top?.elevation_gain_m)}
+          {place(race, lang)} · {formatKm(top?.distance_km, lang)} · {formatGain(top?.elevation_gain_m, lang)}
         </Text>
         <Tag size="s" tone={b.tone}>
-          {b.label}
+          {t.buckets[bucket].label}
         </Tag>
         {race.series?.map((s) => (
           <Tag key={s.slug} size="s" tone="brand" prefixIcon="flag">

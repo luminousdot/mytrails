@@ -1,61 +1,68 @@
 import { Button, Column, Grid, Heading, Media, Row, SmartLink, Tag, Text } from "@once-ui-system/core";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-import { ElevationProfile } from "../../../components/ElevationProfile";
-import { OrganizerShell } from "../../../components/organizer/OrganizerShell";
-import { PageIntro } from "../../../components/organizer/PageIntro";
-import { ReviewActions } from "../../../components/organizer/ReviewActions";
-import { parseGpx } from "../../../lib/gpx";
-import { getSubmission } from "../../../lib/organizer";
-import { bucketOf, buckets, formatGain, formatKm } from "../../../lib/race-utils";
+import { ElevationProfile } from "../../../../components/ElevationProfile";
+import { OrganizerShell } from "../../../../components/organizer/OrganizerShell";
+import { PageIntro } from "../../../../components/organizer/PageIntro";
+import { ReviewActions } from "../../../../components/organizer/ReviewActions";
+import { getSubmission, readUploadedTrack } from "../../../../lib/organizer";
+import { bucketOf, buckets, countryName, formatGain, formatKm, formatNumber } from "../../../../lib/race-utils";
+import { fill, intlLocale, localePath } from "../../../../i18n";
+import { pageLang } from "../../../../i18n/server";
 
-export const metadata: Metadata = { title: "Review submission" };
+type Props = { params: Promise<{ lang: string; id: string }> };
 
-const roles = { director: "Race director", team: "Organising team", other: "Other" };
-const when = new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" });
+// Static: the submission id is only known at request time, and this page is internal anyway.
+export const metadata: Metadata = { title: "Review" };
 
-export default async function ReviewItemPage({ params }: { params: Promise<{ id: string }> }) {
+// Submissions only exist at request time. One placeholder lets the build
+// prerender the shell (it 404s); real ids render on request.
+export function generateStaticParams() {
+  return [{ id: "_" }];
+}
+
+export default async function ReviewItemPage({ params }: Props) {
   if (process.env.NODE_ENV === "production") notFound();
+  const { lang, t } = await pageLang(params);
+  const v = t.review;
+  const when = new Intl.DateTimeFormat(intlLocale[lang], { dateStyle: "medium", timeStyle: "short" });
   const s = await getSubmission((await params).id);
   if (!s) notFound();
   const r = s.race;
 
   // Preview the profile the race page will get, from the longest distance with a GPX.
   const withGpx = [...r.distances].sort((a, b) => (b.distance_km ?? 0) - (a.distance_km ?? 0)).find((d) => d.gpx_url);
-  const xml = withGpx?.gpx_url ? await readFile(path.join(process.cwd(), "public", withGpx.gpx_url), "utf8").catch(() => "") : "";
-  const track = xml ? parseGpx(xml) : null;
+  const track = withGpx?.gpx_url ? await readUploadedTrack(withGpx.gpx_url) : null;
 
   return (
     <OrganizerShell>
       <PageIntro
-        crumbs={[{ label: "Review queue", href: "/review" }, { label: s.id }]}
-        title={r.name || "Untitled race"}
+        crumbs={[{ label: v.title, href: localePath(lang, "/review") }, { label: s.id }]}
+        title={r.name || v.untitled}
         lead={
           <>
             {s.kind === "claim" ? (
               <>
-                Claim of the listed page{" "}
-                <SmartLink href={`/races/${s.claim?.slug}`}>{s.claim?.name}</SmartLink>
+                {v.claimOfPage}
+                <SmartLink href={localePath(lang, `/races/${s.claim?.slug}`)}>{s.claim?.name}</SmartLink>
               </>
             ) : (
-              "New race"
+              v.newRace
             )}{" "}
-            · sent {when.format(new Date(s.submitted_at))}
+            · {fill(v.sent, { date: when.format(new Date(s.submitted_at)) })}
           </>
         }
       />
 
-      <Panel title="Organiser">
+      <Panel title={v.organizer}>
         <Text textVariant="body-default-m">
-          {s.organizer.name} · {roles[s.organizer.role]} ·{" "}
+          {s.organizer.name} · {v.roles[s.organizer.role]} ·{" "}
           <SmartLink href={`mailto:${s.organizer.email}`}>{s.organizer.email}</SmartLink>
         </Text>
         {s.claim_note && (
           <Column gap="4">
             <Text textVariant="label-default-s" onBackground="neutral-weak">
-              How they say we can confirm it
+              {v.proof}
             </Text>
             <Text textVariant="body-default-m" wrap="pretty">
               {s.claim_note}
@@ -64,13 +71,16 @@ export default async function ReviewItemPage({ params }: { params: Promise<{ id:
         )}
       </Panel>
 
-      <Panel title="Race">
+      <Panel title={v.race}>
         <Grid columns="2" gap="16" s={{ columns: "1" }}>
-          <Fact label="Dates" value={r.date_end ? `${r.date_start} to ${r.date_end}` : r.date_start} />
-          <Fact label="Place" value={`${r.city}, ${r.country}`} />
-          <Fact label="Start pin" value={r.position ? `${r.position[1].toFixed(4)}, ${r.position[0].toFixed(4)}` : "None (GPX start, then the town)"} />
-          <Fact label="Website" value={r.website || "–"} href={r.website || undefined} />
-          <Fact label="Registration" value={r.registration_url || "–"} href={r.registration_url || undefined} />
+          <Fact label={v.dates} value={r.date_end ? fill(v.datesRange, { start: r.date_start, end: r.date_end }) : r.date_start} />
+          <Fact label={v.place} value={`${r.city}, ${countryName(r.country, lang)}`} />
+          <Fact
+            label={v.startPin}
+            value={r.position ? `${r.position[1].toFixed(4)}, ${r.position[0].toFixed(4)}` : v.noPin}
+          />
+          <Fact label={v.website} value={r.website || "–"} href={r.website || undefined} />
+          <Fact label={v.registration} value={r.registration_url || "–"} href={r.registration_url || undefined} />
         </Grid>
         {r.description && (
           <Text textVariant="body-default-m" onBackground="neutral-medium" wrap="pretty">
@@ -79,31 +89,31 @@ export default async function ReviewItemPage({ params }: { params: Promise<{ id:
         )}
       </Panel>
 
-      <Panel title={`Distances (${r.distances.length})`}>
+      <Panel title={fill(v.distances, { n: r.distances.length })}>
         <Column as="ul" gap="12">
           {r.distances.map((d, i) => {
-            const b = buckets[bucketOf(d.distance_km ?? undefined)];
+            const bucket = bucketOf(d.distance_km ?? undefined);
             return (
               <Column as="li" key={i} gap="4" borderTop={i > 0} paddingTop={i > 0 ? "12" : "0"}>
                 <Row gap="8" vertical="center" wrap>
-                  <Text textVariant="label-strong-m">{d.name || `Distance ${i + 1}`}</Text>
-                  <Tag size="s" tone={b.tone}>
-                    {b.label}
+                  <Text textVariant="label-strong-m">{d.name || fill(t.form.distanceN, { n: i + 1 })}</Text>
+                  <Tag size="s" tone={buckets[bucket].tone}>
+                    {t.buckets[bucket].label}
                   </Tag>
                 </Row>
                 <Text textVariant="body-default-s" onBackground="neutral-weak" data-tabular>
-                  {formatKm(d.distance_km ?? undefined)} · {formatGain(d.elevation_gain_m ?? undefined)}
-                  {d.time_limit_hours ? ` · ${d.time_limit_hours} h cut-off` : ""}
-                  {d.start_time ? ` · starts ${d.start_time}` : ""}
+                  {formatKm(d.distance_km ?? undefined, lang)} · {formatGain(d.elevation_gain_m ?? undefined, lang)}
+                  {d.time_limit_hours ? ` · ${fill(t.race.cutoff, { n: formatNumber(d.time_limit_hours, lang, 1) })}` : ""}
+                  {d.start_time ? ` · ${fill(t.race.startsAt, { time: d.start_time })}` : ""}
                 </Text>
                 {d.aid_stations.length > 0 && (
                   <Text textVariant="body-default-s" onBackground="neutral-weak" data-tabular>
-                    Aid: {d.aid_stations.map((a) => `${a.name} (km ${a.km})`).join(", ")}
+                    {fill(t.race.aid, { list: d.aid_stations.map((a) => `${a.name} (km ${a.km})`).join(", ") })}
                   </Text>
                 )}
                 {d.gpx_url && (
                   <SmartLink href={d.gpx_url} suffixIcon="download">
-                    GPX file
+                    {v.gpxFile}
                   </SmartLink>
                 )}
               </Column>
@@ -113,7 +123,7 @@ export default async function ReviewItemPage({ params }: { params: Promise<{ id:
       </Panel>
 
       {track && withGpx?.gpx_url && (
-        <Panel title="Elevation profile the race page will show">
+        <Panel title={v.profilePreview}>
           <ElevationProfile
             points={track.profile}
             profile={{ ...track, url: withGpx.gpx_url, distance_name: withGpx.name || null }}
@@ -122,15 +132,15 @@ export default async function ReviewItemPage({ params }: { params: Promise<{ id:
       )}
 
       {r.photos && r.photos.length > 0 && (
-        <Panel title={`Photos (${r.photos.length})`}>
+        <Panel title={fill(v.photos, { n: r.photos.length })}>
           <Grid columns="3" gap="12" s={{ columns: "2" }}>
             {r.photos.map((src, i) => (
               <Column key={src} gap="4">
                 <Column radius="m" overflow="hidden" border>
-                  <Media src={src} alt={`Photo ${i + 1}`} aspectRatio="16 / 9" unoptimized enlarge />
+                  <Media src={src} alt={fill(t.form.photoN, { n: i + 1 })} aspectRatio="16 / 9" unoptimized enlarge />
                 </Column>
                 <Text textVariant="label-default-s" onBackground="neutral-weak">
-                  {i === 0 ? "Cover" : `Photo ${i + 1}`}
+                  {i === 0 ? t.form.cover : fill(t.form.photoN, { n: i + 1 })}
                 </Text>
               </Column>
             ))}
@@ -141,12 +151,12 @@ export default async function ReviewItemPage({ params }: { params: Promise<{ id:
       {s.status === "pending" ? (
         <ReviewActions id={s.id} kind={s.kind} />
       ) : (
-        <Panel title={s.status === "approved" ? "Published" : "Rejected"}>
+        <Panel title={s.status === "approved" ? v.published : v.rejected}>
           {s.review_note && <Text textVariant="body-default-m">{s.review_note}</Text>}
           {s.published_slug && (
             <Row>
-              <Button href={`/races/${s.published_slug}`} variant="secondary" suffixIcon="arrowRight">
-                Open the race page
+              <Button href={localePath(lang, `/races/${s.published_slug}`)} variant="secondary" suffixIcon="arrowRight">
+                {v.openRace}
               </Button>
             </Row>
           )}

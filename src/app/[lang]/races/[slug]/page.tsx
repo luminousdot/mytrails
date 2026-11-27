@@ -1,40 +1,49 @@
 import { Breadcrumbs, Button, Column, Grid, Heading, Icon, Media, Row, Tag, Text } from "@once-ui-system/core";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ElevationProfile } from "../../../components/ElevationProfile";
-import { RaceCards } from "../../../components/RaceCards";
-import { RaceCover } from "../../../components/RaceCover";
-import { StartsIn } from "../../../components/StartsIn";
-import { RaceLocationMap } from "../../../components/RaceLocationMap";
-import { TopBar } from "../../../components/TopBar";
+import { ElevationProfile } from "../../../../components/ElevationProfile";
+import { RaceCards } from "../../../../components/RaceCards";
+import { RaceCover } from "../../../../components/RaceCover";
+import { StartsIn } from "../../../../components/StartsIn";
+import { RaceLocationMap } from "../../../../components/RaceLocationMap";
+import { TopBar } from "../../../../components/TopBar";
 import {
   bucketOf,
   buckets,
   formatDates,
   formatGain,
+  countryName,
   formatKm,
+  formatNumber,
   longest,
   place,
   seriesName,
   toDate,
-} from "../../../lib/race-utils";
-import { getProfile, getRace, getRaces } from "../../../lib/races";
+} from "../../../../lib/race-utils";
+import { getProfile, getRace, getRaces } from "../../../../lib/races";
+import { fill, getDictionary, hasLocale, localePath, locales, plural, type Locale } from "../../../../i18n";
+
+type Params = Promise<{ lang: string; slug: string }>;
 
 export async function generateStaticParams() {
   const { races } = await getRaces();
-  return races.map((r) => ({ slug: r.slug }));
+  return locales.flatMap((lang) => races.map((r) => ({ lang, slug: r.slug })));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const race = await getRace((await params).slug);
-  if (!race) return {};
-  return { title: race.name, description: `${formatDates(race, true)} · ${place(race)}` };
-}
-
-export default async function RacePage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { lang, slug } = await params;
   const race = await getRace(slug);
-  if (!race) notFound();
+  if (!race || !hasLocale(lang)) return {};
+  return { title: race.name, description: `${formatDates(race, lang, true)} · ${place(race, lang)}` };
+}
+
+export default async function RacePage({ params }: { params: Params }) {
+  const { lang: rawLang, slug } = await params;
+  const race = await getRace(slug);
+  if (!race || !hasLocale(rawLang)) notFound();
+  const lang: Locale = rawLang;
+  const t = getDictionary(lang);
+  const r = t.race;
 
   const { races, series } = await getRaces();
   const points = race.profile ? await getProfile(race.id) : null;
@@ -55,8 +64,8 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
         <Column maxWidth="l" gap="40">
           <Breadcrumbs
             items={[
-              { label: "All races", href: "/", prefixIcon: "chevronLeft" },
-              { label: race.country },
+              { label: t.common.allRaces, href: localePath(lang, "/"), prefixIcon: "chevronLeft" },
+              { label: countryName(race.country, lang) },
               { label: race.name },
             ]}
           />
@@ -67,23 +76,23 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
                 {race.name}
               </Heading>
               <Text textVariant="body-default-l" onBackground="neutral-medium">
-                {formatDates(race, true)} · {place(race)}
+                {formatDates(race, lang, true)} · {place(race, lang)}
               </Text>
             </Column>
             <Row gap="8" wrap>
               {race.itra_url && (
                 <Button variant="secondary" suffixIcon="arrowUpRight" href={race.itra_url}>
-                  View on ITRA
+                  {r.viewOnItra}
                 </Button>
               )}
               {race.website && race.website !== race.registration_url && (
                 <Button variant="secondary" suffixIcon="arrowUpRight" href={race.website}>
-                  Race website
+                  {r.website}
                 </Button>
               )}
               {race.registration_url && (
                 <Button suffixIcon="arrowUpRight" href={race.registration_url}>
-                  Register
+                  {r.register}
                 </Button>
               )}
             </Row>
@@ -111,19 +120,19 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
             >
               <Column gap="4">
                 <Text textVariant="label-default-s" onBackground="brand-medium">
-                  Part of a race series
+                  {r.partOfSeries}
                 </Text>
                 <Text textVariant="heading-strong-m">
                   {seriesName(s.title).short} · {seriesName(s.title).long}
                 </Text>
               </Column>
               <Row gap="8" wrap>
-                <Button variant="secondary" size="s" href={`/?series=${s.slug}`} prefixIcon="list">
-                  All {seriesName(s.title).short} races
+                <Button variant="secondary" size="s" href={localePath(lang, `/?series=${s.slug}`)} prefixIcon="list">
+                  {fill(r.allSeriesRaces, { series: seriesName(s.title).short })}
                 </Button>
                 {s.url && (
                   <Button variant="tertiary" size="s" suffixIcon="arrowUpRight" href={s.url}>
-                    Series on mountain-race.rs
+                    {r.seriesOnSite}
                   </Button>
                 )}
               </Row>
@@ -131,15 +140,15 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
           ))}
 
           <Grid columns="4" gap="12" m={{ columns: "2" }}>
-            <Stat label="Starts" value={<StartsIn date={race.date_start} />} />
-            <Stat label="Longest distance" value={formatKm(top?.distance_km)} />
-            <Stat label="Climb" value={formatGain(top?.elevation_gain_m)} />
-            <Stat label="ITRA points" value={race.itra_points ? String(race.itra_points) : "–"} />
+            <Stat label={r.starts} value={<StartsIn date={race.date_start} />} />
+            <Stat label={r.longestDistance} value={formatKm(top?.distance_km, lang)} />
+            <Stat label={t.common.climb} value={formatGain(top?.elevation_gain_m, lang)} />
+            <Stat label={r.itraPoints} value={race.itra_points ? String(race.itra_points) : "–"} />
           </Grid>
 
           <Column gap="12">
             <Heading as="h2" textVariant="display-strong-xs">
-              Elevation profile
+              {r.profile}
             </Heading>
             {race.profile && points ? (
               <ElevationProfile points={points} profile={race.profile} />
@@ -147,7 +156,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
               <Row background="surface" border radius="l" padding="20" gap="12" vertical="center">
                 <Icon name="trend" onBackground="neutral-weak" />
                 <Text textVariant="body-default-m" onBackground="neutral-weak" wrap="pretty">
-                  Elevation profile coming. The organiser hasn&apos;t published a GPX track we can read yet.
+                  {r.profileComing}
                 </Text>
               </Row>
             )}
@@ -156,11 +165,11 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
           <Grid columns="2" gap="32" m={{ columns: "1" }}>
             <Column gap="12">
               <Heading as="h2" textVariant="display-strong-xs">
-                {race.distances.length === 1 ? "Distance" : `${race.distances.length} distances`}
+                {plural(lang, race.distances.length, r.distancesTitle)}
               </Heading>
               <Column as="ul" background="surface" border radius="l">
                 {race.distances.map((d, i) => {
-                  const b = buckets[bucketOf(d.distance_km)];
+                  const bucket = bucketOf(d.distance_km);
                   return (
                     <Row
                       as="li"
@@ -173,25 +182,25 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
                       horizontal="between"
                     >
                       <Column gap="4">
-                        <Text textVariant="label-strong-m">{d.name ?? formatKm(d.distance_km)}</Text>
+                        <Text textVariant="label-strong-m">{d.name ?? formatKm(d.distance_km, lang)}</Text>
                         <Text textVariant="body-default-s" onBackground="neutral-weak">
-                          {formatKm(d.distance_km)} · {formatGain(d.elevation_gain_m)}
-                          {d.time_limit_hours ? ` · ${d.time_limit_hours} h cut-off` : ""}
-                          {d.start_time ? ` · starts ${d.start_time}` : ""}
+                          {formatKm(d.distance_km, lang)} · {formatGain(d.elevation_gain_m, lang)}
+                          {d.time_limit_hours ? ` · ${fill(r.cutoff, { n: formatNumber(d.time_limit_hours, lang, 1) })}` : ""}
+                          {d.start_time ? ` · ${fill(r.startsAt, { time: d.start_time })}` : ""}
                         </Text>
                         {d.aid_stations && d.aid_stations.length > 0 && (
                           <Text textVariant="body-default-s" onBackground="neutral-weak" data-tabular>
-                            Aid: {d.aid_stations.map((a) => `${a.name} (km ${a.km})`).join(", ")}
+                            {fill(r.aid, { list: d.aid_stations.map((a) => `${a.name} (km ${formatNumber(a.km, lang, 1)})`).join(", ") })}
                           </Text>
                         )}
                       </Column>
                       <Row gap="8" vertical="center" wrap horizontal="end">
-                        <Tag size="s" tone={b.tone}>
-                          {b.label}
+                        <Tag size="s" tone={buckets[bucket].tone}>
+                          {t.buckets[bucket].label}
                         </Tag>
                         {d.itra_points != null && d.itra_points > 0 && (
                           <Tag size="s" prefixIcon="medal">
-                            {`${d.itra_points} ITRA`}
+                            {fill(t.common.itra, { n: d.itra_points })}
                           </Tag>
                         )}
                       </Row>
@@ -208,12 +217,14 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
 
             <Column gap="12">
               <Heading as="h2" textVariant="display-strong-xs">
-                Where
+                {r.where}
               </Heading>
               <RaceLocationMap race={race} />
               <Text textVariant="body-default-s" onBackground="neutral-weak">
-                Start area: {place(race)}. Race data from{" "}
-                {(race.sources ?? [race.source]).map((x) => (x === "organiser" ? "the organiser" : x)).join(" and ")}.
+                {fill(r.startArea, {
+                  place: place(race, lang),
+                  sources: (race.sources ?? [race.source]).map((x) => (x === "organiser" ? r.sourceOrganizer : x)).join(r.and),
+                })}
               </Text>
             </Column>
           </Grid>
@@ -221,12 +232,12 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
           {race.photos && race.photos.length > 0 && (
             <Column gap="12">
               <Heading as="h2" textVariant="display-strong-xs">
-                Photos
+                {r.photos}
               </Heading>
               <Grid columns="3" gap="12" s={{ columns: "2" }}>
                 {race.photos.map((src, i) => (
                   <Column key={src} radius="m" overflow="hidden" border>
-                    <Media src={src} alt={`${race.name}, photo ${i + 2}`} aspectRatio="4 / 3" enlarge unoptimized />
+                    <Media src={src} alt={fill(r.photoAlt, { name: race.name, n: i + 2 })} aspectRatio="4 / 3" enlarge unoptimized />
                   </Column>
                 ))}
               </Grid>
@@ -237,7 +248,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
             <Row gap="8" vertical="center">
               <Icon name="checkCircle" onBackground="success-medium" />
               <Text textVariant="body-default-s" onBackground="neutral-medium">
-                Details from the organiser, {race.organizer.name}.
+                {fill(r.fromOrganizer, { name: race.organizer.name })}
               </Text>
             </Row>
           ) : (
@@ -252,13 +263,13 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
               s={{ direction: "column", horizontal: "start" }}
             >
               <Column gap="2">
-                <Text textVariant="label-strong-m">Organising this race?</Text>
+                <Text textVariant="label-strong-m">{r.claimTitle}</Text>
                 <Text textVariant="body-default-s" onBackground="neutral-weak">
-                  Claim the page to correct the details and add your course, aid stations and photos.
+                  {r.claimText}
                 </Text>
               </Column>
-              <Button href={`/organizers/claim/${race.slug}`} variant="secondary" size="s">
-                Claim this race
+              <Button href={localePath(lang, `/organizers/claim/${race.slug}`)} variant="secondary" size="s">
+                {r.claimButton}
               </Button>
             </Row>
           )}
@@ -266,7 +277,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
           {sameMonth.length > 0 && (
             <Column gap="16" borderTop paddingTop="40">
               <Heading as="h2" textVariant="display-strong-xs">
-                Also that month
+                {r.sameMonth}
               </Heading>
               <RaceCards races={sameMonth} />
             </Column>

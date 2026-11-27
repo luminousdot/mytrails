@@ -4,10 +4,13 @@ import { Column, Text } from "@once-ui-system/core";
 import { Map as TrailMap, MapMarkers, MapPin } from "@once-ui-system/core/map";
 import { useMemo } from "react";
 import { buckets, formatDates, raceBucket } from "../lib/race-utils";
+import { fill, localePath } from "../i18n";
+import { useI18n } from "../i18n/I18nProvider";
 import type { Race } from "../lib/types";
 import { DistanceLegend } from "./DistanceLegend";
 
 export function RaceMap({ races }: { races: Race[] }) {
+  const { lang, t } = useI18n();
   // Once UI positions are [lng, lat].
   const items = useMemo(
     () => races.map((race) => ({ id: race.id, race, position: [race.lng, race.lat] as [number, number] })),
@@ -29,15 +32,15 @@ export function RaceMap({ races }: { races: Race[] }) {
           <MapMarkers
             items={items}
             cluster
-            clusterLabel={(n) => `${n} races, zoom in`}
+            clusterLabel={(n) => fill(t.map.cluster, { n })}
             renderItem={({ race }) => {
-              const b = buckets[raceBucket(race)];
+              const bucket = raceBucket(race);
               return (
                 <MapPin
                   variant="dot"
-                  tone={b.tone}
-                  href={`/races/${race.slug}`}
-                  aria-label={`${race.name}, ${formatDates(race)}, ${b.label}`}
+                  tone={buckets[bucket].tone}
+                  href={localePath(lang, `/races/${race.slug}`)}
+                  aria-label={`${race.name}, ${formatDates(race, lang)}, ${t.buckets[bucket].label}`}
                 />
               );
             }}
@@ -46,7 +49,7 @@ export function RaceMap({ races }: { races: Race[] }) {
       </Column>
       <Column gap="8" paddingTop="4">
         <Text textVariant="body-default-s" onBackground="neutral-weak" marginX="4">
-          Pins are coloured by the longest distance at the event. Pick one to open the race.
+          {t.map.hint}
         </Text>
         <DistanceLegend />
       </Column>
