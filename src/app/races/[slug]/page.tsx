@@ -2,6 +2,7 @@ import { Breadcrumbs, Button, Column, Grid, Heading, Row, Tag, Text } from "@onc
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { RaceCards } from "../../../components/RaceCards";
+import { RaceCover } from "../../../components/RaceCover";
 import { StartsIn } from "../../../components/StartsIn";
 import { RaceLocationMap } from "../../../components/RaceLocationMap";
 import { TopBar } from "../../../components/TopBar";
@@ -78,6 +79,10 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
               )}
             </Row>
           </Row>
+
+          <Column radius="l" border overflow="hidden" height="22rem" s={{ height: "14rem" }}>
+            <RaceCover race={race} />
+          </Column>
 
           <Grid columns="4" gap="12" m={{ columns: "2" }}>
             <Stat label="Starts" value={<StartsIn date={race.date_start} />} />

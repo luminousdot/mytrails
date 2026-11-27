@@ -3,6 +3,7 @@
 import { Card, Column, Grid, Row, Tag, Text } from "@once-ui-system/core";
 import { buckets, daysUntil, formatGain, formatKm, longest, place, raceBucket, toDate } from "../lib/race-utils";
 import type { Race } from "../lib/types";
+import { RaceCover } from "./RaceCover";
 
 const dayFmt = new Intl.DateTimeFormat("en-GB", { day: "numeric" });
 const monthFmt = new Intl.DateTimeFormat("en-GB", { month: "short" });
@@ -27,8 +28,11 @@ function RaceCard({ race }: { race: Race }) {
   const others = race.distances.length - 1;
 
   return (
-    <Card href={`/races/${race.slug}`} fillHeight style={{ width: "100%" }}>
-      <Column fill padding="20" gap="16">
+    <Card href={`/races/${race.slug}`} fillHeight direction="column" style={{ width: "100%", overflow: "hidden" }}>
+      <Column fillWidth height="160px">
+        <RaceCover race={race} />
+      </Column>
+      <Column fillWidth flex={1} padding="20" gap="16">
         <Row gap="16" vertical="start">
           <Column
             width="56px"

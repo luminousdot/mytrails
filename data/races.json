@@ -1,5 +1,5 @@
 {
-  "crawled_at": "2026-11-27T09:53:17+00:00",
+  "crawled_at": "2026-11-27T13:19:50+00:00",
   "source": "itra.run",
   "races": [
     {
@@ -24,7 +24,8 @@
           "time_limit_hours": 9.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.avaibooksports.com/inscripcion/lovcen-skyrace-2026/inscripcion_descuento/"
     },
     {
       "id": "itra-114690",
@@ -75,7 +76,8 @@
           "url": "https://itra.run/Races/RaceDetails/Kar Spor İda Ultra.Köy Kosusu/2026/114682"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.idaultra.com"
     },
     {
       "id": "itra-127437",
@@ -105,7 +107,8 @@
           "url": "https://itra.run/Races/RaceDetails/Vrapimi i Nëntorit.Vrapimi ZI 11km/2026/127437"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.kosovopass.com/pass/488/a"
     },
     {
       "id": "itra-114261",
@@ -156,7 +159,12 @@
           "url": "https://itra.run/Races/RaceDetails/Cluj EcoTrail Ultramarathon.Mini EcoTrail 7k/2026/114260"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/6c5ef0b0f9974fc1a3d7ad81750e345d.jpg",
+        "source": "itra"
+      },
+      "website": "https://clujecotrail.com/"
     },
     {
       "id": "itra-126695",
@@ -192,7 +200,8 @@
           "url": "https://itra.run/Races/RaceDetails/Velenje trail.Druzinski trail/2026/126697"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://velenjetrail.si/registracija"
     },
     {
       "id": "itra-123651",
@@ -235,7 +244,8 @@
           "url": "https://itra.run/Races/RaceDetails/Nyúlcipőbolt Budai Trail Tél.Nyúlcipőbolt Budai Trail S/2026/115285"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://terepfutas.hu/nyulcipobolt-budai-trail/"
     },
     {
       "id": "itra-127190",
@@ -295,7 +305,8 @@
           "url": "https://itra.run/Races/RaceDetails/Ultra Zarand Everesting.VF. HIGHIS 799M CROS/2026/127193"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://forms.gle/WEnMkqZuoxtJy9Aw9"
     },
     {
       "id": "itra-123799",
@@ -341,7 +352,8 @@
           "url": "https://itra.run/Races/RaceDetails/GTH MOUNTAIN FESTIVAL.Antenna Vertical Trail 11/2026/123801"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://register.chronolog.gr/r/92782de9089e62db534d81f903159b05?l=EL"
     },
     {
       "id": "itra-126522",
@@ -366,7 +378,8 @@
           "time_limit_hours": 4.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://ecotrailsicilia.it/2021-2/trail-della-ficuzza-19-12-2021/"
     },
     {
       "id": "itra-127326",
@@ -397,6 +410,11 @@
         }
       ],
       "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/258ca9500fe94765b742ccac4b68b956.jpg",
+        "source": "itra"
+      },
+      "website": "https://forms.gle/eZmZWBxKPExtSogHA",
       "itra_points": 0
     },
     {
@@ -457,7 +475,8 @@
           "url": "https://itra.run/Races/RaceDetails/S1 Trail - La Corsa Della Bora.S1 Family Hike &  S1 Karst Trail /2027/114600"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.s1trail.com"
     },
     {
       "id": "itra-122711",
@@ -482,7 +501,12 @@
           "time_limit_hours": 8.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.knaptrail.si",
+      "cover": {
+        "url": "https://www.knaptrail.si/wp-content/uploads/2020/03/knap_open_slo.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-126507",
@@ -506,7 +530,8 @@
           "time_limit_hours": 6.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://my.raceresult.com/433364/txt"
     },
     {
       "id": "itra-126552",
@@ -543,6 +568,7 @@
         }
       ],
       "source": "itra.run",
+      "website": "https://www.vasiterepfuto.hu/",
       "itra_points": 0
     },
     {
@@ -567,6 +593,11 @@
         }
       ],
       "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/5aa390c6c6a443bd80625b04fb260b47.jpg",
+        "source": "itra"
+      },
+      "website": "https://forms.gle/GX3hbQ6ZZKcUGnsM6",
       "itra_points": 0
     },
     {
@@ -604,6 +635,11 @@
         }
       ],
       "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/016bbbb64d274301bfc77c416f21980a.png",
+        "source": "itra"
+      },
+      "website": "https://fagetwinterrace.ro/inscrieri",
       "itra_points": 0
     },
     {
@@ -641,6 +677,7 @@
         }
       ],
       "source": "itra.run",
+      "website": "https://www.vasiterepfuto.hu/",
       "itra_points": 0
     },
     {
@@ -685,7 +722,12 @@
           "url": "https://itra.run/Races/RaceDetails/Alpe Adria Winter.Grego 8/2027/127240"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/16f1f8cf8bb0433fa9d528514c3fed3c.jpg",
+        "source": "itra"
+      },
+      "website": "http://www.alpeadriaultra.com/en/dogna-25/"
     },
     {
       "id": "itra-126559",
@@ -722,6 +764,7 @@
         }
       ],
       "source": "itra.run",
+      "website": "https://www.vasiterepfuto.hu/",
       "itra_points": 0
     },
     {
@@ -766,7 +809,8 @@
           "url": "https://itra.run/Races/RaceDetails/Nif Ultra.Kaynaklar 6K/2027/126602"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://nifultra.com/"
     },
     {
       "id": "itra-126169",
@@ -812,7 +856,8 @@
           "url": "https://itra.run/Races/RaceDetails/6th Koumaria Trail Series.Omplos Hills/2027/126167"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.diava.gr"
     },
     {
       "id": "itra-126125",
@@ -836,7 +881,8 @@
           "time_limit_hours": 17.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.diava.gr"
     },
     {
       "id": "itra-118505",
@@ -881,7 +927,8 @@
           "url": "https://itra.run/Races/RaceDetails/III. Kekes Iconic Trail.Halálka/2027/118504"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://kekesiconictrail.hu/"
     },
     {
       "id": "itra-127600",
@@ -906,7 +953,12 @@
           "time_limit_hours": 11.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.traceysport.com/eventCalendar",
+      "cover": {
+        "url": "https://www.traceysport.com/assets/img/hero2-mobile.webp",
+        "source": "website"
+      }
     },
     {
       "id": "itra-118831",
@@ -951,7 +1003,8 @@
           "url": "https://itra.run/Races/RaceDetails/Krali Marko Trails.Markukule Trail/2027/118833"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.kmt.mk"
     },
     {
       "id": "itra-127270",
@@ -976,7 +1029,12 @@
         }
       ],
       "source": "itra.run",
-      "itra_points": 0
+      "website": "https://trka.rs/events/958-divca-winter-trail/",
+      "itra_points": 0,
+      "cover": {
+        "url": "https://files.racentr.com/media/uploads/2026/10/08/40.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-123274",
@@ -1006,7 +1064,8 @@
           "url": "https://itra.run/Races/RaceDetails/kavala  trail run .13KM/2027/123274"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://kavalatrailrun.eoskavalas.gr/"
     },
     {
       "id": "itra-118070",
@@ -1031,7 +1090,8 @@
           "time_limit_hours": 4.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.avala.club"
     },
     {
       "id": "itra-117059",
@@ -1056,6 +1116,7 @@
         }
       ],
       "source": "itra.run",
+      "website": "https://e.tiks.app/e/eccf9dee-459e-4c1e-9efe-4c3d4a879e5c",
       "itra_points": 0
     },
     {
@@ -1131,7 +1192,8 @@
           "url": "https://itra.run/Races/RaceDetails/Kras Trail. Kras Trail 10K/2027/118371"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://krastrail.si/en/"
     },
     {
       "id": "itra-124970",
@@ -1182,7 +1244,8 @@
           "url": "https://itra.run/Races/RaceDetails/3nd Amanitis Trail.Amanitis Vertical /2027/124970"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.podilateschiou.gr"
     },
     {
       "id": "itra-125667",
@@ -1214,7 +1277,12 @@
           "url": "https://itra.run/Races/RaceDetails/HELICON MOUNTAIN RACE powered by SALOMON.HELICON TRAIL/2027/125667"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/dba9c087197240c083657d79c9021abb.png",
+        "source": "itra"
+      },
+      "website": "http://www.heliconmountainrace.gr"
     },
     {
       "id": "itra-127463",
@@ -1229,13 +1297,13 @@
       "lng": 23.466991424560547,
       "registration_url": "https://hydrastrail.gr",
       "itra_url": "https://itra.run/Races/RaceDetails/Hydra's Trail Event.Hydra's Trail Marathon/2027/118393",
-      "itra_points": 1,
+      "itra_points": 2,
       "distances": [
         {
           "name": "Hydra's Trail Marathon",
-          "distance_km": 38.6,
-          "elevation_gain_m": 2140,
-          "itra_points": 1,
+          "distance_km": 38.51,
+          "elevation_gain_m": 1972,
+          "itra_points": 2,
           "url": "https://itra.run/Races/RaceDetails/Hydra's Trail Event.Hydra's Trail Marathon/2027/118393",
           "time_limit_hours": 8.0
         },
@@ -1258,7 +1326,8 @@
           "url": "https://itra.run/Races/RaceDetails/Hydra's Trail Event.Run 'n' Fun/2027/127463"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://hydrastrail.gr/en"
     },
     {
       "id": "itra-124884",
@@ -1296,7 +1365,8 @@
           "url": "https://itra.run/Races/RaceDetails/Sandras Adventure Trail.TR25K/2027/124883"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.sandrasadventure.com/en"
     },
     {
       "id": "itra-118828",
@@ -1335,7 +1405,8 @@
           "url": "https://itra.run/Races/RaceDetails/Vodno-Matka Trails.18Km/2027/118829"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.vodnomatka.mk"
     },
     {
       "id": "itra-120796",
@@ -1380,7 +1451,8 @@
           "url": "https://itra.run/Races/RaceDetails/VTM powered by Salomon GRVL.VTM Minimaraton/2027/120797"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://terepfutas.hu/event/ensport-vertes-terep-maraton/"
     },
     {
       "id": "itra-125822",
@@ -1420,7 +1492,12 @@
           "url": "https://itra.run/Races/RaceDetails/TihioRace .Deer's Race 30km/2027/125821"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/3e321ab1d1f341ba8aaf433962a3f2b0.jpg",
+        "source": "itra"
+      },
+      "website": "https://en.tihiorace.gr/races/tihio-stage-race"
     },
     {
       "id": "itra-124052",
@@ -1458,7 +1535,12 @@
           "url": "https://itra.run/Races/RaceDetails/Cheile Turzii Race.Cros/2027/118488"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.cheileturziirace.ro",
+      "cover": {
+        "url": "https://lh7-us.googleusercontent.com/sitesv-images-rt/APXyLQeEIX5S-JpASAA37jDbd9okjEXdJzZOAr9a8543YEwmUPYYpzyYYEPNXR4VM3gfukmBew_kkBimeDXUu1CmZh9Aq8uvFFcYbQdJvIBUB3IdAjy7ndur67QlflYLFNIs5TTbaII-oEWBqedAigJQ3okaWou-dBwNQtcTLBZkAHqzhD17pjkQN8Dv08JgxXI=w16383",
+        "source": "website"
+      }
     },
     {
       "id": "itra-120837",
@@ -1504,7 +1586,12 @@
           "url": "https://itra.run/Races/RaceDetails/Urme Pe Play.UPP Cros/2027/120836"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.urmepeplay.ro",
+      "cover": {
+        "url": "https://urmepeplay.ro/wp-content/uploads/2024/11/ADR08748-scaled.jpg",
+        "source": "website"
+      }
     },
     {
       "id": "itra-120699",
@@ -1563,7 +1650,12 @@
           "url": "https://itra.run/Races/RaceDetails/UTVV I FEEL SLOVENIA 12th edition.CASTRA 10 km/2027/120701"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://ultratrail.si/emperor/",
+      "cover": {
+        "url": "https://ultratrail.si/wp-content/uploads/2024/07/Untitled-1.jpg",
+        "source": "website"
+      }
     },
     {
       "id": "itra-121112",
@@ -1616,7 +1708,8 @@
           "url": "https://itra.run/Races/RaceDetails/50th Fruška Gora Trail.Trainee Southern Trail/2027/121116"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.fruskogorski-maraton.com/en/applications/"
     },
     {
       "id": "itra-120748",
@@ -1654,7 +1747,8 @@
           "url": "https://itra.run/Races/RaceDetails/MusaiSpectaculos.Crosul Fagarasului/2027/120750"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://alergaras.ro"
     },
     {
       "id": "itra-125894",
@@ -1712,7 +1806,8 @@
           "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MRT5K/2027/125898"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://marmarisultra.com/"
     },
     {
       "id": "itra-126350",
@@ -1770,7 +1865,8 @@
           "url": "https://itra.run/Races/RaceDetails/BABADAĞ ULTRA TRAIL.5K OLUDENIZ RUN/2027/126356"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://apphurra.com/etkinlik/babadag-ultra-trail-2027"
     },
     {
       "id": "itra-124985",
@@ -1808,7 +1904,8 @@
           "url": "https://itra.run/Races/RaceDetails/Sougliani Trail.13km/2027/124985"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.fosstavrou.gr/"
     },
     {
       "id": "itra-127271",
@@ -1833,7 +1930,12 @@
           "time_limit_hours": 5.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://trka.rs/events/959-jablanik-trail/",
+      "cover": {
+        "url": "https://files.racentr.com/media/uploads/2026/10/09/41.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-125449",
@@ -1858,7 +1960,12 @@
           "time_limit_hours": 10.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://skactive2013.com/",
+      "cover": {
+        "url": "https://skactive2013.com/wp-content/uploads/2026/09/Mechi-Chal-2027.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-127167",
@@ -1896,7 +2003,8 @@
           "url": "https://itra.run/Races/RaceDetails/Kissavos Marathon Race.Path 12K/2027/127169"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.kissavosmarathonrace.gr"
     },
     {
       "id": "itra-123258",
@@ -1935,7 +2043,8 @@
           "url": "https://itra.run/Races/RaceDetails/Skyrace del Voltigno.Skyrun del Voltigno/2027/123014"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.sciclubvillaceliera.it"
     },
     {
       "id": "itra-126508",
@@ -1973,7 +2082,8 @@
           "url": "https://itra.run/Races/RaceDetails/Wörthersee Trail Festival .14k Short/2027/126510"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://my.raceresult.com/340695/"
     },
     {
       "id": "itra-120572",
@@ -2019,7 +2129,8 @@
           "url": "https://itra.run/Races/RaceDetails/Corfu Mountain Trail.QUICK TRAIL/2027/120573"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://corfumountaintrail.com/"
     },
     {
       "id": "itra-126795",
@@ -2064,7 +2175,12 @@
           "url": "https://itra.run/Races/RaceDetails/Subcarpati Trail Run.Cros STR 12K/2027/126798"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://subcarpatitrailrun.ro/",
+      "cover": {
+        "url": "https://www.subcarpatitrailrun.ro/images/fbimg.jpg",
+        "source": "website"
+      }
     },
     {
       "id": "itra-124630",
@@ -2107,7 +2223,8 @@
           "url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 6k/2027/124642"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.nefesultra.com"
     },
     {
       "id": "itra-127224",
@@ -2137,7 +2254,8 @@
           "url": "https://itra.run/Races/RaceDetails/PAGGAIO TRAIL RUN.PAGGAIO TRAIL RUN 10/2027/127224"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.eoskavalas.gr/"
     },
     {
       "id": "itra-126853",
@@ -2174,7 +2292,8 @@
           "url": "https://itra.run/Races/RaceDetails/Chios Hardstone Trail.Chios Hardstone Trail 5km/2027/126852"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.chiosrunning.gr/chios-hardstone-trail/"
     },
     {
       "id": "itra-122975",
@@ -2213,7 +2332,12 @@
           "url": "https://itra.run/Races/RaceDetails/Učka Trail Ultra.Učka Loop Advanced 22km/2027/122975"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/da11f19bcb674d56bdd97d9fe9d8a7a9.jpg",
+        "source": "itra"
+      },
+      "website": "https://rika.hr/ucka-trail-ultra-from-coast-to-summit/"
     },
     {
       "id": "itra-120786",
@@ -2274,7 +2398,12 @@
           "url": "https://itra.run/Races/RaceDetails/Salomon Ultra-Trail Hungary.Salomon Twin Peaks Trail/2027/120787"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://ultratrail.hu",
+      "cover": {
+        "url": "https://ultratrail.hu/wp-content/uploads/2025/06/503586587_1150344110455697_1776488706510734416_n.jpg",
+        "source": "website"
+      }
     },
     {
       "id": "itra-126385",
@@ -2299,7 +2428,12 @@
           "time_limit_hours": 6.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.kassiosdias.com",
+      "cover": {
+        "url": "https://kassiosdias.com/wp-content/uploads/2019/03/KASSIOS-SHARE.jpg",
+        "source": "website"
+      }
     },
     {
       "id": "itra-127129",
@@ -2323,7 +2457,8 @@
           "time_limit_hours": 5.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://south.pourliatrail.gr/"
     },
     {
       "id": "itra-121828",
@@ -2361,7 +2496,8 @@
           "url": "https://itra.run/Races/RaceDetails/Kriska Gora Trail.Gams/2027/121828"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.kriskagora-trail.si/"
     },
     {
       "id": "itra-126108",
@@ -2393,7 +2529,12 @@
           "url": "https://itra.run/Races/RaceDetails/Sonnenterrassen Trail.K35/2027/126109"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.st-trail.at/",
+      "cover": {
+        "url": "https://www.st-trail.at/fileadmin/_processed_/6/c/csm_ziel-jubel-sprung_a42add804b.jpg",
+        "source": "website"
+      }
     },
     {
       "id": "itra-126501",
@@ -2418,6 +2559,7 @@
         }
       ],
       "source": "itra.run",
+      "website": "https://www.kekescsucsfutas.hu/kekes-csucsfutas-trail/",
       "itra_points": 0
     },
     {
@@ -2443,7 +2585,8 @@
           "time_limit_hours": 25.7
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.ultrabug.ro"
     },
     {
       "id": "itra-123476",
@@ -2496,7 +2639,12 @@
           "url": "https://itra.run/Races/RaceDetails/Transylvania 100.Transylvania 20k/2027/123479"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/4600a541a6f244ecb8e718226f1e6748.png",
+        "source": "itra"
+      },
+      "website": "https://www.transylvania100k.com/registration"
     },
     {
       "id": "itra-127170",
@@ -2518,7 +2666,12 @@
           "time_limit_hours": 48.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.mythical-odyssey.com",
+      "cover": {
+        "url": "https://mythical-odyssey.com/wp-content/uploads/2026/10/MO-OG-2027.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-122281",
@@ -2563,7 +2716,12 @@
           "url": "https://itra.run/Races/RaceDetails/Bușteni Ultra Race.Busteni Cross/2027/122285"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://busteniultrarace.ro",
+      "cover": {
+        "url": "https://busteniultrarace.ro/wp-content/uploads/2026/08/SEO-HeroKV.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-120584",
@@ -2595,7 +2753,8 @@
           "url": "https://itra.run/Races/RaceDetails/MÁTRA 115 COMMUNITY TRAIL.Matra 90/2027/120584"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://ttura.hu/event/2025m115/registration"
     },
     {
       "id": "itra-121690",
@@ -2634,7 +2793,8 @@
           "url": "https://itra.run/Races/RaceDetails/Ötscher Trail.Speed Trail/2027/121690"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.oetschertrail.run/"
     },
     {
       "id": "itra-126931",
@@ -2672,7 +2832,8 @@
           "url": "https://itra.run/Races/RaceDetails/Tara Ultra Trail.TUT 12/2027/126931"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://prijavise.net/event-details/39"
     },
     {
       "id": "itra-125825",
@@ -2726,7 +2887,12 @@
           "url": "https://itra.run/Races/RaceDetails/Tihiorace Ultra Edition.4Ultra Summits Tihiorace 310km/2027/126180"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/2c5852e7fe7743a4811156d88809ef71.jpg",
+        "source": "itra"
+      },
+      "website": "https://tihiorace.gr/"
     },
     {
       "id": "itra-127272",
@@ -2751,7 +2917,12 @@
         }
       ],
       "source": "itra.run",
-      "itra_points": 0
+      "website": "https://trka.rs/events/960-gradac-vidra-trail/",
+      "itra_points": 0,
+      "cover": {
+        "url": "https://files.racentr.com/media/uploads/2026/10/09/42.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-124131",
@@ -2795,7 +2966,8 @@
           "url": "https://itra.run/Races/RaceDetails/Sneznik trails.Bistrska 10-ka/2027/124130"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://my.raceresult.com/423953/registration"
     },
     {
       "id": "itra-120959",
@@ -2827,7 +2999,8 @@
           "url": "https://itra.run/Races/RaceDetails/Pelister Unique Trail Marathon.Neolica Half-Marathon/2027/120959"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.pelisterultra.run"
     },
     {
       "id": "itra-126335",
@@ -2858,7 +3031,8 @@
           "url": "https://itra.run/Races/RaceDetails/PEJA TRAIL RUN.LIVADHI SAKES TRAIL 10K/2027/126335"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://pejatrailrun.org/"
     },
     {
       "id": "itra-121721",
@@ -2911,7 +3085,12 @@
           "url": "https://itra.run/Races/RaceDetails/Vučko Trail.14 km/2027/121720"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://vuckotrail.ba/105km-course/",
+      "cover": {
+        "url": "https://vuckotrail.ba/wp-content/uploads/2025/11/black-course.webp",
+        "source": "website"
+      }
     },
     {
       "id": "itra-127232",
@@ -2964,7 +3143,12 @@
           "url": "https://itra.run/Races/RaceDetails/Alpe Adria Ultra Trail .Oitzinger 12/2027/127225"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/dbf63beb48cb4e498a26b7af36a6381c.jpg",
+        "source": "itra"
+      },
+      "website": "http://www.alpeadriaultra.com/en/alpe-adria-ultra-120/"
     },
     {
       "id": "itra-125814",
@@ -3033,7 +3217,8 @@
           "url": "https://itra.run/Races/RaceDetails/Soca Outdoor Festival.Continental 10 KM Trail Run/2027/125811"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://soca-outdoor.com/en/registration/"
     },
     {
       "id": "itra-126050",
@@ -3072,7 +3257,8 @@
           "url": "https://itra.run/Races/RaceDetails/OLYMPUS MARATHON.Winter Enipeas Canyon/2027/126051"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.olympus-marathon.com/en/register-form/olympus-ultra"
     },
     {
       "id": "itra-126730",
@@ -3124,7 +3310,12 @@
           "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.8 KM/2027/126731"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.durmitortrail.run/",
+      "cover": {
+        "url": "https://cdn.prod.website-files.com/66098877b8d2e2ff85d16319/66439b6f9e6515ebc3d1a83f_Ilustracija%20sa%20natpisom%201200%20630.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-121693",
@@ -3162,7 +3353,12 @@
           "url": "https://itra.run/Races/RaceDetails/Veitscher Skytrail.Speed Trail/2027/121693"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.veitscherskytrail.run/",
+      "cover": {
+        "url": "https://static.wixstatic.com/media/afb1d3_4e39bc2f5b78427aaa37d92f1df61ba6~mv2.jpg/v1/fill/w_1200,h_630,al_c/afb1d3_4e39bc2f5b78427aaa37d92f1df61ba6~mv2.jpg",
+        "source": "website"
+      }
     },
     {
       "id": "itra-121647",
@@ -3228,7 +3424,12 @@
           "url": "https://itra.run/Races/RaceDetails/Carpathia Trails.Cheile Gradistei Trails 6K/2027/121642"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://carpathiatrails.com",
+      "cover": {
+        "url": "https://carpathiatrails.com/wp-content/uploads/2022/03/homepage_hero_1920x1100-min.jpg",
+        "source": "website"
+      }
     },
     {
       "id": "itra-127273",
@@ -3253,7 +3454,12 @@
         }
       ],
       "source": "itra.run",
-      "itra_points": 0
+      "website": "https://trka.rs/events/961-sova-night-trail/",
+      "itra_points": 0,
+      "cover": {
+        "url": "https://files.racentr.com/media/uploads/2026/10/09/43.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-121901",
@@ -3291,7 +3497,8 @@
           "url": "https://itra.run/Races/RaceDetails/Predeal Forest Run.K24/2027/121901"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://predealforestrun.ro/inscrie-te/"
     },
     {
       "id": "itra-126588",
@@ -3350,7 +3557,8 @@
           "url": "https://itra.run/Races/RaceDetails/Uludag Premium Ultra Trail.UP6K/2027/126587"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.uludagultra.com/"
     },
     {
       "id": "itra-126918",
@@ -3375,7 +3583,8 @@
           "time_limit_hours": 0.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://my.raceresult.com/426505/"
     },
     {
       "id": "itra-126919",
@@ -3400,7 +3609,8 @@
           "time_limit_hours": 0.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://my.raceresult.com/426505/"
     },
     {
       "id": "itra-123822",
@@ -3432,7 +3642,8 @@
           "url": "https://itra.run/Races/RaceDetails/Karawanken Löwen Trail.Bärental Runde Trail KLT 25k/2027/123823"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://my.raceresult.com/426505/"
     },
     {
       "id": "itra-127498",
@@ -3474,7 +3685,12 @@
           "url": "https://itra.run/Races/RaceDetails/GRAN SASSO TRAIL 2027.Pietracamela Trail/2027/127501"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.endu.net/it/events/gran-sasso-trail/book",
+      "cover": {
+        "url": "https://media.endu.net/editions/102468/covers/540e72ea-ca26-41de-ae36-cf57712a6f67.jpg?w=1200",
+        "source": "website"
+      }
     },
     {
       "id": "itra-127663",
@@ -3512,7 +3728,8 @@
           "url": "https://itra.run/Races/RaceDetails/Retezat Mountain Run.Cross/2027/127663"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.retezat-maraton-rausor.ro"
     },
     {
       "id": "itra-127274",
@@ -3537,7 +3754,12 @@
         }
       ],
       "source": "itra.run",
-      "itra_points": 0
+      "website": "https://trka.rs/events/962-bobija-trail/",
+      "itra_points": 0,
+      "cover": {
+        "url": "https://files.racentr.com/media/uploads/2026/10/09/44.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-125167",
@@ -3587,7 +3809,8 @@
           "url": "https://itra.run/Races/RaceDetails/Sardon Run.Sardon Deca/2027/125167"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.sardon.run"
     },
     {
       "id": "itra-124047",
@@ -3619,7 +3842,8 @@
           "url": "https://itra.run/Races/RaceDetails/Ribnca trail.CEBULARCA/2027/124048"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://ribncatrail.si/"
     },
     {
       "id": "itra-123590",
@@ -3685,7 +3909,8 @@
           "url": "https://itra.run/Races/RaceDetails/adidas INFINITE TRAILS.15K Run/2027/123588"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://infinite-trails.com/en/registration/"
     },
     {
       "id": "itra-123749",
@@ -3743,7 +3968,8 @@
           "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Torlauf Dachstein Teamrun/2027/123751"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://time2win.at/event/869/registration/identity"
     },
     {
       "id": "itra-127145",
@@ -3775,7 +4001,8 @@
           "url": "https://itra.run/Races/RaceDetails/Weissensee Ungetüm.Short Trail/2027/127145"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.ungetuem.at"
     },
     {
       "id": "itra-120667",
@@ -3798,7 +4025,8 @@
           "time_limit_hours": 25.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.trailtobealive.com/"
     },
     {
       "id": "itra-127278",
@@ -3823,7 +4051,12 @@
           "time_limit_hours": 5.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://trka.rs/events/964-divca-trail/",
+      "cover": {
+        "url": "https://files.racentr.com/media/uploads/2026/10/09/46.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-124673",
@@ -3875,7 +4108,12 @@
           "url": "https://itra.run/Races/RaceDetails/K3 ULTRA GOLD BORDER RACE.GBR13/2027/124677"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "http://www.k3ultra.bg",
+      "cover": {
+        "url": "https://k3ultra.bg/wp-content/uploads/2026/09/k3_program_bg.jpeg",
+        "source": "website"
+      }
     },
     {
       "id": "itra-125648",
@@ -3913,7 +4151,12 @@
           "url": "https://itra.run/Races/RaceDetails/Alpin Team Trail.ATT K10/2027/125650"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/79870875584d44cdb050b75cace2e6cc.png",
+        "source": "itra"
+      },
+      "website": "http://www.alpinteamtrail.at"
     },
     {
       "id": "itra-127360",
@@ -3951,7 +4194,12 @@
           "url": "https://itra.run/Races/RaceDetails/Rebel Trails Marathon Reverse.Rebel Trails Quarter Marathon Reverse/2027/127360"
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://www.rebeltrails.oldelm.eu/en/%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F/",
+      "cover": {
+        "url": "https://www.rebeltrails.oldelm.eu/wp-content/uploads/2017/10/liniq.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-127518",
@@ -3974,7 +4222,12 @@
           "time_limit_hours": 5.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "website": "https://trka.rs/events/965-povlen-trail/",
+      "cover": {
+        "url": "https://files.racentr.com/media/uploads/2026/10/09/47.png",
+        "source": "website"
+      }
     },
     {
       "id": "itra-127141",
@@ -3997,7 +4250,12 @@
           "time_limit_hours": 4.0
         }
       ],
-      "source": "itra.run"
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/b3a5f5178c5643489129a10ddfb8218b.png",
+        "source": "itra"
+      },
+      "website": "http://www.digitalrace.it/gare"
     }
   ]
 }

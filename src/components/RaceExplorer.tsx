@@ -171,6 +171,8 @@ export function RaceExplorer({ races, crawledAt }: { races: Race[]; crawledAt: s
             ]}
           />
           <SegmentedControl
+            // The saved view is only known after hydration; remount so the indicator follows it.
+            key={view}
             fillWidth={false}
             aria-label="View"
             value={view}

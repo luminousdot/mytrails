@@ -24,6 +24,9 @@ export type Race = {
   itra_url?: string;
   itra_points?: number;
   description?: string;
+  website?: string;
+  /** A photo from ITRA or the race's own site; absent means the app draws a cover. */
+  cover?: { url: string; source: "itra" | "website" };
   distances: RaceDistance[];
   source: string;
 };

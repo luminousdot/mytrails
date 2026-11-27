@@ -25,6 +25,7 @@ import unicodedata
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
+from urllib.parse import urljoin, urlparse
 
 from crawl4ai import AsyncWebCrawler, BrowserConfig, CacheMode, CrawlerRunConfig
 
@@ -48,6 +49,13 @@ ITRA_POINTS_MAP = {'zero': 0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five':
 
 UA = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
       '(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36')
+
+# Links on an ITRA race page that are never the race's own website.
+NOT_WEBSITE = (
+    'itra.run', 'fonts.g', 'cdn.', 'cdnjs.', 'jquery.com', 'facebook.com', 'instagram.com',
+    'strava.com', 'twitter.com', 'x.com', 'youtube.com', 'tiktok.com', 'maurten', 'runderwear',
+    'google.com', 'apple.com', 'linkedin.com',
+)
 
 SESSION = 'itra'
 OUT = Path(__file__).resolve().parent.parent / 'data' / 'races.json'
@@ -115,6 +123,15 @@ def parse_detail_html(html: str) -> dict:
     m = re.search(r'<meta name="description" content="([^"]{40,})"', html)
     if m:
         result['description'] = re.sub(r'\s+', ' ', m.group(1)).strip()
+    # Organisers can upload race photos; the first one is the cover.
+    m = re.search(r'src="(/Files/Photos/[^"]+\.(?:jpe?g|png|webp))"', html, re.I)
+    if m:
+        result['photo'] = f'https://itra.run{m.group(1)}'
+    for link in re.findall(r'href="(https?://[^"\s]+)"', html):
+        host = urlparse(link).netloc.lower()
+        if host and not any(bad in host for bad in NOT_WEBSITE):
+            result['website'] = link
+            break
     m = re.search(r'/images/itra_numbers/icons/(\w+)\.svg', html)
     if m and m.group(1) in ITRA_POINTS_MAP:
         result['itra_points'] = ITRA_POINTS_MAP[m.group(1)]
@@ -221,7 +238,51 @@ async def run_js(crawler: AsyncWebCrawler, url: str, js: str) -> list:
     return first or []
 
 
-async def main(limit: Optional[int], upcoming_only: bool, batch: int) -> None:
+def og_image(html: str, base: str) -> Optional[str]:
+    for prop in ('og:image', 'og:image:url', 'twitter:image'):
+        m = (re.search(rf'<meta[^>]+(?:property|name)=["\']{prop}["\'][^>]+content=["\']([^"\']+)', html, re.I)
+             or re.search(rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+(?:property|name)=["\']{prop}["\']', html, re.I))
+        if m:
+            url = urljoin(base, m.group(1).strip())
+            # A logo or icon makes a poor cover; the app draws one instead.
+            if url.startswith('http') and not re.search(r'logo|icon|favicon|\.svg', url, re.I):
+                return url
+    return None
+
+
+async def add_website_covers(crawler: AsyncWebCrawler, races: list[dict]) -> None:
+    """For races without an ITRA photo, use the preview image of the race's own site."""
+    todo = {r['id']: r.get('website') or r.get('registration_url') for r in races if 'cover' not in r}
+    todo = {k: v for k, v in todo.items() if v}
+    if not todo:
+        return
+    log(f'  Looking for cover images on {len(todo)} race websites…')
+    cfg = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, wait_until='domcontentloaded',
+                           page_timeout=20000, delay_before_return_html=1)
+    results = await crawler.arun_many(urls=list(set(todo.values())), config=cfg)
+    images = {}
+    for res in results:
+        if res.success and res.html:
+            img = og_image(res.html, res.url)
+            if img:
+                images[res.url] = img
+    # An image shared by several races is a platform's or a series' default
+    # (raceresult's share card, an organiser's logo), not a photo of this race.
+    uses: dict[str, int] = {}
+    for r in races:
+        img = images.get(todo.get(r['id']) or '')
+        if img:
+            uses[img] = uses.get(img, 0) + 1
+    found = 0
+    for r in races:
+        url = todo.get(r['id'])
+        if url and url in images and uses[images[url]] == 1:
+            r['cover'] = {'url': images[url], 'source': 'website'}
+            found += 1
+    log(f'  ✓ {found} covers from race websites')
+
+
+async def main(limit: Optional[int], upcoming_only: bool, batch: int, covers: bool = True) -> None:
     log('ITRA crawler — Crawl4AI')
     browser = BrowserConfig(headless=True, user_agent=UA, viewport_width=1280, viewport_height=900,
                             verbose=False)
@@ -278,7 +339,11 @@ async def main(limit: Optional[int], upcoming_only: bool, batch: int) -> None:
                     d = parse_detail_html(page)
                     longest = r['distances'][0] if r['distances'] else None
                     if longest is not None:
-                        longest.update({k: v for k, v in d.items() if k != 'description'})
+                        longest.update({k: v for k, v in d.items() if k not in ('description', 'photo', 'website')})
+                    if d.get('photo'):
+                        r['cover'] = {'url': d['photo'], 'source': 'itra'}
+                    if d.get('website'):
+                        r['website'] = d['website']
                     if 'itra_points' in d:
                         r['itra_points'] = max(d['itra_points'], r.get('itra_points') or 0)
                     if d.get('description'):
@@ -288,8 +353,10 @@ async def main(limit: Optional[int], upcoming_only: bool, batch: int) -> None:
             log(f'  {min(b + batch, len(se))}/{len(se)} checked, {len(races)} kept')
             await asyncio.sleep(0.5)
 
-    if limit:
-        races = races[:limit]
+        if limit:
+            races = races[:limit]
+        if covers:
+            await add_website_covers(crawler, races)
 
     # Dedupe on name + date (ITRA lists some events twice).
     seen: set[tuple[str, str]] = set()
@@ -314,5 +381,6 @@ if __name__ == '__main__':
     ap.add_argument('--limit', type=int, help='stop after this many races')
     ap.add_argument('--all-dates', action='store_true', help='keep past races too')
     ap.add_argument('--batch', type=int, default=15, help='parallel requests per batch')
+    ap.add_argument('--no-covers', action='store_true', help="skip race websites' cover images")
     args = ap.parse_args()
-    asyncio.run(main(args.limit, not args.all_dates, args.batch))
+    asyncio.run(main(args.limit, not args.all_dates, args.batch, not args.no_covers))

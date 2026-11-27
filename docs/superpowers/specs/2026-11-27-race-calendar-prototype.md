@@ -8,6 +8,15 @@
 - Output is `data/races.json`: one record per event with every distance (km, D+, ITRA points, cut-off), dates, place, coordinates and links. It keeps upcoming races only, drops organisers' test events and pins that land outside the region's countries, and dedupes on name and date.
 - The app reads it through `src/lib/races.ts` (`getRaces()`), so a database can replace the file later without touching the screens.
 
+## Covers
+
+Each race gets a cover, tried in this order:
+1. The first race photo on its ITRA page (`/Files/Photos/…`), 13 of 103 races today.
+2. The `og:image` of the race's own website (or its registration page), 26 races. Logos, icons and images shared by several races (platform defaults such as raceresult's share card) are skipped.
+3. A topo cover drawn in the app (`TopoCover`): contour rings around seeded summits, tighter the more the race climbs per km, coloured by distance bucket. The same race always draws the same cover.
+
+Photos are hotlinked, so the topo cover shows until a photo has actually loaded.
+
 ## Screens
 
 - **Header:** race count, countries, days to the next start, data date.
