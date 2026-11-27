@@ -63,12 +63,12 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
 
           <Row gap="24" vertical="end" horizontal="between" s={{ direction: "column", horizontal: "start" }}>
             <Column gap="12">
-              <Text textVariant="label-default-s" onBackground="brand-medium">
-                {formatDates(race, true)} · {place(race)}
-              </Text>
               <Heading as="h1" textVariant="display-strong-s" wrap="balance">
                 {race.name}
               </Heading>
+              <Text textVariant="body-default-l" onBackground="neutral-medium">
+                {formatDates(race, true)} · {place(race)}
+              </Text>
             </Column>
             <Row gap="8" wrap>
               {race.itra_url && (
@@ -89,9 +89,12 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
             </Row>
           </Row>
 
-          <Column radius="l" border overflow="hidden" height="22rem" s={{ height: "14rem" }}>
-            <RaceCover race={race} />
-          </Column>
+          {/* Only a real photo earns the banner; without one, the "Where" map below shows the place. */}
+          {race.cover && (
+            <Column radius="l" border overflow="hidden" height="22rem" s={{ height: "14rem" }}>
+              <RaceCover race={race} />
+            </Column>
+          )}
 
           {raceSeries.map((s) => (
             <Row

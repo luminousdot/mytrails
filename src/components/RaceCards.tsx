@@ -49,6 +49,11 @@ function RaceCard({ race }: { race: Race }) {
             <Text textVariant="label-default-s" onBackground="brand-medium">
               {monthFmt.format(start)}
             </Text>
+            {start.getFullYear() !== new Date().getFullYear() && (
+              <Text textVariant="label-default-xs" onBackground="brand-medium">
+                {start.getFullYear()}
+              </Text>
+            )}
           </Column>
           <Column gap="4" flex={1} minWidth="0">
             <Text as="h3" textVariant="heading-strong-s" wrap="balance">

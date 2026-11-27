@@ -133,36 +133,39 @@ export function RaceExplorer({
               onValueChange={(v) => set({ search: v })}
             />
           </Row>
-          <Row minWidth="14rem" s={{ minWidth: "0", width: "100%" }}>
-            <Select
-              id="race-country"
-              size="xxs"
-              label="Country"
-              searchable
-              value={filters.country}
-              onValueChange={(v) => set({ country: v as string })}
-              options={[{ value: "all", label: "All countries" }, ...countries]}
-            />
-          </Row>
-          {series.length > 0 && (
-            <Row minWidth="12rem" s={{ minWidth: "0", width: "100%" }}>
+          {/* Country and series share a row on phones to keep the filters short. */}
+          <Row gap="12" s={{ width: "100%" }}>
+            <Row minWidth="14rem" s={{ minWidth: "0", flex: 1 }}>
               <Select
-                id="race-series"
+                id="race-country"
                 size="xxs"
-                label="Series"
-                value={filters.series}
-                onValueChange={(v) => set({ series: v as string })}
-                options={[
-                  { value: "all", label: "All series" },
-                  ...series.map((s) => ({
-                    value: s.slug,
-                    label: seriesName(s.title).short,
-                    description: seriesName(s.title).long,
-                  })),
-                ]}
+                label="Country"
+                searchable
+                value={filters.country}
+                onValueChange={(v) => set({ country: v as string })}
+                options={[{ value: "all", label: "All countries" }, ...countries]}
               />
             </Row>
-          )}
+            {series.length > 0 && (
+              <Row minWidth="12rem" s={{ minWidth: "0", flex: 1 }}>
+                <Select
+                  id="race-series"
+                  size="xxs"
+                  label="Series"
+                  value={filters.series}
+                  onValueChange={(v) => set({ series: v as string })}
+                  options={[
+                    { value: "all", label: "All series" },
+                    ...series.map((s) => ({
+                      value: s.slug,
+                      label: seriesName(s.title).short,
+                      description: seriesName(s.title).long,
+                    })),
+                  ]}
+                />
+              </Row>
+            )}
+          </Row>
           <Checkbox
             label="ITRA points only"
             checked={filters.itraOnly}

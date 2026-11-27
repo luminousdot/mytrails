@@ -29,15 +29,12 @@ export function RaceHeader({
   const content = (
     <Column gap="24">
       <Column gap="12">
-        <Text textVariant="label-default-s" onBackground="brand-medium">
-          Southeast Europe · trail &amp; mountain races
-        </Text>
         <Heading as="h1" textVariant="display-strong-s" wrap="balance">
           Find your next start line
         </Heading>
         <Text textVariant="body-default-l" onBackground="neutral-medium" wrap="pretty">
-          {races.length} races in {countries} countries, {nextLine}. Updated from ITRA on{" "}
-          {updatedFmt.format(new Date(crawledAt))}.
+          {races.length} trail and mountain races across {countries} countries of Southeast Europe, {nextLine}.
+          Updated from ITRA on {updatedFmt.format(new Date(crawledAt))}.
         </Text>
       </Column>
 

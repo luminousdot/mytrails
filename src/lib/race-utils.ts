@@ -54,11 +54,19 @@ const fullFmt = new Intl.DateTimeFormat("en-GB", {
   year: "numeric",
 });
 
-export function formatDates(race: Race, full = false): string {
+/**
+ * "28 Nov", or "7 Mar 2027" with `withYear` when the race is not this year
+ * (the calendar runs a year ahead, so a bare "7 Mar" is ambiguous).
+ */
+export function formatDates(race: Race, full = false, withYear = false): string {
   const fmt = full ? fullFmt : dayFmt;
-  const start = fmt.format(toDate(race.date_start));
-  if (!race.date_end) return start;
-  return `${dayFmt.format(toDate(race.date_start))} – ${fmt.format(toDate(race.date_end))}`;
+  const start = toDate(race.date_start);
+  const end = race.date_end ? toDate(race.date_end) : null;
+  const year = withYear && !full && (end ?? start).getFullYear() !== new Date().getFullYear()
+    ? ` ${(end ?? start).getFullYear()}`
+    : "";
+  if (!end) return `${fmt.format(start)}${year}`;
+  return `${dayFmt.format(start)} – ${fmt.format(end)}${year}`;
 }
 
 export function formatKm(km?: number): string {
