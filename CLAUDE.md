@@ -13,7 +13,9 @@ Trail race calendar for SE Europe. Next.js (App Router) + Once UI (`@once-ui-sys
 
 - `npm run dev` — app on http://localhost:3000
 - `npm run build` — production build
-- `cd crawler && uv run itra_crawl.py --limit 50` — refresh `data/races.json`
+- `cd crawler && uv sync && uv run crawl4ai-setup` — first-time crawler setup
+- `cd crawler && uv run itra_crawl.py` — refresh `data/races.json` (`--limit 30` for a quick run)
+- `npm run lint` / `npx once-ui-validate-ai-code src/**/*.tsx` — checks
 
 ## Rules
 
