@@ -1,6 +1,6 @@
 "use client";
 
-import { Column, Grid, Row, SmartLink, Text } from "@once-ui-system/core";
+import { Column, Row, SmartLink, Text } from "@once-ui-system/core";
 import { LineChart } from "@once-ui-system/core/data";
 import { useMemo } from "react";
 import { formatKm } from "../lib/race-utils";
@@ -21,13 +21,13 @@ export function ElevationProfile({
 
   return (
     <Column gap="16">
-      <Grid columns="5" gap="12" m={{ columns: "3" }} s={{ columns: "2" }}>
+      <Row background="surface" border radius="l" paddingX="20" paddingY="12" gap="24" wrap>
         <Stat label="Track" value={formatKm(profile.distance_km)} />
         <Stat label="Climb" value={`+${profile.elevation_gain_m.toLocaleString("en-GB")} m`} />
         <Stat label="Descent" value={`−${profile.elevation_loss_m.toLocaleString("en-GB")} m`} />
         <Stat label="Highest" value={`${profile.max_m.toLocaleString("en-GB")} m`} />
         <Stat label="Lowest" value={`${profile.min_m.toLocaleString("en-GB")} m`} />
-      </Grid>
+      </Row>
       <LineChart
         data={data}
         xKey="km"
@@ -40,7 +40,7 @@ export function ElevationProfile({
         legend={{ display: false }}
         grid="y"
         // Start the axis near the course's own low point, not at sea level, so the climbs read.
-        yDomain={[Math.floor((profile.min_m - 50) / 100) * 100, Math.ceil((profile.max_m + 50) / 100) * 100]}
+        yDomain={[Math.max(0, Math.floor((profile.min_m - 50) / 100) * 100), Math.ceil((profile.max_m + 50) / 100) * 100]}
         height="18rem"
         annotations={[
           { x: 0, label: "Start" },
@@ -51,7 +51,8 @@ export function ElevationProfile({
       />
       <Row horizontal="between" wrap gap="8">
         <Text textVariant="body-default-s" onBackground="neutral-weak">
-          Distance in km along the course; climb smoothed from the GPX track.
+          {profile.distance_name ? `${profile.distance_name} course. ` : ""}Distance in km along the course;
+          climb smoothed from the GPX track.
         </Text>
         <SmartLink href={profile.url} suffixIcon="download">
           Download GPX
@@ -63,7 +64,7 @@ export function ElevationProfile({
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <Column background="surface" border radius="l" paddingX="16" paddingY="12" gap="4">
+    <Column gap="2">
       <Text textVariant="label-default-s" onBackground="neutral-weak">
         {label}
       </Text>

@@ -135,8 +135,16 @@ def main() -> None:
     # Races whose website publishes a GPX (gpx.py) get an elevation profile.
     tracks = json.loads((SOURCES / 'gpx.json').read_text()) if (SOURCES / 'gpx.json').exists() else {}
     for r in races:
-        if r['id'] in tracks:
-            r['profile'] = tracks[r['id']]
+        track = tracks.get(r['id'])
+        if not track:
+            continue
+        # A site's GPX can be a stage or a bad-weather variant; keep it only when
+        # it is within 15% of one of the race's distances (hand-added ones always).
+        near = min(r.get('distances') or [], default=None,
+                   key=lambda d: abs((d.get('distance_km') or 0) - track['distance_km']))
+        fits = near and near.get('distance_km') and abs(near['distance_km'] - track['distance_km']) <= 0.15 * near['distance_km']
+        if track.get('source') == 'manual' or fits:
+            r['profile'] = dict(track, distance_name=near.get('name') if fits else None)
 
     races.sort(key=lambda r: (r['date_start'], r['name']))
     (DATA / 'races.json').write_text(json.dumps({

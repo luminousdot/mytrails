@@ -82,5 +82,18 @@
       13.27431
     ],
     "url": "http://www.alpinteamtrail.at/site/assets/files/1108/att_k50_originalstrecke.gpx"
+  },
+  "itra-127270": {
+    "distance_km": 15.1,
+    "elevation_gain_m": 603,
+    "elevation_loss_m": 600,
+    "max_m": 1097,
+    "min_m": 825,
+    "start": [
+      44.10362024791539,
+      20.00093917362392
+    ],
+    "url": "/gpx/divca-winter-trail.gpx",
+    "source": "manual"
   }
 }

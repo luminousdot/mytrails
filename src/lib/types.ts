@@ -37,6 +37,8 @@ export type Race = {
     max_m: number;
     min_m: number;
     url: string;
+    /** Which of the race's distances the track is, when it matches one. */
+    distance_name?: string | null;
   };
   /** Where the data came from, organiser's own source first. */
   sources?: string[];
