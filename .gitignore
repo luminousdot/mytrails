@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Organiser submissions and uploads are local runtime data in the prototype
+/data/organizer/
+/public/uploads/

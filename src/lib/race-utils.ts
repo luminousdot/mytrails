@@ -24,6 +24,11 @@ export function raceBucket(race: Race): DistanceBucket {
   return bucketOf(longest(race)?.distance_km);
 }
 
+/** Lower-case without accents, so "divca" finds "Divča" and "djerdap" finds "Đerdap". */
+export function fold(s: string): string {
+  return s.toLowerCase().replace(/đ/g, "dj").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 export function matches(race: Race, f: RaceFilters): boolean {
   if (f.country !== "all" && race.country !== f.country) return false;
   if (f.series !== "all" && !race.series?.some((s) => s.slug === f.series)) return false;
@@ -32,8 +37,8 @@ export function matches(race: Race, f: RaceFilters): boolean {
     return false;
   }
   if (f.search) {
-    const q = f.search.toLowerCase();
-    const hay = `${race.name} ${race.city ?? ""} ${race.country}`.toLowerCase();
+    const q = fold(f.search);
+    const hay = fold(`${race.name} ${race.city ?? ""} ${race.country}`);
     if (!hay.includes(q)) return false;
   }
   return true;

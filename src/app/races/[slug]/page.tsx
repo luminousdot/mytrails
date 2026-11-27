@@ -1,4 +1,4 @@
-import { Breadcrumbs, Button, Column, Grid, Heading, Icon, Row, Tag, Text } from "@once-ui-system/core";
+import { Breadcrumbs, Button, Column, Grid, Heading, Icon, Media, Row, Tag, Text } from "@once-ui-system/core";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ElevationProfile } from "../../../components/ElevationProfile";
@@ -177,7 +177,13 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
                         <Text textVariant="body-default-s" onBackground="neutral-weak">
                           {formatKm(d.distance_km)} · {formatGain(d.elevation_gain_m)}
                           {d.time_limit_hours ? ` · ${d.time_limit_hours} h cut-off` : ""}
+                          {d.start_time ? ` · starts ${d.start_time}` : ""}
                         </Text>
+                        {d.aid_stations && d.aid_stations.length > 0 && (
+                          <Text textVariant="body-default-s" onBackground="neutral-weak" data-tabular>
+                            Aid: {d.aid_stations.map((a) => `${a.name} (km ${a.km})`).join(", ")}
+                          </Text>
+                        )}
                       </Column>
                       <Row gap="8" vertical="center" wrap horizontal="end">
                         <Tag size="s" tone={b.tone}>
@@ -206,10 +212,56 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
               </Heading>
               <RaceLocationMap race={race} />
               <Text textVariant="body-default-s" onBackground="neutral-weak">
-                Start area: {place(race)}. Race data from {(race.sources ?? [race.source]).join(" and ")}.
+                Start area: {place(race)}. Race data from{" "}
+                {(race.sources ?? [race.source]).map((x) => (x === "organiser" ? "the organiser" : x)).join(" and ")}.
               </Text>
             </Column>
           </Grid>
+
+          {race.photos && race.photos.length > 0 && (
+            <Column gap="12">
+              <Heading as="h2" textVariant="display-strong-xs">
+                Photos
+              </Heading>
+              <Grid columns="3" gap="12" s={{ columns: "2" }}>
+                {race.photos.map((src, i) => (
+                  <Column key={src} radius="m" overflow="hidden" border>
+                    <Media src={src} alt={`${race.name}, photo ${i + 2}`} aspectRatio="4 / 3" enlarge unoptimized />
+                  </Column>
+                ))}
+              </Grid>
+            </Column>
+          )}
+
+          {race.organizer ? (
+            <Row gap="8" vertical="center">
+              <Icon name="checkCircle" onBackground="success-medium" />
+              <Text textVariant="body-default-s" onBackground="neutral-medium">
+                Details from the organiser, {race.organizer.name}.
+              </Text>
+            </Row>
+          ) : (
+            <Row
+              border
+              radius="l"
+              paddingX="20"
+              paddingY="16"
+              gap="16"
+              vertical="center"
+              horizontal="between"
+              s={{ direction: "column", horizontal: "start" }}
+            >
+              <Column gap="2">
+                <Text textVariant="label-strong-m">Organising this race?</Text>
+                <Text textVariant="body-default-s" onBackground="neutral-weak">
+                  Claim the page to correct the details and add your course, aid stations and photos.
+                </Text>
+              </Column>
+              <Button href={`/organizers/claim/${race.slug}`} variant="secondary" size="s">
+                Claim this race
+              </Button>
+            </Row>
+          )}
 
           {sameMonth.length > 0 && (
             <Column gap="16" borderTop paddingTop="40">
