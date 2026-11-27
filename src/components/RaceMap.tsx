@@ -5,6 +5,7 @@ import { Map as TrailMap, MapMarkers, MapPin } from "@once-ui-system/core/map";
 import { useMemo } from "react";
 import { buckets, formatDates, raceBucket } from "../lib/race-utils";
 import type { Race } from "../lib/types";
+import { DistanceLegend } from "./DistanceLegend";
 
 export function RaceMap({ races }: { races: Race[] }) {
   // Once UI positions are [lng, lat].
@@ -43,9 +44,12 @@ export function RaceMap({ races }: { races: Race[] }) {
           />
         </TrailMap>
       </Column>
-      <Text textVariant="body-default-s" onBackground="neutral-weak">
-        Pins are coloured by the longest distance at the event. Pick one to open the race.
-      </Text>
+      <Column gap="8" paddingTop="4">
+        <Text textVariant="body-default-s" onBackground="neutral-weak" marginX="4">
+          Pins are coloured by the longest distance at the event. Pick one to open the race.
+        </Text>
+        <DistanceLegend />
+      </Column>
     </Column>
   );
 }
