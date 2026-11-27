@@ -25,6 +25,9 @@ import { SeasonStrip } from "./SeasonStrip";
 
 type View = "list" | "cards" | "map" | "calendar";
 
+// Races-per-month strip, hidden for now; flip to bring it back.
+const SHOW_SEASON_STRIP = false;
+
 const views: View[] = ["list", "cards", "map", "calendar"];
 // Remembered per tab, so coming back from a race page lands on the same view.
 const VIEW_KEY = "mytrails:view";
@@ -128,15 +131,17 @@ export function RaceExplorer({
         </Text>
       </Column>
 
-      <SeasonStrip
-        races={matching}
-        month={monthOnly || view === "calendar" ? month : null}
-        onPick={(m) => {
-          const same = monthOnly && m.getTime() === month.getTime();
-          setMonth(m);
-          setMonthOnly(!same);
-        }}
-      />
+      {SHOW_SEASON_STRIP && (
+        <SeasonStrip
+          races={matching}
+          month={monthOnly || view === "calendar" ? month : null}
+          onPick={(m) => {
+            const same = monthOnly && m.getTime() === month.getTime();
+            setMonth(m);
+            setMonthOnly(!same);
+          }}
+        />
+      )}
 
       <Column gap="16">
         <Row gap="12" vertical="center" wrap s={{ direction: "column", horizontal: "start" }}>
