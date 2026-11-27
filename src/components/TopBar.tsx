@@ -2,7 +2,6 @@
 
 import { Button, Logo, Row, ThemeSwitcher, VisuallyHidden } from "@once-ui-system/core";
 import { app } from "../resources/app";
-import { StylePreview } from "./StylePreview";
 
 export function TopBar() {
   return (
@@ -34,7 +33,6 @@ export function TopBar() {
               Data: ITRA
             </Button>
           </Row>
-          <StylePreview />
           <ThemeSwitcher collapsed />
         </Row>
       </Row>

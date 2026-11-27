@@ -9,22 +9,3 @@ table,
 [data-tabular] {
   font-variant-numeric: tabular-nums;
 }
-
-/* Design preview: "Soft shadows" depth (StylePreview). Panels and cards lift
-   on a soft shadow instead of sitting on a border. A Card clips its content on
-   the link around it, so the shadow goes on that link. */
-[data-mt-depth="soft"] .surface-background:not([class*="Card-module"]),
-[data-mt-depth="soft"] a:has(> [class*="Card-module"]) {
-  box-shadow: var(--shadow-m);
-}
-[data-mt-depth="soft"] .surface-background {
-  border-color: transparent;
-}
-
-[data-mt-depth="soft"][data-theme="dark"] .surface-background:not([class*="Card-module"]),
-[data-mt-depth="soft"][data-theme="dark"] a:has(> [class*="Card-module"]) {
-  box-shadow: 0 2px 4px rgb(0 0 0 / 0.4), 0 12px 24px rgb(0 0 0 / 0.35);
-}
-[data-mt-depth="soft"][data-theme="dark"] .surface-background {
-  border-color: var(--neutral-alpha-weak);
-}
