@@ -49,6 +49,17 @@ Reviewed 27 Nov 2026: `~/Projects/trail-os` (routes, components, phase 1–2 spe
 | **Strava sign-in**, fitness-based estimates | trailos phase 2a | Only if accounts are decided; trailos gated tools behind it, which hid them from most visitors. |
 | **Serbian language** | trailos (post phase 1) | Open decision in PRODUCT.md. |
 
+## From other Serbian race sites
+
+See `docs/competitor-map.md` (trkesrbija.rs, trka.rs, mountain-race.rs, spisaktrka.com, runnmore.com). The ones that fit best:
+
+- **Registration status** (open, closed, opens on a date) on cards and race pages; organisers enter it in the form.
+- **"Next edition expected in <month>"** for races without a new date (fixes the WST gap).
+- **Serbian language**: every one of these sites is in Serbian.
+- **Standalone GPX tool**: drop any GPX and see its profile and climb.
+- **Category landing pages** (ultra, sky, by country) for discovery and search.
+- trka.rs already lists the 2027 WST dates; add it as a source once the demo data is unfrozen.
+
 ## Suggested order
 
 1. Organiser submission + review queue, with aid stations in the form.
