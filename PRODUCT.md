@@ -32,11 +32,11 @@ The one place that covers the whole region with real course detail (elevation pr
 - **Data today:** a frozen demo dataset (27 November 2026) crawled from ITRA (Crawl4AI) and mountain-race.rs. 103 races; 39 have a real photo, 7 have a GPX profile. Do not present it as live or complete.
 - **Needed next (confirmed):** organiser tools to create and edit their race page; race results and rankings.
 - **Stack:** Next.js (App Router) with Once UI only; Python crawlers in `crawler/`.
-- **Open decisions:** whether "My Trails" is the final name; languages (English today; Serbian not decided); runner accounts or Strava sign-in (not decided).
+- **Open decisions:** languages (English today; Serbian not decided); runner accounts or Strava sign-in (not decided).
 
 ## Brand Commitments
 
-- Working name: My Trails.
+- Name: My Trails, with the "MT" monogram (confirmed 27 Nov 2026).
 - Built entirely with Once UI components.
 - Light and dark mode are both first-class.
 - Never use JetBrains Mono.
