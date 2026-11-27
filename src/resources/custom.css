@@ -1,0 +1,11 @@
+/* Browser surfaces Once UI leaves to the browser: theme them from the palette. */
+::selection {
+  background: var(--brand-alpha-medium);
+  color: var(--neutral-on-background-strong);
+}
+
+/* Distances, climbs and dates line up in columns. */
+table,
+[data-tabular] {
+  font-variant-numeric: tabular-nums;
+}
