@@ -8,15 +8,15 @@
 - Output is `data/races.json`: one record per event with every distance (km, D+, ITRA points, cut-off), dates, place, coordinates and links. It keeps upcoming races only, drops organisers' test events and pins that land outside the region's countries, and dedupes on name and date.
 - The app reads it through `src/lib/races.ts` (`getRaces()`), so a database can replace the file later without touching the screens.
 
-## Screens (one page)
+## Screens
 
 - **Header:** race count, countries, days to the next start, data date.
-- **Season strip:** twelve months with a bar for each month's race count; picking a month moves the calendar.
+- **Season strip:** twelve months with a bar for each month's race count. Picking a month narrows the list, cards and map to it and moves the calendar there; picking it again clears it.
 - **Filters:** search, country, ITRA points only, distance bucket (Short < 21 km, Marathon 21–44, Long 45–79, Ultra 80+). They apply to every view.
-- **Views:** month calendar (Once UI `Calendar`, coloured by longest distance), sortable paginated list (`Table`), clustered map (`Map`).
-- **Race details:** a `Dialog` with days to the start, the longest distance and climb, every distance with its bucket and ITRA points, and links to ITRA and registration.
+- **Views**, in toggle order: sortable paginated list (`Table`, the default), cards (one `Card` per race), clustered map (`Map`) and month calendar (`Calendar`, coloured by longest distance). The chosen view is remembered for the tab, so coming back from a race page lands on it.
+- **Race page** (`/races/[slug]`, prerendered for every race): breadcrumb back, date and place, links to ITRA and registration, days to the start, longest distance, climb, ITRA points, every distance with its bucket and points, a map of the start area, and other races that month.
 - Loading (`loading.tsx`), error with Retry (`error.tsx`) and an empty state when the filters match nothing.
 
 ## Not yet
 
-Race detail pages with their own URL, more sources (trka.rs, myrace.rs, mountain-race.rs), saved races, GPX and elevation profiles, and a scheduled crawl.
+More sources (trka.rs, myrace.rs, mountain-race.rs), saved races, GPX and elevation profiles, and a scheduled crawl.

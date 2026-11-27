@@ -2,6 +2,7 @@
 
 import { Column, Row } from "@once-ui-system/core";
 import { Calendar, type CalendarEvent } from "@once-ui-system/core/calendar";
+import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 import { buckets, formatKm, longest, raceBucket, toDate } from "../lib/race-utils";
 import type { Race } from "../lib/types";
@@ -10,13 +11,13 @@ export function RaceCalendar({
   races,
   month,
   onMonthChange,
-  onSelect,
 }: {
   races: Race[];
   month: Date;
   onMonthChange: (month: Date) => void;
-  onSelect: (id: string) => void;
 }) {
+  const router = useRouter();
+  const slugs = useMemo(() => Object.fromEntries(races.map((r) => [r.id, r.slug])), [races]);
   const events = useMemo<CalendarEvent[]>(
     () =>
       races.map((race) => {
@@ -50,7 +51,7 @@ export function RaceCalendar({
         locale="en-GB"
         maxEventsPerDay={3}
         height="44rem"
-        onEventSelect={(event) => onSelect(event.id)}
+        onEventSelect={(event) => router.push(`/races/${slugs[event.id]}`)}
       />
       <Legend />
     </Column>

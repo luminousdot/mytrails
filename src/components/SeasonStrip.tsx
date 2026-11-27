@@ -16,7 +16,7 @@ export function SeasonStrip({
   onPick,
 }: {
   races: Race[];
-  month: Date;
+  month: Date | null;
   onPick: (month: Date) => void;
 }) {
   const now = new Date();
@@ -34,11 +34,11 @@ export function SeasonStrip({
   return (
     <Column gap="8">
       <Text textVariant="label-default-s" onBackground="neutral-weak" id="season-label">
-        Races per month · pick a month
+        Races per month · pick one to narrow the list
       </Text>
       <Row as="nav" aria-labelledby="season-label" gap="4" fillWidth overflowX="auto" scrollbar="minimal">
         {months.map((m, i) => {
-          const active = m.getFullYear() === month.getFullYear() && m.getMonth() === month.getMonth();
+          const active = month !== null && m.getFullYear() === month.getFullYear() && m.getMonth() === month.getMonth();
           const showYear = i === 0 || m.getMonth() === 0;
           return (
             <Card

@@ -6,15 +6,7 @@ import { useMemo } from "react";
 import { buckets, formatDates, raceBucket } from "../lib/race-utils";
 import type { Race } from "../lib/types";
 
-export function RaceMap({
-  races,
-  selectedId,
-  onSelect,
-}: {
-  races: Race[];
-  selectedId: string | null;
-  onSelect: (id: string) => void;
-}) {
+export function RaceMap({ races }: { races: Race[] }) {
   // Once UI positions are [lng, lat].
   const items = useMemo(
     () => races.map((race) => ({ id: race.id, race, position: [race.lng, race.lat] as [number, number] })),
@@ -35,17 +27,15 @@ export function RaceMap({
         >
           <MapMarkers
             items={items}
-            activeId={selectedId ?? undefined}
             cluster
             clusterLabel={(n) => `${n} races, zoom in`}
-            renderItem={({ id, race }) => {
+            renderItem={({ race }) => {
               const b = buckets[raceBucket(race)];
               return (
                 <MapPin
                   variant="dot"
                   tone={b.tone}
-                  active={id === selectedId}
-                  onClick={() => onSelect(id)}
+                  href={`/races/${race.slug}`}
                   aria-label={`${race.name}, ${formatDates(race)}, ${b.label}`}
                 />
               );
@@ -54,7 +44,7 @@ export function RaceMap({
         </TrailMap>
       </Column>
       <Text textVariant="body-default-s" onBackground="neutral-weak">
-        Pins are coloured by the longest distance at the event. Pick one for the details.
+        Pins are coloured by the longest distance at the event. Pick one to open the race.
       </Text>
     </Column>
   );

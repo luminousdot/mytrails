@@ -3,8 +3,10 @@
 import { Button, Column, Row, Table, Tag, Text } from "@once-ui-system/core";
 import { buckets, formatDates, formatGain, formatKm, longest, place, raceBucket } from "../lib/race-utils";
 import type { Race } from "../lib/types";
+import { useRouter } from "next/navigation";
 
-export function RaceList({ races, onSelect }: { races: Race[]; onSelect: (id: string) => void }) {
+export function RaceList({ races }: { races: Race[] }) {
+  const router = useRouter();
   return (
     <Table
       aria-label="Races"
@@ -27,7 +29,7 @@ export function RaceList({ races, onSelect }: { races: Race[]; onSelect: (id: st
           </Text>,
           <Column key="race" gap="4" paddingY="4">
             <Row>
-              <Button variant="link" weight="strong" horizontal="start" style={{ paddingInline: 0 }} onClick={() => onSelect(race.id)}>
+              <Button variant="link" weight="strong" horizontal="start" style={{ paddingInline: 0 }} href={`/races/${race.slug}`}>
                 {race.name}
               </Button>
             </Row>
@@ -49,7 +51,7 @@ export function RaceList({ races, onSelect }: { races: Race[]; onSelect: (id: st
         {
           icon: "arrowUpRight",
           tooltip: "Race details",
-          onClick: (_row, index) => onSelect(races[index].id),
+          onClick: (_row, index) => router.push(`/races/${races[index].slug}`),
         },
       ]}
     />

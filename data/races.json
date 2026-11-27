@@ -28,7 +28,7 @@
     },
     {
       "id": "itra-114690",
-      "slug": "kar-spor-i-da-ultra",
+      "slug": "kar-spor-ida-ultra",
       "name": "Kar Spor İda Ultra",
       "country": "Turkey",
       "country_code": "TR",
@@ -79,7 +79,7 @@
     },
     {
       "id": "itra-127437",
-      "slug": "vrapimi-i-n-ntorit",
+      "slug": "vrapimi-i-nentorit",
       "name": "Vrapimi i Nëntorit",
       "country": "Kosovo",
       "country_code": "XK",
@@ -196,7 +196,7 @@
     },
     {
       "id": "itra-123651",
-      "slug": "ny-lcip-bolt-budai-trail-t-l",
+      "slug": "nyulcipobolt-budai-trail-tel",
       "name": "Nyúlcipőbolt Budai Trail Tél",
       "country": "Hungary",
       "country_code": "HU",
@@ -486,7 +486,7 @@
     },
     {
       "id": "itra-126507",
-      "slug": "w-rthersee-extrem-trail",
+      "slug": "worthersee-extrem-trail",
       "name": "Wörthersee Extrem Trail",
       "country": "Austria",
       "country_code": "AT",
@@ -1060,7 +1060,7 @@
     },
     {
       "id": "itra-127668",
-      "slug": "lidya-kral-yolu-ko-usu",
+      "slug": "lidya-kral-yolu-kosusu",
       "name": "Lidya Kral Yolu Koşusu",
       "country": "Turkey",
       "country_code": "TR",
@@ -1716,7 +1716,7 @@
     },
     {
       "id": "itra-126350",
-      "slug": "babada-ultra-trail",
+      "slug": "babadag-ultra-trail",
       "name": "BABADAĞ ULTRA TRAIL",
       "country": "Turkey",
       "country_code": "TR",
@@ -1939,7 +1939,7 @@
     },
     {
       "id": "itra-126508",
-      "slug": "w-rthersee-trail-festival",
+      "slug": "worthersee-trail-festival",
       "name": "Wörthersee Trail Festival",
       "country": "Austria",
       "country_code": "AT",
@@ -2397,7 +2397,7 @@
     },
     {
       "id": "itra-126501",
-      "slug": "30-k-kes-cs-csfut-s",
+      "slug": "30-kekes-csucsfutas",
       "name": "30. Kékes Csúcsfutás",
       "country": "Hungary",
       "country_code": "HU",
@@ -2522,7 +2522,7 @@
     },
     {
       "id": "itra-122281",
-      "slug": "bu-teni-ultra-race",
+      "slug": "busteni-ultra-race",
       "name": "Bușteni Ultra Race",
       "country": "Romania",
       "country_code": "RO",
@@ -2567,7 +2567,7 @@
     },
     {
       "id": "itra-120584",
-      "slug": "m-tra-115-community-trail",
+      "slug": "matra-115-community-trail",
       "name": "MÁTRA 115 COMMUNITY TRAIL",
       "country": "Hungary",
       "country_code": "HU",
@@ -2599,7 +2599,7 @@
     },
     {
       "id": "itra-121690",
-      "slug": "tscher-trail",
+      "slug": "otscher-trail",
       "name": "Ötscher Trail",
       "country": "Austria",
       "country_code": "AT",
@@ -3354,7 +3354,7 @@
     },
     {
       "id": "itra-126918",
-      "slug": "b-rental-runde-trail-klt-25k",
+      "slug": "barental-runde-trail-klt-25k",
       "name": "Bärental Runde Trail KLT 25k",
       "country": "Austria",
       "country_code": "AT",
@@ -3404,7 +3404,7 @@
     },
     {
       "id": "itra-123822",
-      "slug": "karawanken-l-wen-trail",
+      "slug": "karawanken-lowen-trail",
       "name": "Karawanken Löwen Trail",
       "country": "Austria",
       "country_code": "AT",
@@ -3747,7 +3747,7 @@
     },
     {
       "id": "itra-127145",
-      "slug": "weissensee-unget-m",
+      "slug": "weissensee-ungetum",
       "name": "Weissensee Ungetüm",
       "country": "Austria",
       "country_code": "AT",
@@ -3779,7 +3779,7 @@
     },
     {
       "id": "itra-120667",
-      "slug": "croatie-mont-negro-trail-challenge-trail-to-be-alive",
+      "slug": "croatie-montenegro-trail-challenge-trail-to-be-alive",
       "name": "Croatie Monténegro Trail Challenge Trail To Be Alive",
       "country": "Croatia",
       "country_code": "HR",

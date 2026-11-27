@@ -13,29 +13,60 @@ import {
   Select,
   Text,
 } from "@once-ui-system/core";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import { buckets, daysUntil, matches, toDate } from "../lib/race-utils";
 import type { DistanceBucket, Race, RaceFilters } from "../lib/types";
 import { RaceCalendar } from "./RaceCalendar";
-import { RaceDialog } from "./RaceDialog";
+import { RaceCards } from "./RaceCards";
 import { RaceList } from "./RaceList";
 import { RaceMap } from "./RaceMap";
 import { SeasonStrip } from "./SeasonStrip";
 
-type View = "calendar" | "list" | "map";
+type View = "list" | "cards" | "map" | "calendar";
+
+const views: View[] = ["list", "cards", "map", "calendar"];
+// Remembered per tab, so coming back from a race page lands on the same view.
+const VIEW_KEY = "mytrails:view";
+
+// Fallback for when storage is blocked (private windows), so the toggle still works.
+let memoryView: View = "list";
+
+function readView(): View {
+  try {
+    const saved = sessionStorage.getItem(VIEW_KEY) as View | null;
+    if (saved && views.includes(saved)) return saved;
+  } catch {}
+  return memoryView;
+}
+
+function subscribeView(onChange: () => void) {
+  window.addEventListener(VIEW_KEY, onChange);
+  return () => window.removeEventListener(VIEW_KEY, onChange);
+}
+
+function saveView(view: View) {
+  memoryView = view;
+  try {
+    sessionStorage.setItem(VIEW_KEY, view);
+  } catch {}
+  window.dispatchEvent(new Event(VIEW_KEY));
+}
 
 const defaultFilters: RaceFilters = { country: "all", distance: "all", itraOnly: false, search: "" };
 
+const monthName = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" });
 const updatedFmt = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
 
 export function RaceExplorer({ races, crawledAt }: { races: Race[]; crawledAt: string }) {
-  const [view, setView] = useState<View>("calendar");
+  const view = useSyncExternalStore(subscribeView, readView, () => "list" as View);
   const [filters, setFilters] = useState<RaceFilters>(defaultFilters);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
   const [month, setMonth] = useState<Date>(() => {
     const first = races[0] ? toDate(races[0].date_start) : new Date();
     return new Date(first.getFullYear(), first.getMonth(), 1);
   });
+  // A month picked in the season strip narrows the list, cards and map; the calendar just shows it.
+  const [monthOnly, setMonthOnly] = useState(false);
+
 
   const countries = useMemo(
     () =>
@@ -44,11 +75,21 @@ export function RaceExplorer({ races, crawledAt }: { races: Race[]; crawledAt: s
         .map((c) => ({ value: c, label: `${c} (${races.filter((r) => r.country === c).length})` })),
     [races],
   );
-  const shown = useMemo(() => races.filter((r) => matches(r, filters)), [races, filters]);
-  const selected = races.find((r) => r.id === selectedId) ?? null;
+  const matching = useMemo(() => races.filter((r) => matches(r, filters)), [races, filters]);
+  const shown = useMemo(() => {
+    if (!monthOnly || view === "calendar") return matching;
+    return matching.filter((r) => {
+      const d = toDate(r.date_start);
+      return d.getFullYear() === month.getFullYear() && d.getMonth() === month.getMonth();
+    });
+  }, [matching, monthOnly, month, view]);
   const next = races.find((r) => daysUntil(r.date_start) >= 0);
   const filtered =
-    filters.country !== "all" || filters.distance !== "all" || filters.itraOnly || filters.search !== "";
+    monthOnly || filters.country !== "all" || filters.distance !== "all" || filters.itraOnly || filters.search !== "";
+  const clearAll = () => {
+    setFilters(defaultFilters);
+    setMonthOnly(false);
+  };
 
   const set = (patch: Partial<RaceFilters>) => setFilters((f) => ({ ...f, ...patch }));
 
@@ -74,11 +115,12 @@ export function RaceExplorer({ races, crawledAt }: { races: Race[]; crawledAt: s
       </Column>
 
       <SeasonStrip
-        races={shown}
-        month={month}
+        races={matching}
+        month={monthOnly || view === "calendar" ? month : null}
         onPick={(m) => {
+          const same = monthOnly && m.getTime() === month.getTime();
           setMonth(m);
-          if (view === "map") setView("calendar");
+          setMonthOnly(!same);
         }}
       />
 
@@ -132,11 +174,12 @@ export function RaceExplorer({ races, crawledAt }: { races: Race[]; crawledAt: s
             fillWidth={false}
             aria-label="View"
             value={view}
-            onValueChange={(v) => setView(v as View)}
+            onValueChange={(v) => saveView(v as View)}
             buttons={[
-              { value: "calendar", label: "Calendar", prefixIcon: "calendar" },
               { value: "list", label: "List", prefixIcon: "list" },
+              { value: "cards", label: "Cards", prefixIcon: "grid" },
               { value: "map", label: "Map", prefixIcon: "map" },
+              { value: "calendar", label: "Calendar", prefixIcon: "calendar" },
             ]}
           />
         </Row>
@@ -146,9 +189,10 @@ export function RaceExplorer({ races, crawledAt }: { races: Race[]; crawledAt: s
             {shown.length === races.length
               ? `Showing all ${races.length} races`
               : `Showing ${shown.length} of ${races.length} races`}
+            {monthOnly && view !== "calendar" ? ` in ${monthName.format(month)}` : ""}
           </Text>
           {filtered && (
-            <Button size="s" variant="tertiary" prefixIcon="close" onClick={() => setFilters(defaultFilters)}>
+            <Button size="s" variant="tertiary" prefixIcon="close" onClick={clearAll}>
               Clear filters
             </Button>
           )}
@@ -162,21 +206,21 @@ export function RaceExplorer({ races, crawledAt }: { races: Race[]; crawledAt: s
             title="No races match these filters"
             description="Try another country or distance, or clear the filters to see the whole season."
             action={
-              <Button variant="secondary" onClick={() => setFilters(defaultFilters)}>
+              <Button variant="secondary" onClick={clearAll}>
                 Show all races
               </Button>
             }
           />
         </Column>
-      ) : view === "calendar" ? (
-        <RaceCalendar races={shown} month={month} onMonthChange={setMonth} onSelect={setSelectedId} />
       ) : view === "list" ? (
-        <RaceList races={shown} onSelect={setSelectedId} />
+        <RaceList races={shown} />
+      ) : view === "cards" ? (
+        <RaceCards races={shown} />
+      ) : view === "map" ? (
+        <RaceMap races={shown} />
       ) : (
-        <RaceMap races={shown} selectedId={selectedId} onSelect={setSelectedId} />
+        <RaceCalendar races={shown} month={month} onMonthChange={setMonth} />
       )}
-
-      <RaceDialog race={selected} onClose={() => setSelectedId(null)} />
     </Column>
   );
 }

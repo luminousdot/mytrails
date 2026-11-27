@@ -21,6 +21,7 @@ import asyncio
 import json
 import re
 import sys
+import unicodedata
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
@@ -146,11 +147,8 @@ def distance_name(race_url: str) -> Optional[str]:
 
 
 def slugify(s: str) -> str:
-    s = s.lower()
-    s = re.sub(r'[čć]', 'c', s)
-    s = re.sub(r'[š]', 's', s)
-    s = re.sub(r'[ž]', 'z', s)
-    s = re.sub(r'[đ]', 'dj', s)
+    s = s.lower().replace('đ', 'dj').replace('ı', 'i')
+    s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
     return re.sub(r'[^a-z0-9]+', '-', s).strip('-')
 
 

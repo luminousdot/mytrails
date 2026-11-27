@@ -12,3 +12,8 @@ export async function getRaces(): Promise<RaceDataset> {
     races: [...data.races].sort((a, b) => a.date_start.localeCompare(b.date_start)),
   };
 }
+
+export async function getRace(slug: string) {
+  const { races } = await getRaces();
+  return races.find((r) => r.slug === slug) ?? null;
+}
