@@ -132,6 +132,12 @@ def main() -> None:
         if n:
             r['slug'] = f"{r['slug']}-{r['date_start'][:4]}"
 
+    # Races whose website publishes a GPX (gpx.py) get an elevation profile.
+    tracks = json.loads((SOURCES / 'gpx.json').read_text()) if (SOURCES / 'gpx.json').exists() else {}
+    for r in races:
+        if r['id'] in tracks:
+            r['profile'] = tracks[r['id']]
+
     races.sort(key=lambda r: (r['date_start'], r['name']))
     (DATA / 'races.json').write_text(json.dumps({
         'crawled_at': itra.get('crawled_at') or datetime.now(timezone.utc).isoformat(timespec='seconds'),

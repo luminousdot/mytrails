@@ -14,7 +14,8 @@ Trail race calendar for SE Europe. Next.js (App Router) + Once UI (`@once-ui-sys
 - `npm run dev` — app on http://localhost:3000
 - `npm run build` — production build
 - `cd crawler && uv sync && uv run crawl4ai-setup` — first-time crawler setup
-- `cd crawler && uv run itra_crawl.py && uv run mountain_race.py && uv run merge.py` — refresh all race data
+- `cd crawler && uv run itra_crawl.py && uv run mountain_race.py && uv run merge.py && uv run gpx.py && uv run merge.py` — refresh all race data
+- Elevation profiles: drop a track at `public/gpx/<race slug>.gpx`, then `uv run gpx.py --local-only && uv run merge.py`
 - `npm run lint` / `npx once-ui-validate-ai-code src/**/*.tsx` — checks
 
 ## Rules

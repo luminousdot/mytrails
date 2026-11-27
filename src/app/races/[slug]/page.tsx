@@ -1,6 +1,7 @@
-import { Breadcrumbs, Button, Column, Grid, Heading, Row, Tag, Text } from "@once-ui-system/core";
+import { Breadcrumbs, Button, Column, Grid, Heading, Icon, Row, Tag, Text } from "@once-ui-system/core";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ElevationProfile } from "../../../components/ElevationProfile";
 import { RaceCards } from "../../../components/RaceCards";
 import { RaceCover } from "../../../components/RaceCover";
 import { StartsIn } from "../../../components/StartsIn";
@@ -17,7 +18,7 @@ import {
   seriesName,
   toDate,
 } from "../../../lib/race-utils";
-import { getRace, getRaces } from "../../../lib/races";
+import { getProfile, getRace, getRaces } from "../../../lib/races";
 
 export async function generateStaticParams() {
   const { races } = await getRaces();
@@ -36,6 +37,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
   if (!race) notFound();
 
   const { races, series } = await getRaces();
+  const points = race.profile ? await getProfile(race.id) : null;
   const raceSeries = (race.series ?? []).map((rs) => series.find((s) => s.slug === rs.slug) ?? { ...rs, url: "" });
   const top = longest(race);
   const start = toDate(race.date_start);
@@ -131,6 +133,22 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
             <Stat label="Climb" value={formatGain(top?.elevation_gain_m)} />
             <Stat label="ITRA points" value={race.itra_points ? String(race.itra_points) : "–"} />
           </Grid>
+
+          <Column gap="12">
+            <Heading as="h2" textVariant="display-strong-xs">
+              Elevation profile
+            </Heading>
+            {race.profile && points ? (
+              <ElevationProfile points={points} profile={race.profile} />
+            ) : (
+              <Row background="surface" border radius="l" padding="20" gap="12" vertical="center">
+                <Icon name="trend" onBackground="neutral-weak" />
+                <Text textVariant="body-default-m" onBackground="neutral-weak" wrap="pretty">
+                  Elevation profile coming. The organiser hasn&apos;t published a GPX track we can read yet.
+                </Text>
+              </Row>
+            )}
+          </Column>
 
           <Grid columns="2" gap="32" m={{ columns: "1" }}>
             <Column gap="12">

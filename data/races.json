@@ -1082,7 +1082,20 @@
           "slug": "wst",
           "title": "WST | West Serbia Trail Series"
         }
-      ]
+      ],
+      "profile": {
+        "distance_km": 15.1,
+        "elevation_gain_m": 603,
+        "elevation_loss_m": 600,
+        "max_m": 1097,
+        "min_m": 825,
+        "start": [
+          44.10362024791539,
+          20.00093917362392
+        ],
+        "url": "/gpx/divca-winter-trail.gpx",
+        "source": "manual"
+      }
     },
     {
       "id": "itra-118831",

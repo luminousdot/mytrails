@@ -29,6 +29,15 @@ export type Race = {
   cover?: { url: string; source: "itra" | "website" | "mountain-race" };
   /** Race series the event belongs to, such as WST. */
   series?: { slug: string; title: string }[];
+  /** Stats of the GPX track behind the elevation profile; the points are in data/profiles/<id>.json. */
+  profile?: {
+    distance_km: number;
+    elevation_gain_m: number;
+    elevation_loss_m: number;
+    max_m: number;
+    min_m: number;
+    url: string;
+  };
   /** Where the data came from, organiser's own source first. */
   sources?: string[];
   distances: RaceDistance[];

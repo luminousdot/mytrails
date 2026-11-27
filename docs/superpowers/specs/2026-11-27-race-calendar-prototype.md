@@ -11,6 +11,12 @@
 - Races carry their `series` (e.g. WST): a tag on cards and rows, a Series filter (also `/?series=wst`), and a series panel on the race page.
 - The app reads it through `src/lib/races.ts` (`getRaces()`), so a database can replace the file later without touching the screens.
 
+## Elevation profiles
+
+- `crawler/gpx.py` turns GPX tracks into ~300 evenly spaced [km, m] points (`data/profiles/<race id>.json`) plus stats (track length, smoothed climb and descent, high and low point) in `data/sources/gpx.json`, which `merge.py` attaches to the race as `profile`.
+- Tracks come from `public/gpx/<race slug>.gpx` (added by hand, also the race page's download link) first, then `.gpx` links on the race's own website and up to six course pages linked from it.
+- The race page draws it with Once UI's `LineChart` (gradient area, y axis from the course's low point, Start, High point and Finish marks) above five stat tiles. Races without a track say the profile is coming.
+
 ## Covers
 
 Each race gets a cover, tried in this order:
