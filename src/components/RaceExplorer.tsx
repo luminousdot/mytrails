@@ -3,6 +3,7 @@
 import {
   Button,
   Checkbox,
+  Drawer,
   Column,
   EmptyState,
   Icon,
@@ -16,7 +17,7 @@ import { useSearchParams } from "next/navigation";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import { buckets, matches, seriesName, toDate } from "../lib/race-utils";
 import type { DistanceBucket, Race, RaceFilters, RaceSeries } from "../lib/types";
-import { RaceCalendar } from "./RaceCalendar";
+import { RaceAgenda } from "./RaceAgenda";
 import { RaceCards } from "./RaceCards";
 import { RaceList } from "./RaceList";
 import { RaceMap } from "./RaceMap";
@@ -104,6 +105,93 @@ export function RaceExplorer({
   };
 
   const set = (patch: Partial<RaceFilters>) => setFilters((f) => ({ ...f, ...patch }));
+  const [sheetOpen, setSheetOpen] = useState(false);
+
+  // Each control is rendered in the desktop bar and in the phone sheet, so ids carry where they live.
+  type Place = "bar" | "phone" | "sheet";
+  const search = (where: Place) => (
+    <Input
+      id={`race-search-${where}`}
+      size="xxs"
+      label="Search races, towns, countries"
+      prefix={<Icon name="search" size="s" onBackground="neutral-weak" />}
+      value={filters.search}
+      onValueChange={(v) => set({ search: v })}
+    />
+  );
+  const countrySelect = (where: Place) => (
+    <Select
+      id={`race-country-${where}`}
+      size={where === "sheet" ? "s" : "xxs"}
+      label="Country"
+      searchable
+      value={filters.country}
+      onValueChange={(v) => set({ country: v as string })}
+      options={[{ value: "all", label: "All countries" }, ...countries]}
+    />
+  );
+  const seriesSelect = (where: Place) => (
+    <Select
+      id={`race-series-${where}`}
+      size={where === "sheet" ? "s" : "xxs"}
+      label="Series"
+      value={filters.series}
+      onValueChange={(v) => set({ series: v as string })}
+      options={[
+        { value: "all", label: "All series" },
+        ...series.map((s) => ({
+          value: s.slug,
+          label: seriesName(s.title).short,
+          description: seriesName(s.title).long,
+        })),
+      ]}
+    />
+  );
+  const itraCheckbox = (where: Place) => (
+    <Checkbox
+      id={`race-itra-${where}`}
+      label="ITRA points only"
+      checked={filters.itraOnly}
+      onCheckedChange={(checked) => set({ itraOnly: checked })}
+    />
+  );
+  const distanceControl = (fill: boolean) => (
+    <SegmentedControl
+      fillWidth={fill}
+      semantics="radio"
+      aria-label="Distance"
+      value={filters.distance}
+      onValueChange={(v) => set({ distance: v as RaceFilters["distance"] })}
+      buttons={[
+        { value: "all", label: fill ? "Any" : "Any distance" },
+        ...(Object.keys(buckets) as DistanceBucket[]).map((b) => ({
+          value: b,
+          label: buckets[b].label,
+          tooltip: buckets[b].range,
+        })),
+      ]}
+    />
+  );
+  const viewControl = (fill: boolean) => (
+    <SegmentedControl
+      // The saved view is only known after hydration; remount so the indicator follows it.
+      key={`view-${view}`}
+      fillWidth={fill}
+      aria-label="View"
+      value={view}
+      onValueChange={(v) => saveView(v as View)}
+      buttons={[
+        { value: "list", label: "List", prefixIcon: "list" },
+        { value: "cards", label: "Cards", prefixIcon: "grid" },
+        { value: "map", label: "Map", prefixIcon: "map" },
+        { value: "calendar", label: "Calendar", prefixIcon: "calendar" },
+      ]}
+    />
+  );
+  // Filters in the sheet, counted on its button (search stays outside it).
+  const activeFilters =
+    Number(filters.country !== "all") + Number(filters.series !== "all") + Number(filters.distance !== "all") + Number(filters.itraOnly);
+
 
 
   return (
@@ -122,88 +210,69 @@ export function RaceExplorer({
       )}
 
       <Column gap="16">
-        <Row gap="12" vertical="center" wrap s={{ direction: "column", horizontal: "start" }}>
-          <Row flex={1} minWidth="16rem" s={{ minWidth: "0", width: "100%" }}>
-            <Input
-              id="race-search"
-              size="xxs"
-              label="Search races, towns, countries"
-              prefix={<Icon name="search" size="s" onBackground="neutral-weak" />}
-              value={filters.search}
-              onValueChange={(v) => set({ search: v })}
-            />
-          </Row>
-          {/* Country and series share a row on phones to keep the filters short. */}
-          <Row gap="12" s={{ width: "100%" }}>
-            <Row minWidth="14rem" s={{ minWidth: "0", flex: 1 }}>
-              <Select
-                id="race-country"
-                size="xxs"
-                label="Country"
-                searchable
-                value={filters.country}
-                onValueChange={(v) => set({ country: v as string })}
-                options={[{ value: "all", label: "All countries" }, ...countries]}
-              />
+        {/* Desktop and tablet: every filter in view. */}
+        <Column gap="16" s={{ hide: true }}>
+          <Row gap="12" vertical="center" wrap>
+            <Row flex={1} minWidth="16rem">
+              {search("bar")}
             </Row>
-            {series.length > 0 && (
-              <Row minWidth="12rem" s={{ minWidth: "0", flex: 1 }}>
-                <Select
-                  id="race-series"
-                  size="xxs"
-                  label="Series"
-                  value={filters.series}
-                  onValueChange={(v) => set({ series: v as string })}
-                  options={[
-                    { value: "all", label: "All series" },
-                    ...series.map((s) => ({
-                      value: s.slug,
-                      label: seriesName(s.title).short,
-                      description: seriesName(s.title).long,
-                    })),
-                  ]}
-                />
-              </Row>
-            )}
+            <Row minWidth="14rem">{countrySelect("bar")}</Row>
+            {series.length > 0 && <Row minWidth="12rem">{seriesSelect("bar")}</Row>}
+            {itraCheckbox("bar")}
           </Row>
-          <Checkbox
-            label="ITRA points only"
-            checked={filters.itraOnly}
-            onCheckedChange={(checked) => set({ itraOnly: checked })}
-          />
-        </Row>
+          <Row gap="12" vertical="center" horizontal="between" wrap>
+            {distanceControl(false)}
+            {viewControl(false)}
+          </Row>
+        </Column>
 
-        <Row gap="12" vertical="center" horizontal="between" wrap s={{ direction: "column", horizontal: "start" }}>
-          <SegmentedControl
-            fillWidth={false}
-            semantics="radio"
-            aria-label="Distance"
-            value={filters.distance}
-            onValueChange={(v) => set({ distance: v as RaceFilters["distance"] })}
-            buttons={[
-              { value: "all", label: "Any distance" },
-              ...(Object.keys(buckets) as DistanceBucket[]).map((b) => ({
-                value: b,
-                label: buckets[b].label,
-                tooltip: buckets[b].range,
-              })),
-            ]}
-          />
-          <SegmentedControl
-            // The saved view is only known after hydration; remount so the indicator follows it.
-            key={view}
-            fillWidth={false}
-            aria-label="View"
-            value={view}
-            onValueChange={(v) => saveView(v as View)}
-            buttons={[
-              { value: "list", label: "List", prefixIcon: "list" },
-              { value: "cards", label: "Cards", prefixIcon: "grid" },
-              { value: "map", label: "Map", prefixIcon: "map" },
-              { value: "calendar", label: "Calendar", prefixIcon: "calendar" },
-            ]}
-          />
-        </Row>
+        {/* Phones: search and the view stay; the other filters open in a sheet. */}
+        <Column gap="12" hide s={{ hide: false }}>
+          <Row gap="8" vertical="center">
+            <Row flex={1} minWidth="0">
+              {search("phone")}
+            </Row>
+            <Button
+              size="s"
+              variant={activeFilters ? "primary" : "secondary"}
+              prefixIcon="filter"
+              onClick={() => setSheetOpen(true)}
+              aria-haspopup="dialog"
+            >
+              {activeFilters ? `Filters · ${activeFilters}` : "Filters"}
+            </Button>
+          </Row>
+          {viewControl(true)}
+        </Column>
+
+        <Drawer
+          open={sheetOpen}
+          onClose={() => setSheetOpen(false)}
+          side="bottom"
+          title="Filters"
+          footer={
+            <Row gap="8" fillWidth horizontal="between">
+              <Button variant="tertiary" onClick={clearAll} disabled={!filtered}>
+                Clear all
+              </Button>
+              <Button onClick={() => setSheetOpen(false)}>
+                {shown.length === 1 ? "Show 1 race" : `Show ${shown.length} races`}
+              </Button>
+            </Row>
+          }
+        >
+          <Column gap="20" paddingBottom="8">
+            {countrySelect("sheet")}
+            {series.length > 0 && seriesSelect("sheet")}
+            <Column gap="8">
+              <Text textVariant="label-default-s" onBackground="neutral-weak">
+                Distance
+              </Text>
+              {distanceControl(true)}
+            </Column>
+            {itraCheckbox("sheet")}
+          </Column>
+        </Drawer>
 
         <Row gap="8" vertical="center" horizontal="between" wrap>
           <Text textVariant="body-default-s" onBackground="neutral-weak" aria-live="polite">
@@ -240,7 +309,7 @@ export function RaceExplorer({
       ) : view === "map" ? (
         <RaceMap races={shown} />
       ) : (
-        <RaceCalendar races={shown} month={month} onMonthChange={setMonth} />
+        <RaceAgenda races={shown} month={month} onMonthChange={setMonth} />
       )}
     </Column>
   );

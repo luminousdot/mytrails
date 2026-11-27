@@ -1,20 +1,21 @@
 "use client";
 
 import { Background, Column, Mask, Media } from "@once-ui-system/core";
-import { useLook } from "../lib/backdrop";
+
+export type BackdropLook = "gradient" | "dots" | "lines" | "grid" | "photo" | "none";
 
 /**
  * A decorative layer behind one section. Put it first inside a section that
  * clips (overflow hidden); the section's content follows it and paints above it.
+ * The home hero uses the photo fade; the other looks stay for other sections.
  */
-export function SectionBackdrop({ photo }: { photo?: string }) {
-  const look = useLook();
+export function SectionBackdrop({ photo, look = "photo" }: { photo?: string; look?: BackdropLook }) {
   return (
     <>
       {look === "photo" && photo ? (
         <Column position="absolute" top="0" left="0" fill pointerEvents="none" aria-hidden>
           {/* A radial mask fades the photo out towards the edges and into the section. */}
-          <Mask x="90%" y="40%" radius="28rem" feather={100} style={{ width: "100%", height: "100%" }}>
+          <Mask x="95%" y="35%" radius="min(28rem, 60vw)" feather={100} style={{ width: "100%", height: "100%" }}>
             <Media src={photo} alt="" unoptimized objectFit="cover" style={{ height: "100%" }} opacity={70} />
           </Mask>
         </Column>

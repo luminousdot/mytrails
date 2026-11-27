@@ -20,6 +20,7 @@ Trail race calendar for SE Europe. Next.js (App Router) + Once UI (`@once-ui-sys
 
 ## Rules
 
+- **The current race data is the demo dataset** (crawled 27 Nov 2026: `data/races.json`, `data/sources/`, `data/profiles/`, `public/gpx/`). Keep it as is: don't re-run the crawlers or `merge.py` unless Vlada asks.
 - Once UI components only; no Tailwind, no other UI kit. Read `node_modules/@once-ui-system/core/AGENTS.md` before writing UI.
 - Never use JetBrains Mono. Check every screen in light and dark.
 - `trail-os` is a reference for ideas only; don't copy its code.

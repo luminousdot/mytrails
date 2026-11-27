@@ -8,7 +8,10 @@ import Loading from "./loading";
 
 export default async function Home() {
   const { races, series, crawled_at } = await getRaces();
-  const photo = races.find((r) => r.cover?.source === "mountain-race")?.cover?.url;
+  // mountain-race.rs serves resized copies; 1600px is plenty for a faded backdrop.
+  const photo = races
+    .find((r) => r.cover?.source === "mountain-race")
+    ?.cover?.url.replace("/storage/races/", "/img/1600/races/");
 
   return (
     <>

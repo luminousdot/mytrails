@@ -28,10 +28,13 @@ Photos are hotlinked, so the map shows until a photo has actually loaded.
 
 ## Screens
 
+- **Header:** full-width hero, the Divča Winter Trail photo fading in from the right (`SectionBackdrop`, Once UI `Mask` + `Media`).
+- **Phones:** search and the view switch stay on the page; country, series, distance and ITRA open in a bottom `Drawer` with a live "Show N races" button.
+
 - **Header:** race count, countries, days to the next start, data date.
 - **Season strip:** twelve months with a bar for each month's race count. Picking a month narrows the list, cards and map to it and moves the calendar there; picking it again clears it.
 - **Filters:** search, country, ITRA points only, distance bucket (Short < 21 km, Marathon 21–44, Long 45–79, Ultra 80+). They apply to every view.
-- **Views**, in toggle order: sortable paginated list (`Table`, the default), cards (one `Card` per race), clustered map (`Map`) and month calendar (`Calendar`, coloured by longest distance). The chosen view is remembered for the tab, so coming back from a race page lands on it.
+- **Views**, in toggle order: sortable paginated list (`Table`, the default), cards (one `Card` per race), clustered map (`Map`) and month agenda (`RaceAgenda`: each race day with its races, previous/next month, a jump to the next month with races). The chosen view is remembered for the tab, so coming back from a race page lands on it.
 - **Race page** (`/races/[slug]`, prerendered for every race): breadcrumb back, date and place, links to ITRA and registration, days to the start, longest distance, climb, ITRA points, every distance with its bucket and points, a map of the start area, and other races that month.
 - Loading (`loading.tsx`), error with Retry (`error.tsx`) and an empty state when the filters match nothing.
 
