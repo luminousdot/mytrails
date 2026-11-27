@@ -6,7 +6,6 @@ import {
   Column,
   EmptyState,
   Icon,
-  Heading,
   Input,
   Row,
   SegmentedControl,
@@ -15,7 +14,7 @@ import {
 } from "@once-ui-system/core";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState, useSyncExternalStore } from "react";
-import { buckets, daysUntil, matches, seriesName, toDate } from "../lib/race-utils";
+import { buckets, matches, seriesName, toDate } from "../lib/race-utils";
 import type { DistanceBucket, Race, RaceFilters, RaceSeries } from "../lib/types";
 import { RaceCalendar } from "./RaceCalendar";
 import { RaceCards } from "./RaceCards";
@@ -59,16 +58,13 @@ function saveView(view: View) {
 const defaultFilters: RaceFilters = { country: "all", series: "all", distance: "all", itraOnly: false, search: "" };
 
 const monthName = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" });
-const updatedFmt = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
 
 export function RaceExplorer({
   races,
   series,
-  crawledAt,
 }: {
   races: Race[];
   series: RaceSeries[];
-  crawledAt: string;
 }) {
   const view = useSyncExternalStore(subscribeView, readView, () => "list" as View);
   // A race page links here with ?series=wst to show that series.
@@ -100,7 +96,6 @@ export function RaceExplorer({
       return d.getFullYear() === month.getFullYear() && d.getMonth() === month.getMonth();
     });
   }, [matching, monthOnly, month, view]);
-  const next = races.find((r) => daysUntil(r.date_start) >= 0);
   const filtered =
     monthOnly || filters.country !== "all" || filters.series !== "all" || filters.distance !== "all" || filters.itraOnly || filters.search !== "";
   const clearAll = () => {
@@ -110,26 +105,9 @@ export function RaceExplorer({
 
   const set = (patch: Partial<RaceFilters>) => setFilters((f) => ({ ...f, ...patch }));
 
-  const nextLine = next
-    ? daysUntil(next.date_start) === 0
-      ? `${next.name} is today`
-      : `next start in ${daysUntil(next.date_start)} ${daysUntil(next.date_start) === 1 ? "day" : "days"}`
-    : "no upcoming starts";
 
   return (
     <Column maxWidth="l" gap="32">
-      <Column gap="12">
-        <Text textVariant="label-default-s" onBackground="brand-medium">
-          Southeast Europe · trail &amp; mountain races
-        </Text>
-        <Heading as="h1" textVariant="display-strong-s">
-          Find your next start line
-        </Heading>
-        <Text textVariant="body-default-m" onBackground="neutral-weak" wrap="pretty">
-          {races.length} races in {countries.length} countries, {nextLine}. Updated from ITRA on{" "}
-          {updatedFmt.format(new Date(crawledAt))}.
-        </Text>
-      </Column>
 
       {SHOW_SEASON_STRIP && (
         <SeasonStrip

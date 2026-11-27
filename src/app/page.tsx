@@ -1,4 +1,5 @@
 import { Column } from "@once-ui-system/core";
+import { RaceHero } from "../components/RaceHero";
 import { RaceExplorer } from "../components/RaceExplorer";
 import { TopBar } from "../components/TopBar";
 import { getRaces } from "../lib/races";
@@ -11,10 +12,16 @@ export default async function Home() {
   return (
     <>
       <TopBar />
-      <Column as="main" id="main" fillWidth horizontal="center" paddingX="24" paddingTop="40" paddingBottom="80">
+      <RaceHero
+        races={races}
+        countries={new Set(races.map((r) => r.country)).size}
+        crawledAt={crawled_at}
+        photo={races.find((r) => r.cover?.source === "mountain-race")?.cover?.url}
+      />
+      <Column as="main" id="main" fillWidth horizontal="center" paddingX="24" paddingTop="32" paddingBottom="80">
         {/* The explorer reads ?series= from the address, which needs a Suspense boundary. */}
         <Suspense fallback={<Loading />}>
-          <RaceExplorer races={races} series={series} crawledAt={crawled_at} />
+          <RaceExplorer races={races} series={series} />
         </Suspense>
       </Column>
     </>
