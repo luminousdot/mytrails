@@ -1,4 +1,4 @@
-// Shape of data/races.json, written by crawler/itra_crawl.py.
+// Shape of data/races.json (crawler/merge.py), plus races organisers publish.
 
 export type RaceDistance = {
   name?: string;
@@ -7,7 +7,15 @@ export type RaceDistance = {
   itra_points?: number;
   time_limit_hours?: number;
   url?: string;
+  /** From the organiser: "08:00" local time. */
+  start_time?: string;
+  /** From the organiser, in course order. */
+  aid_stations?: AidStation[];
+  /** From the organiser: their GPX for this distance. */
+  gpx_url?: string;
 };
+
+export type AidStation = { name: string; km: number };
 
 export type Race = {
   id: string;
@@ -26,7 +34,11 @@ export type Race = {
   description?: string;
   website?: string;
   /** A photo from ITRA or the race's own site; absent means the app draws a cover. */
-  cover?: { url: string; source: "itra" | "website" | "mountain-race" };
+  cover?: { url: string; source: "itra" | "website" | "mountain-race" | "organiser" };
+  /** More photos, organiser uploads only. */
+  photos?: string[];
+  /** Set when the organiser submitted or claimed this page and it was approved. */
+  organizer?: { name: string; since: string };
   /** Race series the event belongs to, such as WST. */
   series?: { slug: string; title: string }[];
   /** Stats of the GPX track behind the elevation profile; the points are in data/profiles/<id>.json. */

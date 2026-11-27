@@ -24,13 +24,13 @@ export function TopBar() {
         <Logo text={app.name} monogram="MT" href="/" />
         <Row gap="8" vertical="center">
           <Row s={{ hide: true }}>
-            <Button
-              variant="tertiary"
-              size="s"
-              suffixIcon="arrowUpRight"
-              href="https://itra.run/Races/RaceMap"
-            >
-              Data: ITRA
+            <Button variant="tertiary" size="s" href="/organizers">
+              For organisers
+            </Button>
+          </Row>
+          <Row hide s={{ hide: false }}>
+            <Button variant="tertiary" size="s" href="/organizers">
+              Organisers
             </Button>
           </Row>
           <ThemeSwitcher collapsed />
