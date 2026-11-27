@@ -1,7 +1,8 @@
 "use client";
 
-import { Column, Row, SmartLink, Table, Tag, Text } from "@once-ui-system/core";
-import { buckets, formatDates, formatGain, formatKm, longest, place, raceBucket, seriesName } from "../lib/race-utils";
+import {BucketTag, SeriesTag } from "./RaceTags";
+import { Column, Row, SmartLink, Table, Text } from "@once-ui-system/core";
+import { formatDates, formatGain, formatKm, longest, place, raceBucket } from "../lib/race-utils";
 import { localePath, plural } from "../i18n";
 import { useI18n } from "../i18n/I18nProvider";
 import type { Race } from "../lib/types";
@@ -84,7 +85,6 @@ export function RaceList({ races }: { races: Race[] }) {
 function RaceCell({ race }: { race: Race }) {
   const { lang, t } = useI18n();
   const bucket = raceBucket(race);
-  const b = buckets[bucket];
   const top = longest(race);
   return (
     <Column gap="4" paddingY="4">
@@ -103,13 +103,9 @@ function RaceCell({ race }: { race: Race }) {
         <Text textVariant="body-default-s" onBackground="neutral-weak">
           {place(race, lang)} · {plural(lang, race.distances.length, t.common.distances)}
         </Text>
-        <Tag size="s" tone={b.tone}>
-          {t.buckets[bucket].label}
-        </Tag>
+        <BucketTag bucket={bucket} />
         {race.series?.map((s) => (
-          <Tag key={s.slug} size="s" tone="brand" prefixIcon="flag">
-            {seriesName(s.title).short}
-          </Tag>
+          <SeriesTag key={s.slug} title={s.title} />
         ))}
       </Row>
     </Column>

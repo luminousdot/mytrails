@@ -12,6 +12,7 @@ import {
   SegmentedControl,
   Select,
   Text,
+  Tooltip,
 } from "@once-ui-system/core";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState, useSyncExternalStore } from "react";
@@ -149,12 +150,15 @@ export function RaceExplorer({
     />
   );
   const itraCheckbox = (where: Place) => (
-    <Checkbox
-      id={`race-itra-${where}`}
-      label={t.filters.itraOnly}
-      checked={filters.itraOnly}
-      onCheckedChange={(checked) => set({ itraOnly: checked })}
-    />
+    <Row gap="4" vertical="center">
+      <Checkbox
+        id={`race-itra-${where}`}
+        label={t.filters.itraOnly}
+        checked={filters.itraOnly}
+        onCheckedChange={(checked) => set({ itraOnly: checked })}
+      />
+      <Tooltip content={t.hints.itra} size="xs" />
+    </Row>
   );
   const distanceControl = (wide: boolean) => (
     <SegmentedControl

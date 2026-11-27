@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { fill } from "../i18n";
 import { useI18n } from "../i18n/I18nProvider";
 import { formatKm, formatNumber } from "../lib/race-utils";
+import { Hint } from "./Hint";
 import type { Race } from "../lib/types";
 
 type Point = { km: number; elevation: number };
@@ -27,8 +28,8 @@ export function ElevationProfile({
     <Column gap="16">
       <Row background="surface" border radius="l" paddingX="20" paddingY="12" gap="24" wrap>
         <Stat label={t.profile.track} value={formatKm(profile.distance_km, lang)} />
-        <Stat label={t.profile.climb} value={`+${m(profile.elevation_gain_m)}`} />
-        <Stat label={t.profile.descent} value={`−${m(profile.elevation_loss_m)}`} />
+        <Stat label={t.profile.climb} hint={t.hints.climb} value={`+${m(profile.elevation_gain_m)}`} />
+        <Stat label={t.profile.descent} hint={t.hints.descent} value={`−${m(profile.elevation_loss_m)}`} />
         <Stat label={t.profile.highest} value={m(profile.max_m)} />
         <Stat label={t.profile.lowest} value={m(profile.min_m)} />
       </Row>
@@ -72,12 +73,15 @@ export function ElevationProfile({
   );
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({ label, value, hint }: { label: string; value: string; hint?: string }) {
+  const text = (
+    <Text textVariant="label-default-s" onBackground="neutral-weak">
+      {label}
+    </Text>
+  );
   return (
     <Column gap="2">
-      <Text textVariant="label-default-s" onBackground="neutral-weak">
-        {label}
-      </Text>
+      {hint ? <Hint text={hint}>{text}</Hint> : text}
       <Text textVariant="heading-strong-s">{value}</Text>
     </Column>
   );

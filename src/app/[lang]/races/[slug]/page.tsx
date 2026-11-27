@@ -1,4 +1,6 @@
-import { Breadcrumbs, Button, Column, Grid, Heading, Icon, Media, Row, Tag, Text } from "@once-ui-system/core";
+import {Breadcrumbs, Button, Column, Grid, Heading, Icon, Media, Row, Text } from "@once-ui-system/core";
+import { BucketTag, ItraTag } from "../../../../components/RaceTags";
+import { Hint } from "../../../../components/Hint";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ElevationProfile } from "../../../../components/ElevationProfile";
@@ -8,18 +10,7 @@ import { StartsIn } from "../../../../components/StartsIn";
 import { RaceLocationMap } from "../../../../components/RaceLocationMap";
 import { TopBar } from "../../../../components/TopBar";
 import {
-  bucketOf,
-  buckets,
-  formatDates,
-  formatGain,
-  countryName,
-  formatKm,
-  formatNumber,
-  longest,
-  place,
-  seriesName,
-  toDate,
-} from "../../../../lib/race-utils";
+  bucketOf, formatDates, formatGain, countryName, formatKm, formatNumber, longest, place, seriesName, toDate } from "../../../../lib/race-utils";
 import { getProfile, getRace, getRaces } from "../../../../lib/races";
 import { fill, getDictionary, hasLocale, localePath, locales, plural, type Locale } from "../../../../i18n";
 
@@ -142,8 +133,8 @@ export default async function RacePage({ params }: { params: Params }) {
           <Grid columns="4" gap="12" m={{ columns: "2" }}>
             <Stat label={r.starts} value={<StartsIn date={race.date_start} />} />
             <Stat label={r.longestDistance} value={formatKm(top?.distance_km, lang)} />
-            <Stat label={t.common.climb} value={formatGain(top?.elevation_gain_m, lang)} />
-            <Stat label={r.itraPoints} value={race.itra_points ? String(race.itra_points) : "–"} />
+            <Stat label={t.common.climb} hint={t.hints.climb} value={formatGain(top?.elevation_gain_m, lang)} />
+            <Stat label={r.itraPoints} hint={t.hints.itra} value={race.itra_points ? String(race.itra_points) : "–"} />
           </Grid>
 
           <Column gap="12">
@@ -195,13 +186,9 @@ export default async function RacePage({ params }: { params: Params }) {
                         )}
                       </Column>
                       <Row gap="8" vertical="center" wrap horizontal="end">
-                        <Tag size="s" tone={buckets[bucket].tone}>
-                          {t.buckets[bucket].label}
-                        </Tag>
+                        <BucketTag bucket={bucket} />
                         {d.itra_points != null && d.itra_points > 0 && (
-                          <Tag size="s" prefixIcon="medal">
-                            {fill(t.common.itra, { n: d.itra_points })}
-                          </Tag>
+                          <ItraTag points={d.itra_points} />
                         )}
                       </Row>
                     </Row>
@@ -288,12 +275,15 @@ export default async function RacePage({ params }: { params: Params }) {
   );
 }
 
-function Stat({ label, value }: { label: string; value: React.ReactNode }) {
+function Stat({ label, value, hint }: { label: string; value: React.ReactNode; hint?: string }) {
+  const text = (
+    <Text textVariant="label-default-s" onBackground="neutral-weak">
+      {label}
+    </Text>
+  );
   return (
     <Column background="surface" border radius="l" padding="16" gap="4">
-      <Text textVariant="label-default-s" onBackground="neutral-weak">
-        {label}
-      </Text>
+      {hint ? <Hint text={hint}>{text}</Hint> : text}
       {typeof value === "string" ? <Text textVariant="heading-strong-l">{value}</Text> : value}
     </Column>
   );

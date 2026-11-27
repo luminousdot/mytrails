@@ -1,8 +1,9 @@
 "use client";
 
-import { Button, Column, Heading, IconButton, Row, SmartLink, Tag, Text } from "@once-ui-system/core";
+import {BucketTag, SeriesTag } from "./RaceTags";
+import { Button, Column, Heading, IconButton, Row, SmartLink, Text } from "@once-ui-system/core";
 import { useMemo } from "react";
-import { buckets, formatDate, formatGain, formatKm, longest, place, raceBucket, seriesName, toDate } from "../lib/race-utils";
+import { formatDate, formatGain, formatKm, longest, place, raceBucket, toDate } from "../lib/race-utils";
 import { fill, localePath, plural, type Locale } from "../i18n";
 import { useI18n } from "../i18n/I18nProvider";
 import type { Race } from "../lib/types";
@@ -116,9 +117,7 @@ export function RaceAgenda({
 }
 
 function AgendaRace({ race, lang }: { race: Race; lang: Locale }) {
-  const { t } = useI18n();
   const bucket = raceBucket(race);
-  const b = buckets[bucket];
   const top = longest(race);
   return (
     <Column as="li" gap="4">
@@ -131,13 +130,9 @@ function AgendaRace({ race, lang }: { race: Race; lang: Locale }) {
         <Text textVariant="body-default-s" onBackground="neutral-weak" data-tabular>
           {place(race, lang)} · {formatKm(top?.distance_km, lang)} · {formatGain(top?.elevation_gain_m, lang)}
         </Text>
-        <Tag size="s" tone={b.tone}>
-          {t.buckets[bucket].label}
-        </Tag>
+        <BucketTag bucket={bucket} />
         {race.series?.map((s) => (
-          <Tag key={s.slug} size="s" tone="brand" prefixIcon="flag">
-            {seriesName(s.title).short}
-          </Tag>
+          <SeriesTag key={s.slug} title={s.title} />
         ))}
       </Row>
     </Column>

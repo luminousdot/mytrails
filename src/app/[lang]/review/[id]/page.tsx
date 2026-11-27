@@ -1,4 +1,5 @@
-import { Button, Column, Grid, Heading, Media, Row, SmartLink, Tag, Text } from "@once-ui-system/core";
+import {Button, Column, Grid, Heading, Media, Row, SmartLink, Text } from "@once-ui-system/core";
+import { BucketTag } from "../../../../components/RaceTags";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ElevationProfile } from "../../../../components/ElevationProfile";
@@ -6,7 +7,7 @@ import { OrganizerShell } from "../../../../components/organizer/OrganizerShell"
 import { PageIntro } from "../../../../components/organizer/PageIntro";
 import { ReviewActions } from "../../../../components/organizer/ReviewActions";
 import { getSubmission, readUploadedTrack } from "../../../../lib/organizer";
-import { bucketOf, buckets, countryName, formatGain, formatKm, formatNumber } from "../../../../lib/race-utils";
+import { bucketOf, countryName, formatGain, formatKm, formatNumber } from "../../../../lib/race-utils";
 import { fill, intlLocale, localePath } from "../../../../i18n";
 import { pageLang } from "../../../../i18n/server";
 
@@ -97,9 +98,7 @@ export default async function ReviewItemPage({ params }: Props) {
               <Column as="li" key={i} gap="4" borderTop={i > 0} paddingTop={i > 0 ? "12" : "0"}>
                 <Row gap="8" vertical="center" wrap>
                   <Text textVariant="label-strong-m">{d.name || fill(t.form.distanceN, { n: i + 1 })}</Text>
-                  <Tag size="s" tone={buckets[bucket].tone}>
-                    {t.buckets[bucket].label}
-                  </Tag>
+                  <BucketTag bucket={bucket} />
                 </Row>
                 <Text textVariant="body-default-s" onBackground="neutral-weak" data-tabular>
                   {formatKm(d.distance_km ?? undefined, lang)} · {formatGain(d.elevation_gain_m ?? undefined, lang)}

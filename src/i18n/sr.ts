@@ -35,6 +35,16 @@ export const sr: Dictionary = {
     ultra: { label: "Ultra", range: "80 km i više" },
   },
   legendLabel: "Legenda boja: najduža staza na trci",
+  hints: {
+    itra: "ITRA bodovi (0–6) ocenjuju stazu po dužini i usponu. Mnoge ultra trke za prijavu traže bodove sa ranijih trka.",
+    climb: "D+ je ukupan uspon: svaki metar penjanja duž staze, sabran.",
+    descent: "Ukupan spust duž staze.",
+    bucket: "{label} staza: {range}.",
+    cutoff: "Vremenski limit za završetak. Trkači koji su posle njega još na stazi se zaustavljaju.",
+    series: "Deo serije {name}: trke koje se boduju zajedno tokom sezone.",
+    aid: "Okrepne stanice: mesta na stazi sa vodom i hranom.",
+    gpx: "GPX fajl je staza kao GPS trag. Od njega stranica trke dobija visinski profil.",
+  },
   home: {
     title: "Pronađi svoju sledeću startnu liniju",
     lead: "{races} trail i planinskih trka u {countries} jugoistočne Evrope, {next}. Demo podaci sa ITRA i mountain-race.rs, {date}",

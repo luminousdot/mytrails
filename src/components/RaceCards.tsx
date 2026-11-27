@@ -1,11 +1,13 @@
 "use client";
 
-import { Card, Column, Grid, Row, Tag, Text } from "@once-ui-system/core";
-import { buckets, daysUntil, formatDate, formatGain, formatKm, longest, place, raceBucket, seriesName, toDate } from "../lib/race-utils";
+import {BucketTag, ItraTag, SeriesTag } from "./RaceTags";
+import { Card, Column, Grid, Row, Text } from "@once-ui-system/core";
+import { daysUntil, formatDate, formatGain, formatKm, longest, place, raceBucket, toDate } from "../lib/race-utils";
 import { fill, localePath } from "../i18n";
 import { useI18n } from "../i18n/I18nProvider";
 import { startsIn } from "../i18n/words";
 import type { Race } from "../lib/types";
+import { Hint } from "./Hint";
 import { RaceCover } from "./RaceCover";
 
 
@@ -25,7 +27,6 @@ function RaceCard({ race }: { race: Race }) {
   const { lang, t } = useI18n();
   const top = longest(race);
   const bucket = raceBucket(race);
-  const b = buckets[bucket];
   const start = toDate(race.date_start);
   const days = daysUntil(race.date_start);
   const others = race.distances.length - 1;
@@ -76,26 +77,22 @@ function RaceCard({ race }: { race: Race }) {
             <Text textVariant="heading-strong-s">{formatKm(top?.distance_km, lang)}</Text>
           </Column>
           <Column gap="2">
-            <Text textVariant="label-default-s" onBackground="neutral-weak">
-              {t.common.climb}
-            </Text>
+            <Hint text={t.hints.climb}>
+              <Text textVariant="label-default-s" onBackground="neutral-weak">
+                {t.common.climb}
+              </Text>
+            </Hint>
             <Text textVariant="heading-strong-s">{formatGain(top?.elevation_gain_m, lang)}</Text>
           </Column>
         </Row>
 
         <Row gap="8" wrap vertical="center" borderTop paddingTop="12">
-          <Tag size="s" tone={b.tone}>
-            {t.buckets[bucket].label}
-          </Tag>
+          <BucketTag bucket={bucket} />
           {race.series?.map((s) => (
-            <Tag key={s.slug} size="s" tone="brand" prefixIcon="flag">
-              {seriesName(s.title).short}
-            </Tag>
+            <SeriesTag key={s.slug} title={s.title} />
           ))}
           {race.itra_points ? (
-            <Tag size="s" prefixIcon="medal">
-              {fill(t.common.itra, { n: race.itra_points })}
-            </Tag>
+            <ItraTag points={race.itra_points} />
           ) : null}
           {others > 0 && (
             <Text textVariant="body-default-s" onBackground="neutral-weak">

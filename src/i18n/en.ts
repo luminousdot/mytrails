@@ -38,6 +38,16 @@ export const en = {
     ultra: { label: "Ultra", range: "80 km+" },
   },
   legendLabel: "Colour key: longest distance at the event",
+  hints: {
+    itra: "ITRA points (0–6) rate a course by its distance and climb. Many ultras ask for points from earlier races to enter.",
+    climb: "D+ is the total climb: every metre of ascent along the course, added up.",
+    descent: "Total descent along the course.",
+    bucket: "{label} distance: {range}.",
+    cutoff: "The time limit to finish. Runners still out on the course after it are stopped.",
+    series: "Part of {name}: races scored together across a season.",
+    aid: "Aid stations: points on the course with water and food.",
+    gpx: "A GPX file is the course as a GPS track. It gives the race page its elevation profile.",
+  },
   home: {
     title: "Find your next start line",
     lead: "{races} trail and mountain races across {countries} of Southeast Europe, {next}. Demo data from ITRA and mountain-race.rs, {date}.",

@@ -15,6 +15,7 @@ import {
   Select,
   Text,
   Textarea,
+  Tooltip,
 } from "@once-ui-system/core";
 import { Map as PinMap, MapMarkers, MapPin } from "@once-ui-system/core/map";
 import { MediaUpload } from "@once-ui-system/core/media";
@@ -24,6 +25,7 @@ import { fill, intlLocale, localePath, type Dictionary } from "../../i18n";
 import { useI18n } from "../../i18n/I18nProvider";
 import { countryName } from "../../lib/race-utils";
 import { submitRace } from "../../server/organizer-actions";
+import { Hint } from "../Hint";
 import {
   emptyDistance,
   validate,
@@ -626,6 +628,7 @@ function DistanceFields({
         >
           {gpx ? t.form.replaceGpx : t.form.uploadGpx}
         </Button>
+        <Tooltip content={t.hints.gpx} size="xs" />
         <Text
           textVariant="body-default-s"
           onBackground={errors[k("gpx")] ? "danger-medium" : "neutral-weak"}
@@ -646,9 +649,11 @@ function DistanceFields({
       </Row>
 
       <Column gap="8">
-        <Text textVariant="label-default-s" onBackground="neutral-weak">
-          {t.form.aidStations}
-        </Text>
+        <Hint text={t.hints.aid}>
+          <Text textVariant="label-default-s" onBackground="neutral-weak">
+            {t.form.aidStations}
+          </Text>
+        </Hint>
         {d.aid_stations.map((a, j) => (
           <Row key={j} gap="8" vertical="start">
             <Row flex={3} minWidth="0">
