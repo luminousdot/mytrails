@@ -1,10 +1,11 @@
 "use client";
 
-import { Button, IconButton, Logo, Row, SegmentedControl, ThemeSwitcher, VisuallyHidden } from "@once-ui-system/core";
+import { Button, IconButton, Logo, Row, SegmentedControl, VisuallyHidden } from "@once-ui-system/core";
 import { usePathname, useRouter } from "next/navigation";
 import { localePath, locales, switchLocale, type Locale } from "../i18n";
 import { useI18n } from "../i18n/I18nProvider";
 import { app } from "../resources/app";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function TopBar() {
   const { lang, t } = useI18n();
@@ -42,6 +43,7 @@ export function TopBar() {
               icon="people"
               href={localePath(lang, "/organizers")}
               tooltip={t.nav.organizers}
+              tooltipPosition="bottom"
               aria-label={t.nav.organizers}
             />
           </Row>
@@ -54,7 +56,7 @@ export function TopBar() {
             onValueChange={(v) => router.push(switchLocale(pathname, v as Locale))}
             buttons={locales.map((l) => ({ value: l, label: l.toUpperCase() }))}
           />
-          <ThemeSwitcher collapsed />
+          <ThemeToggle />
         </Row>
       </Row>
     </Row>

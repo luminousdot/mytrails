@@ -10,6 +10,10 @@ export const sr: Dictionary = {
     organizers: "Za organizatore",
     skip: "Preskoči na trke",
     language: "Jezik",
+    theme: "Tema",
+    themeSystem: "Kao na uređaju",
+    themeLight: "Svetla tema",
+    themeDark: "Tamna tema",
   },
   common: {
     allRaces: "Sve trke",

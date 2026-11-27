@@ -13,6 +13,10 @@ export const en = {
     organizers: "For organisers",
     skip: "Skip to races",
     language: "Language",
+    theme: "Theme",
+    themeSystem: "Match your device",
+    themeLight: "Light theme",
+    themeDark: "Dark theme",
   },
   common: {
     allRaces: "All races",
