@@ -1,0 +1,696 @@
+{
+  "crawled_at": "2026-11-27T13:32:55+00:00",
+  "source": "mountain-race.rs",
+  "series": [
+    {
+      "slug": "wst",
+      "title": "WST | West Serbia Trail Series",
+      "logo_url": "https://api.mountain-race.rs/storage/series/WST-Logo-Black-sajr_1778240848.webp",
+      "cover_url": "https://api.mountain-race.rs/storage/series/1764151494292687-scaled_1778240848.webp",
+      "url": "https://mountain-race.rs/s/wst/"
+    }
+  ],
+  "races": [
+    {
+      "id": "mr-247",
+      "race_key": "divca-winter-trail",
+      "name": "Divča Winter Trail 2024",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Divčibare",
+      "date_start": "2024-03-24",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/divca-winter-trail/2024/",
+      "website": "https://mountain-race.rs/trka/divca-winter-trail/2024/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/WcwpDOdiS5ZOygWCtOrHsaNeOkcK1mpOO4XHA5vU.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "15 km",
+          "distance_km": 15.0
+        },
+        {
+          "name": "10 km",
+          "distance_km": 10.0
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-262",
+      "race_key": "bobija-trail",
+      "name": "Bobija Trail 2024",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "selo Tornik",
+      "date_start": "2024-09-29",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/bobija-trail/2024/",
+      "website": "https://mountain-race.rs/trka/bobija-trail/2024/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/bv0yL6m21REAPVydyMM8yL5iS2k6DnCqD6IEEHwH.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "Red Race",
+          "distance_km": 26.0
+        },
+        {
+          "name": "Blue Race",
+          "distance_km": 15.0
+        },
+        {
+          "name": "Green Race",
+          "distance_km": 9.0
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-1",
+      "race_key": "povlen-trail",
+      "name": "Povlen Trail 2024",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Povlen",
+      "date_start": "2024-10-20",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/povlen-trail/2024/",
+      "website": "https://mountain-race.rs/trka/povlen-trail/2024/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/starts/J1IbWKjKorbjR3dTSVA5J1B9wyWkkaCuojBwVYYM.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "21 km 1100 D+",
+          "distance_km": 21.0,
+          "elevation_gain_m": 1100
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-6",
+      "race_key": "divca-winter-trail",
+      "name": "Divča Winter Trail 2025",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Divčibare",
+      "date_start": "2025-03-09",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/divca-winter-trail/2025/",
+      "website": "https://mountain-race.rs/trka/divca-winter-trail/2025/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/WcwpDOdiS5ZOygWCtOrHsaNeOkcK1mpOO4XHA5vU.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "15 km 640 D+",
+          "distance_km": 15.0,
+          "elevation_gain_m": 640
+        },
+        {
+          "name": "10 km 470 D+",
+          "distance_km": 10.0,
+          "elevation_gain_m": 470
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-7",
+      "race_key": "jablanik-trail",
+      "name": "Jablanik Trail 2025",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Jablanik",
+      "date_start": "2025-04-13",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/jablanik-trail/2025/",
+      "website": "https://mountain-race.rs/trka/jablanik-trail/2025/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/tp024DkkJjukhhhk1COxTRhPoj6XJxCOGb6yDorA.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "34 km 1837 D+",
+          "distance_km": 34.0,
+          "elevation_gain_m": 1837
+        },
+        {
+          "name": "14.6 km 884 D+",
+          "distance_km": 14.6,
+          "elevation_gain_m": 884
+        },
+        {
+          "name": "8 km 403 D+",
+          "distance_km": 8.0,
+          "elevation_gain_m": 403
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-8",
+      "race_key": "vidra-gradac-trail",
+      "name": "Vidra Gradac Trail 2025",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Klisura reke Gradac",
+      "date_start": "2025-06-15",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/vidra-gradac-trail/2025/",
+      "website": "https://mountain-race.rs/trka/vidra-gradac-trail/2025/",
+      "itra_points": 1,
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/1qpufzeL5M5vhBvu7UvMZMQRjYXUgHVeMECGAfxt.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "19 km 920 D+",
+          "distance_km": 19.0,
+          "elevation_gain_m": 920,
+          "itra_points": 1
+        },
+        {
+          "name": "10 km 450 D+",
+          "distance_km": 10.0,
+          "elevation_gain_m": 450
+        },
+        {
+          "name": "Hajk avantura",
+          "distance_km": 8.0
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-9",
+      "race_key": "sova-night-trail",
+      "name": "Sova Night Trail 2025",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Divčibare ski resort, Divča Bar",
+      "date_start": "2025-07-12",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/sova-night-trail/2025/",
+      "website": "https://mountain-race.rs/trka/sova-night-trail/2025/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/Xaa8Qn2PSQJ002kU7ZDywqR7wGMeNJje34J3MjQx.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "15 km 640 D+",
+          "distance_km": 15.0,
+          "elevation_gain_m": 640
+        },
+        {
+          "name": "10 km 470 D+",
+          "distance_km": 10.0,
+          "elevation_gain_m": 470
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-11",
+      "race_key": "bobija-trail",
+      "name": "Bobija Trail 2025",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "selo Tornik",
+      "date_start": "2025-08-16",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/bobija-trail/2025/",
+      "website": "https://mountain-race.rs/trka/bobija-trail/2025/",
+      "itra_points": 1,
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/bv0yL6m21REAPVydyMM8yL5iS2k6DnCqD6IEEHwH.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "26 km 1250 D+",
+          "distance_km": 26.0,
+          "elevation_gain_m": 1250,
+          "itra_points": 1
+        },
+        {
+          "name": "15 km 620 D+",
+          "distance_km": 15.0,
+          "elevation_gain_m": 620,
+          "itra_points": 0
+        },
+        {
+          "name": "9 km 110 D+",
+          "distance_km": 9.0,
+          "elevation_gain_m": 110
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-10",
+      "race_key": "divca-trail",
+      "name": "Divča Trail 2025",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Divčibare Ski Resort",
+      "date_start": "2025-09-27",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/divca-trail/2025/",
+      "website": "https://mountain-race.rs/trka/divca-trail/2025/",
+      "itra_points": 1,
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/RXUjAoKaABEout1Qc06oaJ6K0WGA8EILB5QaA3l4.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "Red Race",
+          "distance_km": 28.0,
+          "elevation_gain_m": 1350,
+          "itra_points": 1
+        },
+        {
+          "name": "Blue Race",
+          "distance_km": 17.0,
+          "elevation_gain_m": 820,
+          "itra_points": 1
+        },
+        {
+          "name": "Green Race",
+          "distance_km": 8.0,
+          "elevation_gain_m": 350
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-12",
+      "race_key": "povlen-trail",
+      "name": "Povlen Trail 2025",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Povlen",
+      "date_start": "2025-10-19",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/povlen-trail/2025/",
+      "website": "https://mountain-race.rs/trka/povlen-trail/2025/",
+      "itra_points": 1,
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/W2p7bSzfyqsZNuzKGV6Bqxscpe6zUDt4DWsKhK4R.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "Red Race",
+          "distance_km": 27.0,
+          "elevation_gain_m": 1010,
+          "itra_points": 1
+        },
+        {
+          "name": "Blue Race",
+          "distance_km": 18.0
+        },
+        {
+          "name": "Hajk Avantura",
+          "distance_km": 10.0
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-140",
+      "race_key": "divca-winter-trail",
+      "name": "Divča Winter Trail 2026",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Divčibare",
+      "date_start": "2026-03-08",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/divca-winter-trail/2026-divca-winter-trail/",
+      "website": "https://mountain-race.rs/trka/divca-winter-trail/2026-divca-winter-trail/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/WcwpDOdiS5ZOygWCtOrHsaNeOkcK1mpOO4XHA5vU.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "RED RACE",
+          "distance_km": 15.0,
+          "elevation_gain_m": 640
+        },
+        {
+          "name": "HAJK AVANTURA",
+          "distance_km": 10.0
+        },
+        {
+          "name": "BLUE RACE",
+          "distance_km": 10.0,
+          "elevation_gain_m": 440
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-145",
+      "race_key": "jablanik-trail",
+      "name": "Jablanik Trail 2026",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Jablanik",
+      "date_start": "2026-04-25",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/jablanik-trail/2026-jablanik-trail/",
+      "website": "https://mountain-race.rs/trka/jablanik-trail/2026-jablanik-trail/",
+      "itra_points": 2,
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/tp024DkkJjukhhhk1COxTRhPoj6XJxCOGb6yDorA.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "RED RACE",
+          "distance_km": 34.0,
+          "elevation_gain_m": 1800,
+          "itra_points": 2
+        },
+        {
+          "name": "BLUE RACE",
+          "distance_km": 15.0,
+          "elevation_gain_m": 880,
+          "itra_points": 0
+        },
+        {
+          "name": "HAJK AVANTURA",
+          "distance_km": 10.0
+        },
+        {
+          "name": "GREEN RACE",
+          "distance_km": 8.0,
+          "elevation_gain_m": 400
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-149",
+      "race_key": "vidra-gradac-trail",
+      "name": "Vidra Gradac Trail 2026",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Клисура реке Градац",
+      "date_start": "2026-06-14",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/vidra-gradac-trail/2026-vidra-gradac-trail/",
+      "website": "https://mountain-race.rs/trka/vidra-gradac-trail/2026-vidra-gradac-trail/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/1qpufzeL5M5vhBvu7UvMZMQRjYXUgHVeMECGAfxt.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "RED RACE",
+          "distance_km": 19.0,
+          "elevation_gain_m": 920
+        },
+        {
+          "name": "Hajk avantura",
+          "distance_km": 10.0
+        },
+        {
+          "name": "BLUE RACE",
+          "distance_km": 10.0,
+          "elevation_gain_m": 450
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-150",
+      "race_key": "sova-night-trail",
+      "name": "Sova Night Trail 2026",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Divcibare",
+      "date_start": "2026-07-11",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/sova-night-trail/2026-sova-night-trail/",
+      "website": "https://mountain-race.rs/trka/sova-night-trail/2026-sova-night-trail/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/Xaa8Qn2PSQJ002kU7ZDywqR7wGMeNJje34J3MjQx.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "RED RACE",
+          "distance_km": 15.0,
+          "elevation_gain_m": 600
+        },
+        {
+          "name": "Hajk avantura",
+          "distance_km": 12.0
+        },
+        {
+          "name": "BLUE RACE",
+          "distance_km": 10.0,
+          "elevation_gain_m": 370
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-152",
+      "race_key": "bobija-trail",
+      "name": "Bobija Trail 2026",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Bobija",
+      "date_start": "2026-08-16",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/bobija-trail/2026-bobija-trail/",
+      "website": "https://mountain-race.rs/trka/bobija-trail/2026-bobija-trail/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/bv0yL6m21REAPVydyMM8yL5iS2k6DnCqD6IEEHwH.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "Red Race",
+          "distance_km": 26.0,
+          "elevation_gain_m": 1250
+        },
+        {
+          "name": "Blue Race",
+          "distance_km": 15.0,
+          "elevation_gain_m": 620
+        },
+        {
+          "name": "Hajk avantura",
+          "distance_km": 12.0
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-154",
+      "race_key": "divca-trail",
+      "name": "Divča Trail 2026",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Divcibare",
+      "date_start": "2026-09-27",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/divca-trail/2026-divca-trail/",
+      "website": "https://mountain-race.rs/trka/divca-trail/2026-divca-trail/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/RXUjAoKaABEout1Qc06oaJ6K0WGA8EILB5QaA3l4.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "Red Race",
+          "distance_km": 28.0,
+          "elevation_gain_m": 1350
+        },
+        {
+          "name": "Blue Race",
+          "distance_km": 17.0,
+          "elevation_gain_m": 820
+        },
+        {
+          "name": "Hike Adventure",
+          "distance_km": 12.0
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-155",
+      "race_key": "povlen-trail",
+      "name": "Povlen Trail 2026",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Povlen",
+      "date_start": "2026-10-18",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/povlen-trail/2026-povlen-trail/",
+      "website": "https://mountain-race.rs/trka/povlen-trail/2026-povlen-trail/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/W2p7bSzfyqsZNuzKGV6Bqxscpe6zUDt4DWsKhK4R.webp",
+        "source": "mountain-race"
+      },
+      "distances": [
+        {
+          "name": "Red Race",
+          "distance_km": 27.0,
+          "elevation_gain_m": 1010
+        },
+        {
+          "name": "Blue Race",
+          "distance_km": 18.0
+        },
+        {
+          "name": "Hike Adventure",
+          "distance_km": 12.0
+        }
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    },
+    {
+      "id": "mr-311",
+      "race_key": "divca-winter-trail",
+      "name": "Divča Winter Trail 2027",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Divčibare",
+      "date_start": "2027-03-07",
+      "canceled": false,
+      "registration_url": "https://mountain-race.rs/trka/divca-winter-trail/2027/",
+      "website": "https://mountain-race.rs/trka/divca-winter-trail/2027/",
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/WcwpDOdiS5ZOygWCtOrHsaNeOkcK1mpOO4XHA5vU.webp",
+        "source": "mountain-race"
+      },
+      "distances": [],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ],
+      "source": "mountain-race.rs"
+    }
+  ]
+}

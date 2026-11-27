@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, Column, Grid, Row, Tag, Text } from "@once-ui-system/core";
-import { buckets, daysUntil, formatGain, formatKm, longest, place, raceBucket, toDate } from "../lib/race-utils";
+import { buckets, daysUntil, seriesName, formatGain, formatKm, longest, place, raceBucket, toDate } from "../lib/race-utils";
 import type { Race } from "../lib/types";
 import { RaceCover } from "./RaceCover";
 
@@ -79,6 +79,11 @@ function RaceCard({ race }: { race: Race }) {
           <Tag size="s" tone={b.tone}>
             {b.label}
           </Tag>
+          {race.series?.map((s) => (
+            <Tag key={s.slug} size="s" tone="brand" prefixIcon="flag">
+              {seriesName(s.title).short}
+            </Tag>
+          ))}
           {race.itra_points ? (
             <Tag size="s" prefixIcon="medal">
               {`${race.itra_points} ITRA`}

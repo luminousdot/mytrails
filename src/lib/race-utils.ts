@@ -26,6 +26,7 @@ export function raceBucket(race: Race): DistanceBucket {
 
 export function matches(race: Race, f: RaceFilters): boolean {
   if (f.country !== "all" && race.country !== f.country) return false;
+  if (f.series !== "all" && !race.series?.some((s) => s.slug === f.series)) return false;
   if (f.itraOnly && !race.itra_points) return false;
   if (f.distance !== "all" && !race.distances.some((d) => bucketOf(d.distance_km) === f.distance)) {
     return false;
@@ -79,4 +80,10 @@ export function place(race: Race): string {
 export function daysUntil(iso: string, now = new Date()): number {
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   return Math.round((toDate(iso).getTime() - today.getTime()) / 86_400_000);
+}
+
+/** "WST | West Serbia Trail Series" → { short: "WST", long: "West Serbia Trail Series" } */
+export function seriesName(title: string) {
+  const [short, ...rest] = title.split("|").map((p) => p.trim());
+  return { short, long: rest.join(" ") || short };
 }

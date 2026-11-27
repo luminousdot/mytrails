@@ -5,8 +5,8 @@ Trail race calendar for SE Europe. Next.js (App Router) + Once UI (`@once-ui-sys
 ## Layout
 
 - `src/` — Next.js app (Once UI). Data layer in `src/lib/`, the UI never reads JSON directly.
-- `crawler/` — Python (uv) Crawl4AI crawler; writes `data/races.json`.
-- `data/races.json` — the race dataset the app reads.
+- `crawler/` — Python (uv). `itra_crawl.py` (Crawl4AI) → `data/sources/itra.json`; `mountain_race.py` (mountain-race.rs series JSON, default WST) → `data/sources/mountain-race.json`; `merge.py` combines them into `data/races.json`.
+- `data/races.json` — the race dataset the app reads. Never edit by hand; rerun `merge.py`.
 - `docs/superpowers/specs/`, `docs/superpowers/plans/` — specs and plans.
 
 ## Commands
@@ -14,7 +14,7 @@ Trail race calendar for SE Europe. Next.js (App Router) + Once UI (`@once-ui-sys
 - `npm run dev` — app on http://localhost:3000
 - `npm run build` — production build
 - `cd crawler && uv sync && uv run crawl4ai-setup` — first-time crawler setup
-- `cd crawler && uv run itra_crawl.py` — refresh `data/races.json` (`--limit 30` for a quick run)
+- `cd crawler && uv run itra_crawl.py && uv run mountain_race.py && uv run merge.py` — refresh all race data
 - `npm run lint` / `npx once-ui-validate-ai-code src/**/*.tsx` — checks
 
 ## Rules

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Column, Row, Table, Tag, Text } from "@once-ui-system/core";
-import { buckets, formatDates, formatGain, formatKm, longest, place, raceBucket } from "../lib/race-utils";
+import { buckets, seriesName, formatDates, formatGain, formatKm, longest, place, raceBucket } from "../lib/race-utils";
 import type { Race } from "../lib/types";
 import { useRouter } from "next/navigation";
 
@@ -40,6 +40,11 @@ export function RaceList({ races }: { races: Race[] }) {
               <Tag size="s" tone={b.tone}>
                 {b.label}
               </Tag>
+              {race.series?.map((s) => (
+                <Tag key={s.slug} size="s" tone="brand" prefixIcon="flag">
+                  {seriesName(s.title).short}
+                </Tag>
+              ))}
             </Row>
           </Column>,
           formatKm(top?.distance_km),

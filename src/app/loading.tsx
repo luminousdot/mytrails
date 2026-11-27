@@ -2,7 +2,7 @@ import { Column, Row, Skeleton } from "@once-ui-system/core";
 
 export default function Loading() {
   return (
-    <Column as="main" fillWidth horizontal="center" paddingX="24" paddingTop="104" paddingBottom="80">
+    <Column fillWidth horizontal="center" paddingX="24" paddingTop="104" paddingBottom="80">
       <Column maxWidth="l" gap="32" aria-busy="true" aria-label="Loading races">
         <Column gap="12">
           <Skeleton shape="line" width="16rem" />

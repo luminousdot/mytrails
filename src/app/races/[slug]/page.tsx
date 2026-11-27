@@ -14,6 +14,7 @@ import {
   formatKm,
   longest,
   place,
+  seriesName,
   toDate,
 } from "../../../lib/race-utils";
 import { getRace, getRaces } from "../../../lib/races";
@@ -34,7 +35,8 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
   const race = await getRace(slug);
   if (!race) notFound();
 
-  const { races } = await getRaces();
+  const { races, series } = await getRaces();
+  const raceSeries = (race.series ?? []).map((rs) => series.find((s) => s.slug === rs.slug) ?? { ...rs, url: "" });
   const top = longest(race);
   const start = toDate(race.date_start);
   const sameMonth = races
@@ -72,6 +74,11 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
                   View on ITRA
                 </Button>
               )}
+              {race.website && race.website !== race.registration_url && (
+                <Button variant="secondary" suffixIcon="arrowUpRight" href={race.website}>
+                  Race website
+                </Button>
+              )}
               {race.registration_url && (
                 <Button suffixIcon="arrowUpRight" href={race.registration_url}>
                   Register
@@ -83,6 +90,40 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
           <Column radius="l" border overflow="hidden" height="22rem" s={{ height: "14rem" }}>
             <RaceCover race={race} />
           </Column>
+
+          {raceSeries.map((s) => (
+            <Row
+              key={s.slug}
+              background="brand-alpha-weak"
+              border="brand-alpha-medium"
+              radius="l"
+              paddingX="20"
+              paddingY="16"
+              gap="16"
+              vertical="center"
+              horizontal="between"
+              s={{ direction: "column", horizontal: "start" }}
+            >
+              <Column gap="4">
+                <Text textVariant="label-default-s" onBackground="brand-medium">
+                  Part of a race series
+                </Text>
+                <Text textVariant="heading-strong-m">
+                  {seriesName(s.title).short} · {seriesName(s.title).long}
+                </Text>
+              </Column>
+              <Row gap="8" wrap>
+                <Button variant="secondary" size="s" href={`/?series=${s.slug}`} prefixIcon="list">
+                  All {seriesName(s.title).short} races
+                </Button>
+                {s.url && (
+                  <Button variant="tertiary" size="s" suffixIcon="arrowUpRight" href={s.url}>
+                    Series on mountain-race.rs
+                  </Button>
+                )}
+              </Row>
+            </Row>
+          ))}
 
           <Grid columns="4" gap="12" m={{ columns: "2" }}>
             <Stat label="Starts" value={<StartsIn date={race.date_start} />} />
@@ -144,7 +185,7 @@ export default async function RacePage({ params }: { params: Promise<{ slug: str
               </Heading>
               <RaceLocationMap race={race} />
               <Text textVariant="body-default-s" onBackground="neutral-weak">
-                Start area as listed on ITRA: {place(race)}.
+                Start area: {place(race)}. Race data from {(race.sources ?? [race.source]).join(" and ")}.
               </Text>
             </Column>
           </Grid>

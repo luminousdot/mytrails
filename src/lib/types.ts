@@ -26,14 +26,27 @@ export type Race = {
   description?: string;
   website?: string;
   /** A photo from ITRA or the race's own site; absent means the app draws a cover. */
-  cover?: { url: string; source: "itra" | "website" };
+  cover?: { url: string; source: "itra" | "website" | "mountain-race" };
+  /** Race series the event belongs to, such as WST. */
+  series?: { slug: string; title: string }[];
+  /** Where the data came from, organiser's own source first. */
+  sources?: string[];
   distances: RaceDistance[];
   source: string;
 };
 
+export type RaceSeries = {
+  slug: string;
+  title: string;
+  logo_url?: string;
+  cover_url?: string;
+  url: string;
+};
+
 export type RaceDataset = {
   crawled_at: string;
-  source: string;
+  sources: string[];
+  series: RaceSeries[];
   races: Race[];
 };
 
@@ -42,6 +55,7 @@ export type DistanceBucket = "short" | "marathon" | "long" | "ultra";
 
 export type RaceFilters = {
   country: string; // "all" or a country name
+  series: string; // "all" or a series slug
   distance: "all" | DistanceBucket;
   itraOnly: boolean;
   search: string;

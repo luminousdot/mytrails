@@ -6,6 +6,9 @@
 
 - `crawler/itra_crawl.py` (Crawl4AI) is a port of `trail-os/scripts/scraper/itra.py`. It keeps one browser session, reads the race map's `[lat, lng, id]` list, filters it to the SE Europe bounding box, then fetches each race's popup JSON and the longest distance's detail page from inside that session.
 - Output is `data/races.json`: one record per event with every distance (km, D+, ITRA points, cut-off), dates, place, coordinates and links. It keeps upcoming races only, drops organisers' test events and pins that land outside the region's countries, and dedupes on name and date.
+- `crawler/mountain_race.py` reads race series from mountain-race.rs's public JSON (`/api/get-series?slug=wst`). It has the organisers' own names, distances, cover photos and registration links, but no coordinates.
+- `crawler/merge.py` combines both into `data/races.json`: ITRA is the base; a mountain-race.rs edition matching an ITRA race (date within 3 days, a shared distinctive word in the name) overrides name, distances, cover and links; one only on mountain-race.rs is placed by geocoding its town (Nominatim, cached in `data/sources/geocode.json`). Only upcoming, not cancelled editions are kept.
+- Races carry their `series` (e.g. WST): a tag on cards and rows, a Series filter (also `/?series=wst`), and a series panel on the race page.
 - The app reads it through `src/lib/races.ts` (`getRaces()`), so a database can replace the file later without touching the screens.
 
 ## Covers

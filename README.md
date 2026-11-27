@@ -16,7 +16,9 @@ Needs [uv](https://docs.astral.sh/uv/).
 ```bash
 cd crawler
 uv sync && uv run crawl4ai-setup   # first time only
-uv run itra_crawl.py               # writes ../data/races.json
+uv run itra_crawl.py               # ITRA → ../data/sources/itra.json
+uv run mountain_race.py            # WST series from mountain-race.rs
+uv run merge.py                    # → ../data/races.json
 ```
 
 See `docs/superpowers/specs/` for what the prototype covers.

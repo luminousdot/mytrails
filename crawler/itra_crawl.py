@@ -8,7 +8,7 @@ page, reads the race map (raceSearchJsonSidePopupNew holds [lat, lng, id]
 for every race), then calls the popup and detail endpoints with fetch()
 from inside that same page, so the cookies come along.
 
-Writes data/races.json (see src/lib/types.ts for the shape).
+Writes data/sources/itra.json; merge.py combines the sources into data/races.json.
 
     uv run itra_crawl.py              # all SE Europe races
     uv run itra_crawl.py --limit 40   # quick run
@@ -58,7 +58,7 @@ NOT_WEBSITE = (
 )
 
 SESSION = 'itra'
-OUT = Path(__file__).resolve().parent.parent / 'data' / 'races.json'
+OUT = Path(__file__).resolve().parent.parent / 'data' / 'sources' / 'itra.json'
 
 # Runs inside the map page, so fetch() sends the session cookies.
 FETCH_JS = """

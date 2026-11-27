@@ -1,32 +1,19 @@
 {
   "crawled_at": "2026-11-27T13:19:50+00:00",
-  "source": "itra.run",
-  "races": [
+  "sources": [
+    "itra.run",
+    "mountain-race.rs"
+  ],
+  "series": [
     {
-      "id": "itra-126324",
-      "slug": "lovcen-skyrace",
-      "name": "Lovcen SkyRace",
-      "country": "Montenegro",
-      "country_code": "ME",
-      "city": "Kotor",
-      "date_start": "2026-11-28",
-      "lat": 42.42466354370117,
-      "lng": 18.7712345123291,
-      "itra_url": "https://itra.run/Races/RaceDetails/Lovcen SkyRace .Lovcen SkyRace/2026/126324",
-      "itra_points": 2,
-      "distances": [
-        {
-          "name": "Lovcen SkyRace",
-          "distance_km": 30.78,
-          "elevation_gain_m": 2179,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Lovcen SkyRace .Lovcen SkyRace/2026/126324",
-          "time_limit_hours": 9.0
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://www.avaibooksports.com/inscripcion/lovcen-skyrace-2026/inscripcion_descuento/"
-    },
+      "slug": "wst",
+      "title": "WST | West Serbia Trail Series",
+      "logo_url": "https://api.mountain-race.rs/storage/series/WST-Logo-Black-sajr_1778240848.webp",
+      "cover_url": "https://api.mountain-race.rs/storage/series/1764151494292687-scaled_1778240848.webp",
+      "url": "https://mountain-race.rs/s/wst/"
+    }
+  ],
+  "races": [
     {
       "id": "itra-114690",
       "slug": "kar-spor-ida-ultra",
@@ -77,7 +64,38 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.idaultra.com"
+      "website": "http://www.idaultra.com",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-126324",
+      "slug": "lovcen-skyrace",
+      "name": "Lovcen SkyRace",
+      "country": "Montenegro",
+      "country_code": "ME",
+      "city": "Kotor",
+      "date_start": "2026-11-28",
+      "lat": 42.42466354370117,
+      "lng": 18.7712345123291,
+      "itra_url": "https://itra.run/Races/RaceDetails/Lovcen SkyRace .Lovcen SkyRace/2026/126324",
+      "itra_points": 2,
+      "distances": [
+        {
+          "name": "Lovcen SkyRace",
+          "distance_km": 30.78,
+          "elevation_gain_m": 2179,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Lovcen SkyRace .Lovcen SkyRace/2026/126324",
+          "time_limit_hours": 9.0
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://www.avaibooksports.com/inscripcion/lovcen-skyrace-2026/inscripcion_descuento/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127437",
@@ -108,7 +126,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://www.kosovopass.com/pass/488/a"
+      "website": "https://www.kosovopass.com/pass/488/a",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-114261",
@@ -164,7 +185,10 @@
         "url": "https://itra.run/Files/Photos/6c5ef0b0f9974fc1a3d7ad81750e345d.jpg",
         "source": "itra"
       },
-      "website": "https://clujecotrail.com/"
+      "website": "https://clujecotrail.com/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126695",
@@ -201,7 +225,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://velenjetrail.si/registracija"
+      "website": "http://velenjetrail.si/registracija",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-123651",
@@ -245,7 +272,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://terepfutas.hu/nyulcipobolt-budai-trail/"
+      "website": "https://terepfutas.hu/nyulcipobolt-budai-trail/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127190",
@@ -306,7 +336,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://forms.gle/WEnMkqZuoxtJy9Aw9"
+      "website": "https://forms.gle/WEnMkqZuoxtJy9Aw9",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-123799",
@@ -353,7 +386,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://register.chronolog.gr/r/92782de9089e62db534d81f903159b05?l=EL"
+      "website": "https://register.chronolog.gr/r/92782de9089e62db534d81f903159b05?l=EL",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126522",
@@ -379,7 +415,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://ecotrailsicilia.it/2021-2/trail-della-ficuzza-19-12-2021/"
+      "website": "http://ecotrailsicilia.it/2021-2/trail-della-ficuzza-19-12-2021/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127326",
@@ -415,7 +454,43 @@
         "source": "itra"
       },
       "website": "https://forms.gle/eZmZWBxKPExtSogHA",
-      "itra_points": 0
+      "itra_points": 0,
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-122711",
+      "slug": "knap-trail",
+      "name": "Knap Trail",
+      "country": "Slovenia",
+      "country_code": "SI",
+      "city": "Dom Svobode",
+      "date_start": "2027-01-09",
+      "lat": 46.16042709350586,
+      "lng": 15.05367660522461,
+      "registration_url": "https://www.knaptrail.si",
+      "itra_url": "https://itra.run/Races/RaceDetails/Knap Trail.T´ KRATKA/2027/122711",
+      "itra_points": 1,
+      "distances": [
+        {
+          "name": "T´ KRATKA",
+          "distance_km": 16.28,
+          "elevation_gain_m": 926,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Knap Trail.T´ KRATKA/2027/122711",
+          "time_limit_hours": 8.0
+        }
+      ],
+      "source": "itra.run",
+      "website": "http://www.knaptrail.si",
+      "cover": {
+        "url": "https://www.knaptrail.si/wp-content/uploads/2020/03/knap_open_slo.png",
+        "source": "website"
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-114602",
@@ -476,62 +551,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.s1trail.com"
-    },
-    {
-      "id": "itra-122711",
-      "slug": "knap-trail",
-      "name": "Knap Trail",
-      "country": "Slovenia",
-      "country_code": "SI",
-      "city": "Dom Svobode",
-      "date_start": "2027-01-09",
-      "lat": 46.16042709350586,
-      "lng": 15.05367660522461,
-      "registration_url": "https://www.knaptrail.si",
-      "itra_url": "https://itra.run/Races/RaceDetails/Knap Trail.T´ KRATKA/2027/122711",
-      "itra_points": 1,
-      "distances": [
-        {
-          "name": "T´ KRATKA",
-          "distance_km": 16.28,
-          "elevation_gain_m": 926,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Knap Trail.T´ KRATKA/2027/122711",
-          "time_limit_hours": 8.0
-        }
-      ],
-      "source": "itra.run",
-      "website": "http://www.knaptrail.si",
-      "cover": {
-        "url": "https://www.knaptrail.si/wp-content/uploads/2020/03/knap_open_slo.png",
-        "source": "website"
-      }
-    },
-    {
-      "id": "itra-126507",
-      "slug": "worthersee-extrem-trail",
-      "name": "Wörthersee Extrem Trail",
-      "country": "Austria",
-      "country_code": "AT",
-      "city": "Naturfreunde Boulderhalle, Porschestr. 15, 9020 Klagenfurt",
-      "date_start": "2027-01-10",
-      "lat": 46.63650131225586,
-      "lng": 14.312225341796875,
-      "itra_url": "https://itra.run/Races/RaceDetails/Wörthersee Extrem Trail.30k /2027/126507",
-      "itra_points": 1,
-      "distances": [
-        {
-          "name": "30k",
-          "distance_km": 29.87,
-          "elevation_gain_m": 860,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Wörthersee Extrem Trail.30k /2027/126507",
-          "time_limit_hours": 6.0
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://my.raceresult.com/433364/txt"
+      "website": "http://www.s1trail.com",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126552",
@@ -569,7 +592,38 @@
       ],
       "source": "itra.run",
       "website": "https://www.vasiterepfuto.hu/",
-      "itra_points": 0
+      "itra_points": 0,
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-126507",
+      "slug": "worthersee-extrem-trail",
+      "name": "Wörthersee Extrem Trail",
+      "country": "Austria",
+      "country_code": "AT",
+      "city": "Naturfreunde Boulderhalle, Porschestr. 15, 9020 Klagenfurt",
+      "date_start": "2027-01-10",
+      "lat": 46.63650131225586,
+      "lng": 14.312225341796875,
+      "itra_url": "https://itra.run/Races/RaceDetails/Wörthersee Extrem Trail.30k /2027/126507",
+      "itra_points": 1,
+      "distances": [
+        {
+          "name": "30k",
+          "distance_km": 29.87,
+          "elevation_gain_m": 860,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Wörthersee Extrem Trail.30k /2027/126507",
+          "time_limit_hours": 6.0
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://my.raceresult.com/433364/txt",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127353",
@@ -598,7 +652,10 @@
         "source": "itra"
       },
       "website": "https://forms.gle/GX3hbQ6ZZKcUGnsM6",
-      "itra_points": 0
+      "itra_points": 0,
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126174",
@@ -640,7 +697,10 @@
         "source": "itra"
       },
       "website": "https://fagetwinterrace.ro/inscrieri",
-      "itra_points": 0
+      "itra_points": 0,
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126556",
@@ -678,7 +738,10 @@
       ],
       "source": "itra.run",
       "website": "https://www.vasiterepfuto.hu/",
-      "itra_points": 0
+      "itra_points": 0,
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127236",
@@ -727,90 +790,10 @@
         "url": "https://itra.run/Files/Photos/16f1f8cf8bb0433fa9d528514c3fed3c.jpg",
         "source": "itra"
       },
-      "website": "http://www.alpeadriaultra.com/en/dogna-25/"
-    },
-    {
-      "id": "itra-126559",
-      "slug": "vts-pinka-extreme",
-      "name": "VTS-Pinka EXTREME",
-      "country": "Hungary",
-      "country_code": "HU",
-      "city": "Felsocsatar",
-      "date_start": "2027-02-27",
-      "lat": 47.21220016479492,
-      "lng": 16.444259643554688,
-      "registration_url": "https://www.vasiterepfuto.hu/",
-      "itra_url": "https://itra.run/Races/RaceDetails/VTS-Pinka EXTREME.L-distance/2027/126561",
-      "distances": [
-        {
-          "name": "L-distance",
-          "distance_km": 20.67,
-          "elevation_gain_m": 635,
-          "url": "https://itra.run/Races/RaceDetails/VTS-Pinka EXTREME.L-distance/2027/126561",
-          "time_limit_hours": 4.0,
-          "itra_points": 0
-        },
-        {
-          "name": "M-distance",
-          "distance_km": 10.0,
-          "elevation_gain_m": 340,
-          "url": "https://itra.run/Races/RaceDetails/VTS-Pinka EXTREME.M-distance/2027/126560"
-        },
-        {
-          "name": "S-distance",
-          "distance_km": 5.0,
-          "elevation_gain_m": 170,
-          "url": "https://itra.run/Races/RaceDetails/VTS-Pinka EXTREME.S-distance/2027/126559"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://www.vasiterepfuto.hu/",
-      "itra_points": 0
-    },
-    {
-      "id": "itra-126599",
-      "slug": "nif-ultra",
-      "name": "Nif Ultra",
-      "country": "Turkey",
-      "country_code": "TR",
-      "city": "Kaynaklar",
-      "date_start": "2027-02-27",
-      "lat": 38.36111068725586,
-      "lng": 27.26966094970703,
-      "registration_url": "https://nifultra.com",
-      "itra_url": "https://itra.run/Races/RaceDetails/Nif Ultra.Karlık 40K/2027/126599",
-      "itra_points": 2,
-      "distances": [
-        {
-          "name": "Karlık 40K",
-          "distance_km": 38.58,
-          "elevation_gain_m": 1905,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Nif Ultra.Karlık 40K/2027/126599",
-          "time_limit_hours": 7.5
-        },
-        {
-          "name": "Gökdere 20K",
-          "distance_km": 19.0,
-          "elevation_gain_m": 840,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Nif Ultra.Gökdere 20K/2027/126600"
-        },
-        {
-          "name": "Gürlek 12K",
-          "distance_km": 12.0,
-          "elevation_gain_m": 460,
-          "url": "https://itra.run/Races/RaceDetails/Nif Ultra.Gürlek 12K/2027/126601"
-        },
-        {
-          "name": "Kaynaklar 6K",
-          "distance_km": 6.0,
-          "elevation_gain_m": 260,
-          "url": "https://itra.run/Races/RaceDetails/Nif Ultra.Kaynaklar 6K/2027/126602"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://nifultra.com/"
+      "website": "http://www.alpeadriaultra.com/en/dogna-25/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126169",
@@ -857,7 +840,99 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.diava.gr"
+      "website": "http://www.diava.gr",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-126599",
+      "slug": "nif-ultra",
+      "name": "Nif Ultra",
+      "country": "Turkey",
+      "country_code": "TR",
+      "city": "Kaynaklar",
+      "date_start": "2027-02-27",
+      "lat": 38.36111068725586,
+      "lng": 27.26966094970703,
+      "registration_url": "https://nifultra.com",
+      "itra_url": "https://itra.run/Races/RaceDetails/Nif Ultra.Karlık 40K/2027/126599",
+      "itra_points": 2,
+      "distances": [
+        {
+          "name": "Karlık 40K",
+          "distance_km": 38.58,
+          "elevation_gain_m": 1905,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Nif Ultra.Karlık 40K/2027/126599",
+          "time_limit_hours": 7.5
+        },
+        {
+          "name": "Gökdere 20K",
+          "distance_km": 19.0,
+          "elevation_gain_m": 840,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Nif Ultra.Gökdere 20K/2027/126600"
+        },
+        {
+          "name": "Gürlek 12K",
+          "distance_km": 12.0,
+          "elevation_gain_m": 460,
+          "url": "https://itra.run/Races/RaceDetails/Nif Ultra.Gürlek 12K/2027/126601"
+        },
+        {
+          "name": "Kaynaklar 6K",
+          "distance_km": 6.0,
+          "elevation_gain_m": 260,
+          "url": "https://itra.run/Races/RaceDetails/Nif Ultra.Kaynaklar 6K/2027/126602"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://nifultra.com/",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-126559",
+      "slug": "vts-pinka-extreme",
+      "name": "VTS-Pinka EXTREME",
+      "country": "Hungary",
+      "country_code": "HU",
+      "city": "Felsocsatar",
+      "date_start": "2027-02-27",
+      "lat": 47.21220016479492,
+      "lng": 16.444259643554688,
+      "registration_url": "https://www.vasiterepfuto.hu/",
+      "itra_url": "https://itra.run/Races/RaceDetails/VTS-Pinka EXTREME.L-distance/2027/126561",
+      "distances": [
+        {
+          "name": "L-distance",
+          "distance_km": 20.67,
+          "elevation_gain_m": 635,
+          "url": "https://itra.run/Races/RaceDetails/VTS-Pinka EXTREME.L-distance/2027/126561",
+          "time_limit_hours": 4.0,
+          "itra_points": 0
+        },
+        {
+          "name": "M-distance",
+          "distance_km": 10.0,
+          "elevation_gain_m": 340,
+          "url": "https://itra.run/Races/RaceDetails/VTS-Pinka EXTREME.M-distance/2027/126560"
+        },
+        {
+          "name": "S-distance",
+          "distance_km": 5.0,
+          "elevation_gain_m": 170,
+          "url": "https://itra.run/Races/RaceDetails/VTS-Pinka EXTREME.S-distance/2027/126559"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://www.vasiterepfuto.hu/",
+      "itra_points": 0,
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126125",
@@ -882,7 +957,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.diava.gr"
+      "website": "http://www.diava.gr",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-118505",
@@ -928,7 +1006,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://kekesiconictrail.hu/"
+      "website": "https://kekesiconictrail.hu/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127600",
@@ -958,7 +1039,50 @@
       "cover": {
         "url": "https://www.traceysport.com/assets/img/hero2-mobile.webp",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-127270",
+      "slug": "divca-winter-trail",
+      "name": "Divča Winter Trail",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Divcibare",
+      "date_start": "2027-03-07",
+      "lat": 44.10472106933594,
+      "lng": 19.991559982299805,
+      "registration_url": "https://mountain-race.rs/trka/divca-winter-trail/2027/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Divča Winter Trail.Red Race/2027/127270",
+      "distances": [
+        {
+          "name": "Red Race",
+          "distance_km": 12.82,
+          "elevation_gain_m": 622,
+          "url": "https://itra.run/Races/RaceDetails/Divča Winter Trail.Red Race/2027/127270",
+          "time_limit_hours": 4.0,
+          "itra_points": 0
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://mountain-race.rs/trka/divca-winter-trail/2027/",
+      "itra_points": 0,
+      "cover": {
+        "url": "https://api.mountain-race.rs/storage/races/WcwpDOdiS5ZOygWCtOrHsaNeOkcK1mpOO4XHA5vU.webp",
+        "source": "mountain-race"
+      },
+      "sources": [
+        "mountain-race.rs",
+        "itra.run"
+      ],
+      "series": [
+        {
+          "slug": "wst",
+          "title": "WST | West Serbia Trail Series"
+        }
+      ]
     },
     {
       "id": "itra-118831",
@@ -1004,37 +1128,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.kmt.mk"
-    },
-    {
-      "id": "itra-127270",
-      "slug": "divca-winter-trail",
-      "name": "Divča Winter Trail",
-      "country": "Serbia",
-      "country_code": "RS",
-      "city": "Divcibare",
-      "date_start": "2027-03-07",
-      "lat": 44.10472106933594,
-      "lng": 19.991559982299805,
-      "registration_url": "https://trka.rs/events/958-divca-winter-trail/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Divča Winter Trail.Red Race/2027/127270",
-      "distances": [
-        {
-          "name": "Red Race",
-          "distance_km": 12.82,
-          "elevation_gain_m": 622,
-          "url": "https://itra.run/Races/RaceDetails/Divča Winter Trail.Red Race/2027/127270",
-          "time_limit_hours": 4.0,
-          "itra_points": 0
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://trka.rs/events/958-divca-winter-trail/",
-      "itra_points": 0,
-      "cover": {
-        "url": "https://files.racentr.com/media/uploads/2026/10/08/40.png",
-        "source": "website"
-      }
+      "website": "http://www.kmt.mk",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-123274",
@@ -1065,7 +1162,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://kavalatrailrun.eoskavalas.gr/"
+      "website": "https://kavalatrailrun.eoskavalas.gr/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-118070",
@@ -1091,7 +1191,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.avala.club"
+      "website": "http://www.avala.club",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-117059",
@@ -1117,7 +1220,10 @@
       ],
       "source": "itra.run",
       "website": "https://e.tiks.app/e/eccf9dee-459e-4c1e-9efe-4c3d4a879e5c",
-      "itra_points": 0
+      "itra_points": 0,
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127668",
@@ -1154,46 +1260,10 @@
         }
       ],
       "source": "itra.run",
-      "description": "The page you're looking for doesn't exist. Go back to the iTRA homepage."
-    },
-    {
-      "id": "itra-118371",
-      "slug": "kras-trail",
-      "name": "Kras Trail",
-      "country": "Slovenia",
-      "country_code": "SI",
-      "city": "Divaca",
-      "date_start": "2027-03-27",
-      "lat": 45.66346740722656,
-      "lng": 13.98911190032959,
-      "registration_url": "https://www.krastrail.si",
-      "itra_url": "https://itra.run/Races/RaceDetails/Kras Trail.50K/2027/118373",
-      "itra_points": 2,
-      "distances": [
-        {
-          "name": "50K",
-          "distance_km": 52.24,
-          "elevation_gain_m": 1887,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Kras Trail.50K/2027/118373",
-          "time_limit_hours": 7.5
-        },
-        {
-          "name": "30K",
-          "distance_km": 29.0,
-          "elevation_gain_m": 1100,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Kras Trail.30K/2027/118372"
-        },
-        {
-          "name": "Kras Trail 10K",
-          "distance_km": 10.0,
-          "elevation_gain_m": 200,
-          "url": "https://itra.run/Races/RaceDetails/Kras Trail. Kras Trail 10K/2027/118371"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://krastrail.si/en/"
+      "description": "The page you're looking for doesn't exist. Go back to the iTRA homepage.",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-124970",
@@ -1245,7 +1315,52 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.podilateschiou.gr"
+      "website": "http://www.podilateschiou.gr",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-118371",
+      "slug": "kras-trail",
+      "name": "Kras Trail",
+      "country": "Slovenia",
+      "country_code": "SI",
+      "city": "Divaca",
+      "date_start": "2027-03-27",
+      "lat": 45.66346740722656,
+      "lng": 13.98911190032959,
+      "registration_url": "https://www.krastrail.si",
+      "itra_url": "https://itra.run/Races/RaceDetails/Kras Trail.50K/2027/118373",
+      "itra_points": 2,
+      "distances": [
+        {
+          "name": "50K",
+          "distance_km": 52.24,
+          "elevation_gain_m": 1887,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Kras Trail.50K/2027/118373",
+          "time_limit_hours": 7.5
+        },
+        {
+          "name": "30K",
+          "distance_km": 29.0,
+          "elevation_gain_m": 1100,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Kras Trail.30K/2027/118372"
+        },
+        {
+          "name": "Kras Trail 10K",
+          "distance_km": 10.0,
+          "elevation_gain_m": 200,
+          "url": "https://itra.run/Races/RaceDetails/Kras Trail. Kras Trail 10K/2027/118371"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://krastrail.si/en/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-125667",
@@ -1282,7 +1397,10 @@
         "url": "https://itra.run/Files/Photos/dba9c087197240c083657d79c9021abb.png",
         "source": "itra"
       },
-      "website": "http://www.heliconmountainrace.gr"
+      "website": "http://www.heliconmountainrace.gr",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127463",
@@ -1327,7 +1445,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://hydrastrail.gr/en"
+      "website": "https://hydrastrail.gr/en",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-124884",
@@ -1366,47 +1487,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://www.sandrasadventure.com/en"
-    },
-    {
-      "id": "itra-118828",
-      "slug": "vodno-matka-trails",
-      "name": "Vodno-Matka Trails",
-      "country": "North Macedonia",
-      "country_code": "MK",
-      "city": "Gorno Nerezi",
-      "date_start": "2027-04-11",
-      "lat": 41.97829055786133,
-      "lng": 21.372440338134766,
-      "registration_url": "https://www.vodnomatka.mk",
-      "itra_url": "https://itra.run/Races/RaceDetails/Vodno-Matka Trails.50Km/2027/118828",
-      "itra_points": 3,
-      "distances": [
-        {
-          "name": "50Km",
-          "distance_km": 51.97,
-          "elevation_gain_m": 3014,
-          "itra_points": 3,
-          "url": "https://itra.run/Races/RaceDetails/Vodno-Matka Trails.50Km/2027/118828",
-          "time_limit_hours": 12.0
-        },
-        {
-          "name": "30Km",
-          "distance_km": 30.0,
-          "elevation_gain_m": 1600,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Vodno-Matka Trails.30Km/2027/118827"
-        },
-        {
-          "name": "18Km",
-          "distance_km": 18.0,
-          "elevation_gain_m": 1000,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Vodno-Matka Trails.18Km/2027/118829"
-        }
-      ],
-      "source": "itra.run",
-      "website": "http://www.vodnomatka.mk"
+      "website": "https://www.sandrasadventure.com/en",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-120796",
@@ -1452,7 +1536,53 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://terepfutas.hu/event/ensport-vertes-terep-maraton/"
+      "website": "https://terepfutas.hu/event/ensport-vertes-terep-maraton/",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-118828",
+      "slug": "vodno-matka-trails",
+      "name": "Vodno-Matka Trails",
+      "country": "North Macedonia",
+      "country_code": "MK",
+      "city": "Gorno Nerezi",
+      "date_start": "2027-04-11",
+      "lat": 41.97829055786133,
+      "lng": 21.372440338134766,
+      "registration_url": "https://www.vodnomatka.mk",
+      "itra_url": "https://itra.run/Races/RaceDetails/Vodno-Matka Trails.50Km/2027/118828",
+      "itra_points": 3,
+      "distances": [
+        {
+          "name": "50Km",
+          "distance_km": 51.97,
+          "elevation_gain_m": 3014,
+          "itra_points": 3,
+          "url": "https://itra.run/Races/RaceDetails/Vodno-Matka Trails.50Km/2027/118828",
+          "time_limit_hours": 12.0
+        },
+        {
+          "name": "30Km",
+          "distance_km": 30.0,
+          "elevation_gain_m": 1600,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Vodno-Matka Trails.30Km/2027/118827"
+        },
+        {
+          "name": "18Km",
+          "distance_km": 18.0,
+          "elevation_gain_m": 1000,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Vodno-Matka Trails.18Km/2027/118829"
+        }
+      ],
+      "source": "itra.run",
+      "website": "http://www.vodnomatka.mk",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-125822",
@@ -1497,7 +1627,10 @@
         "url": "https://itra.run/Files/Photos/3e321ab1d1f341ba8aaf433962a3f2b0.jpg",
         "source": "itra"
       },
-      "website": "https://en.tihiorace.gr/races/tihio-stage-race"
+      "website": "https://en.tihiorace.gr/races/tihio-stage-race",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-124052",
@@ -1540,7 +1673,10 @@
       "cover": {
         "url": "https://lh7-us.googleusercontent.com/sitesv-images-rt/APXyLQeEIX5S-JpASAA37jDbd9okjEXdJzZOAr9a8543YEwmUPYYpzyYYEPNXR4VM3gfukmBew_kkBimeDXUu1CmZh9Aq8uvFFcYbQdJvIBUB3IdAjy7ndur67QlflYLFNIs5TTbaII-oEWBqedAigJQ3okaWou-dBwNQtcTLBZkAHqzhD17pjkQN8Dv08JgxXI=w16383",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-120837",
@@ -1591,7 +1727,10 @@
       "cover": {
         "url": "https://urmepeplay.ro/wp-content/uploads/2024/11/ADR08748-scaled.jpg",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-120699",
@@ -1655,7 +1794,10 @@
       "cover": {
         "url": "https://ultratrail.si/wp-content/uploads/2024/07/Untitled-1.jpg",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-121112",
@@ -1709,105 +1851,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://www.fruskogorski-maraton.com/en/applications/"
-    },
-    {
-      "id": "itra-120748",
-      "slug": "musaispectaculos",
-      "name": "MusaiSpectaculos",
-      "country": "Romania",
-      "country_code": "RO",
-      "city": "Fagaras",
-      "date_start": "2027-04-24",
-      "lat": 45.84222412109375,
-      "lng": 24.971389770507812,
-      "registration_url": "https://alergaras.ro/inscriere-2025/",
-      "itra_url": "https://itra.run/Races/RaceDetails/MusaiSpectaculos.Maratonu' de pe Ardeal/2027/120749",
-      "itra_points": 2,
-      "distances": [
-        {
-          "name": "Maratonu' de pe Ardeal",
-          "distance_km": 47.07,
-          "elevation_gain_m": 1334,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/MusaiSpectaculos.Maratonu' de pe Ardeal/2027/120749",
-          "time_limit_hours": 7.5
-        },
-        {
-          "name": "Belvedere",
-          "distance_km": 20.0,
-          "elevation_gain_m": 680,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/MusaiSpectaculos.Belvedere/2027/120748"
-        },
-        {
-          "name": "Crosul Fagarasului",
-          "distance_km": 14.0,
-          "elevation_gain_m": 351,
-          "url": "https://itra.run/Races/RaceDetails/MusaiSpectaculos.Crosul Fagarasului/2027/120750"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://alergaras.ro"
-    },
-    {
-      "id": "itra-125894",
-      "slug": "marmaris-ultra-trail",
-      "name": "Marmaris Ultra Trail",
-      "country": "Turkey",
-      "country_code": "TR",
-      "city": "Marmaris",
-      "date_start": "2027-04-24",
-      "date_end": "2027-04-25",
-      "lat": 36.8531494140625,
-      "lng": 28.270679473876953,
-      "itra_url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MUT100K/2027/125899",
-      "itra_points": 4,
-      "distances": [
-        {
-          "name": "MUT100K",
-          "distance_km": 96.1,
-          "elevation_gain_m": 3701,
-          "itra_points": 4,
-          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MUT100K/2027/125899",
-          "time_limit_hours": 22.0
-        },
-        {
-          "name": "MAT70K",
-          "distance_km": 70.0,
-          "elevation_gain_m": 2840,
-          "itra_points": 3,
-          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MAT70K/2027/125894"
-        },
-        {
-          "name": "MMT48K",
-          "distance_km": 48.0,
-          "elevation_gain_m": 1750,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MMT48K/2027/125895"
-        },
-        {
-          "name": "MET30K",
-          "distance_km": 30.0,
-          "elevation_gain_m": 860,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MET30K/2027/125896"
-        },
-        {
-          "name": "MST16K",
-          "distance_km": 16.0,
-          "elevation_gain_m": 390,
-          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MST16K/2027/125897"
-        },
-        {
-          "name": "MRT5K",
-          "distance_km": 5.0,
-          "elevation_gain_m": 100,
-          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MRT5K/2027/125898"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://marmarisultra.com/"
+      "website": "https://www.fruskogorski-maraton.com/en/applications/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126350",
@@ -1866,46 +1913,114 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://apphurra.com/etkinlik/babadag-ultra-trail-2027"
+      "website": "https://apphurra.com/etkinlik/babadag-ultra-trail-2027",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
-      "id": "itra-124985",
-      "slug": "sougliani-trail",
-      "name": "Sougliani Trail",
-      "country": "Greece",
-      "country_code": "GR",
-      "city": "Stavros",
-      "date_start": "2027-04-25",
-      "lat": 40.664791107177734,
-      "lng": 23.69884490966797,
-      "registration_url": "https://fosstavrou.gr/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Sougliani Trail.50km/2027/124972",
-      "itra_points": 3,
+      "id": "itra-125894",
+      "slug": "marmaris-ultra-trail",
+      "name": "Marmaris Ultra Trail",
+      "country": "Turkey",
+      "country_code": "TR",
+      "city": "Marmaris",
+      "date_start": "2027-04-24",
+      "date_end": "2027-04-25",
+      "lat": 36.8531494140625,
+      "lng": 28.270679473876953,
+      "itra_url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MUT100K/2027/125899",
+      "itra_points": 4,
       "distances": [
         {
-          "name": "50km",
-          "distance_km": 50.03,
-          "elevation_gain_m": 2634,
+          "name": "MUT100K",
+          "distance_km": 96.1,
+          "elevation_gain_m": 3701,
+          "itra_points": 4,
+          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MUT100K/2027/125899",
+          "time_limit_hours": 22.0
+        },
+        {
+          "name": "MAT70K",
+          "distance_km": 70.0,
+          "elevation_gain_m": 2840,
           "itra_points": 3,
-          "url": "https://itra.run/Races/RaceDetails/Sougliani Trail.50km/2027/124972",
-          "time_limit_hours": 12.0
+          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MAT70K/2027/125894"
         },
         {
-          "name": "25km",
-          "distance_km": 25.0,
-          "elevation_gain_m": 1560,
+          "name": "MMT48K",
+          "distance_km": 48.0,
+          "elevation_gain_m": 1750,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MMT48K/2027/125895"
+        },
+        {
+          "name": "MET30K",
+          "distance_km": 30.0,
+          "elevation_gain_m": 860,
           "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Sougliani Trail.25km/2027/124971"
+          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MET30K/2027/125896"
         },
         {
-          "name": "13km",
-          "distance_km": 13.0,
-          "elevation_gain_m": 750,
-          "url": "https://itra.run/Races/RaceDetails/Sougliani Trail.13km/2027/124985"
+          "name": "MST16K",
+          "distance_km": 16.0,
+          "elevation_gain_m": 390,
+          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MST16K/2027/125897"
+        },
+        {
+          "name": "MRT5K",
+          "distance_km": 5.0,
+          "elevation_gain_m": 100,
+          "url": "https://itra.run/Races/RaceDetails/Marmaris Ultra Trail.MRT5K/2027/125898"
         }
       ],
       "source": "itra.run",
-      "website": "https://www.fosstavrou.gr/"
+      "website": "https://marmarisultra.com/",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-120748",
+      "slug": "musaispectaculos",
+      "name": "MusaiSpectaculos",
+      "country": "Romania",
+      "country_code": "RO",
+      "city": "Fagaras",
+      "date_start": "2027-04-24",
+      "lat": 45.84222412109375,
+      "lng": 24.971389770507812,
+      "registration_url": "https://alergaras.ro/inscriere-2025/",
+      "itra_url": "https://itra.run/Races/RaceDetails/MusaiSpectaculos.Maratonu' de pe Ardeal/2027/120749",
+      "itra_points": 2,
+      "distances": [
+        {
+          "name": "Maratonu' de pe Ardeal",
+          "distance_km": 47.07,
+          "elevation_gain_m": 1334,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/MusaiSpectaculos.Maratonu' de pe Ardeal/2027/120749",
+          "time_limit_hours": 7.5
+        },
+        {
+          "name": "Belvedere",
+          "distance_km": 20.0,
+          "elevation_gain_m": 680,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/MusaiSpectaculos.Belvedere/2027/120748"
+        },
+        {
+          "name": "Crosul Fagarasului",
+          "distance_km": 14.0,
+          "elevation_gain_m": 351,
+          "url": "https://itra.run/Races/RaceDetails/MusaiSpectaculos.Crosul Fagarasului/2027/120750"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://alergaras.ro",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127271",
@@ -1935,37 +2050,10 @@
       "cover": {
         "url": "https://files.racentr.com/media/uploads/2026/10/09/41.png",
         "source": "website"
-      }
-    },
-    {
-      "id": "itra-125449",
-      "slug": "mechi-chal-trail-chepelare",
-      "name": "Mechi Chal Trail Chepelare",
-      "country": "Bulgaria",
-      "country_code": "BG",
-      "city": "Chepelare",
-      "date_start": "2027-04-25",
-      "lat": 41.72524642944336,
-      "lng": 24.685211181640625,
-      "registration_url": "https://skactive2013.com/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Mechi Chal Trail Chepelare .38.3 km Rozhen Trail/2027/125449",
-      "itra_points": 2,
-      "distances": [
-        {
-          "name": "3 km Rozhen Trail",
-          "distance_km": 38.51,
-          "elevation_gain_m": 1767,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Mechi Chal Trail Chepelare .38.3 km Rozhen Trail/2027/125449",
-          "time_limit_hours": 10.0
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://skactive2013.com/",
-      "cover": {
-        "url": "https://skactive2013.com/wp-content/uploads/2026/09/Mechi-Chal-2027.png",
-        "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127167",
@@ -2004,7 +2092,85 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.kissavosmarathonrace.gr"
+      "website": "http://www.kissavosmarathonrace.gr",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-125449",
+      "slug": "mechi-chal-trail-chepelare",
+      "name": "Mechi Chal Trail Chepelare",
+      "country": "Bulgaria",
+      "country_code": "BG",
+      "city": "Chepelare",
+      "date_start": "2027-04-25",
+      "lat": 41.72524642944336,
+      "lng": 24.685211181640625,
+      "registration_url": "https://skactive2013.com/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Mechi Chal Trail Chepelare .38.3 km Rozhen Trail/2027/125449",
+      "itra_points": 2,
+      "distances": [
+        {
+          "name": "3 km Rozhen Trail",
+          "distance_km": 38.51,
+          "elevation_gain_m": 1767,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Mechi Chal Trail Chepelare .38.3 km Rozhen Trail/2027/125449",
+          "time_limit_hours": 10.0
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://skactive2013.com/",
+      "cover": {
+        "url": "https://skactive2013.com/wp-content/uploads/2026/09/Mechi-Chal-2027.png",
+        "source": "website"
+      },
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-124985",
+      "slug": "sougliani-trail",
+      "name": "Sougliani Trail",
+      "country": "Greece",
+      "country_code": "GR",
+      "city": "Stavros",
+      "date_start": "2027-04-25",
+      "lat": 40.664791107177734,
+      "lng": 23.69884490966797,
+      "registration_url": "https://fosstavrou.gr/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Sougliani Trail.50km/2027/124972",
+      "itra_points": 3,
+      "distances": [
+        {
+          "name": "50km",
+          "distance_km": 50.03,
+          "elevation_gain_m": 2634,
+          "itra_points": 3,
+          "url": "https://itra.run/Races/RaceDetails/Sougliani Trail.50km/2027/124972",
+          "time_limit_hours": 12.0
+        },
+        {
+          "name": "25km",
+          "distance_km": 25.0,
+          "elevation_gain_m": 1560,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Sougliani Trail.25km/2027/124971"
+        },
+        {
+          "name": "13km",
+          "distance_km": 13.0,
+          "elevation_gain_m": 750,
+          "url": "https://itra.run/Races/RaceDetails/Sougliani Trail.13km/2027/124985"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://www.fosstavrou.gr/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-123258",
@@ -2044,46 +2210,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://www.sciclubvillaceliera.it"
-    },
-    {
-      "id": "itra-126508",
-      "slug": "worthersee-trail-festival",
-      "name": "Wörthersee Trail Festival",
-      "country": "Austria",
-      "country_code": "AT",
-      "city": "Velden",
-      "date_start": "2027-05-08",
-      "lat": 46.63044357299805,
-      "lng": 14.143656730651855,
-      "registration_url": "https://my.raceresult.com/340695/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Wörthersee Trail Festival .65k Ultra/2027/126508",
-      "itra_points": 3,
-      "distances": [
-        {
-          "name": "65k Ultra",
-          "distance_km": 63.93,
-          "elevation_gain_m": 1775,
-          "itra_points": 3,
-          "url": "https://itra.run/Races/RaceDetails/Wörthersee Trail Festival .65k Ultra/2027/126508",
-          "time_limit_hours": 12.0
-        },
-        {
-          "name": "34k Speed",
-          "distance_km": 33.0,
-          "elevation_gain_m": 1010,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Wörthersee Trail Festival .34k Speed /2027/126509"
-        },
-        {
-          "name": "14k Short",
-          "distance_km": 14.0,
-          "elevation_gain_m": 440,
-          "url": "https://itra.run/Races/RaceDetails/Wörthersee Trail Festival .14k Short/2027/126510"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://my.raceresult.com/340695/"
+      "website": "https://www.sciclubvillaceliera.it",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-120572",
@@ -2130,7 +2260,57 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://corfumountaintrail.com/"
+      "website": "https://corfumountaintrail.com/",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-124630",
+      "slug": "nefes-ultra",
+      "name": "Nefes Ultra",
+      "country": "Turkey",
+      "country_code": "TR",
+      "city": "Nilufer",
+      "date_start": "2027-05-08",
+      "lat": 40.131439208984375,
+      "lng": 28.9393253326416,
+      "registration_url": "https://www.nefesultra.com",
+      "itra_url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 50k/2027/124630",
+      "itra_points": 2,
+      "distances": [
+        {
+          "name": "Nefes Ultra 50k",
+          "distance_km": 50.87,
+          "elevation_gain_m": 1559,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 50k/2027/124630",
+          "time_limit_hours": 9.0
+        },
+        {
+          "name": "Nefes Ultra 30k",
+          "distance_km": 30.0,
+          "elevation_gain_m": 900,
+          "url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 30k/2027/124640"
+        },
+        {
+          "name": "Nefes Ultra 15k",
+          "distance_km": 15.0,
+          "elevation_gain_m": 390,
+          "url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 15k/2027/124641"
+        },
+        {
+          "name": "Nefes Ultra 6k",
+          "distance_km": 6.0,
+          "elevation_gain_m": 150,
+          "url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 6k/2027/124642"
+        }
+      ],
+      "source": "itra.run",
+      "website": "http://www.nefesultra.com",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126795",
@@ -2180,82 +2360,52 @@
       "cover": {
         "url": "https://www.subcarpatitrailrun.ro/images/fbimg.jpg",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
-      "id": "itra-124630",
-      "slug": "nefes-ultra",
-      "name": "Nefes Ultra",
-      "country": "Turkey",
-      "country_code": "TR",
-      "city": "Nilufer",
+      "id": "itra-126508",
+      "slug": "worthersee-trail-festival",
+      "name": "Wörthersee Trail Festival",
+      "country": "Austria",
+      "country_code": "AT",
+      "city": "Velden",
       "date_start": "2027-05-08",
-      "lat": 40.131439208984375,
-      "lng": 28.9393253326416,
-      "registration_url": "https://www.nefesultra.com",
-      "itra_url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 50k/2027/124630",
-      "itra_points": 2,
+      "lat": 46.63044357299805,
+      "lng": 14.143656730651855,
+      "registration_url": "https://my.raceresult.com/340695/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Wörthersee Trail Festival .65k Ultra/2027/126508",
+      "itra_points": 3,
       "distances": [
         {
-          "name": "Nefes Ultra 50k",
-          "distance_km": 50.87,
-          "elevation_gain_m": 1559,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 50k/2027/124630",
-          "time_limit_hours": 9.0
+          "name": "65k Ultra",
+          "distance_km": 63.93,
+          "elevation_gain_m": 1775,
+          "itra_points": 3,
+          "url": "https://itra.run/Races/RaceDetails/Wörthersee Trail Festival .65k Ultra/2027/126508",
+          "time_limit_hours": 12.0
         },
         {
-          "name": "Nefes Ultra 30k",
-          "distance_km": 30.0,
-          "elevation_gain_m": 900,
-          "url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 30k/2027/124640"
+          "name": "34k Speed",
+          "distance_km": 33.0,
+          "elevation_gain_m": 1010,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Wörthersee Trail Festival .34k Speed /2027/126509"
         },
         {
-          "name": "Nefes Ultra 15k",
-          "distance_km": 15.0,
-          "elevation_gain_m": 390,
-          "url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 15k/2027/124641"
-        },
-        {
-          "name": "Nefes Ultra 6k",
-          "distance_km": 6.0,
-          "elevation_gain_m": 150,
-          "url": "https://itra.run/Races/RaceDetails/Nefes Ultra .Nefes Ultra 6k/2027/124642"
+          "name": "14k Short",
+          "distance_km": 14.0,
+          "elevation_gain_m": 440,
+          "url": "https://itra.run/Races/RaceDetails/Wörthersee Trail Festival .14k Short/2027/126510"
         }
       ],
       "source": "itra.run",
-      "website": "http://www.nefesultra.com"
-    },
-    {
-      "id": "itra-127224",
-      "slug": "paggaio-trail-run",
-      "name": "PAGGAIO TRAIL RUN",
-      "country": "Greece",
-      "country_code": "GR",
-      "city": "DOMATIA",
-      "date_start": "2027-05-09",
-      "lat": 40.86497497558594,
-      "lng": 24.142908096313477,
-      "itra_url": "https://itra.run/Races/RaceDetails/PAGGAIO TRAIL RUN.PAGGAIO 30 SKY RACE/2027/127222",
-      "itra_points": 2,
-      "distances": [
-        {
-          "name": "PAGGAIO 30 SKY RACE",
-          "distance_km": 29.74,
-          "elevation_gain_m": 2024,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/PAGGAIO TRAIL RUN.PAGGAIO 30 SKY RACE/2027/127222",
-          "time_limit_hours": 7.0
-        },
-        {
-          "name": "PAGGAIO TRAIL RUN 10",
-          "distance_km": 10.0,
-          "elevation_gain_m": 500,
-          "url": "https://itra.run/Races/RaceDetails/PAGGAIO TRAIL RUN.PAGGAIO TRAIL RUN 10/2027/127224"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://www.eoskavalas.gr/"
+      "website": "https://my.raceresult.com/340695/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126853",
@@ -2293,51 +2443,44 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://www.chiosrunning.gr/chios-hardstone-trail/"
+      "website": "https://www.chiosrunning.gr/chios-hardstone-trail/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
-      "id": "itra-122975",
-      "slug": "ucka-trail-ultra",
-      "name": "Učka Trail Ultra",
-      "country": "Croatia",
-      "country_code": "HR",
-      "city": "Moscenicka Draga",
-      "date_start": "2027-05-15",
-      "lat": 45.23923110961914,
-      "lng": 14.253373146057129,
-      "registration_url": "https://rika.hr/ucka-trail-ultra-from-coast-to-summit/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Učka Trail Ultra.Učka Trail Ultra 85 km/2027/122974",
-      "itra_points": 4,
+      "id": "itra-127224",
+      "slug": "paggaio-trail-run",
+      "name": "PAGGAIO TRAIL RUN",
+      "country": "Greece",
+      "country_code": "GR",
+      "city": "DOMATIA",
+      "date_start": "2027-05-09",
+      "lat": 40.86497497558594,
+      "lng": 24.142908096313477,
+      "itra_url": "https://itra.run/Races/RaceDetails/PAGGAIO TRAIL RUN.PAGGAIO 30 SKY RACE/2027/127222",
+      "itra_points": 2,
       "distances": [
         {
-          "name": "Učka Trail Ultra 85 km",
-          "distance_km": 83.53,
-          "elevation_gain_m": 4537,
-          "itra_points": 4,
-          "url": "https://itra.run/Races/RaceDetails/Učka Trail Ultra.Učka Trail Ultra 85 km/2027/122974",
-          "time_limit_hours": 20.0
-        },
-        {
-          "name": "Učka Loop Challenge 42 km",
-          "distance_km": 42.0,
-          "elevation_gain_m": 2200,
+          "name": "PAGGAIO 30 SKY RACE",
+          "distance_km": 29.74,
+          "elevation_gain_m": 2024,
           "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Učka Trail Ultra.Učka Loop Challenge 42 km/2027/122973"
+          "url": "https://itra.run/Races/RaceDetails/PAGGAIO TRAIL RUN.PAGGAIO 30 SKY RACE/2027/127222",
+          "time_limit_hours": 7.0
         },
         {
-          "name": "Učka Loop Advanced 22km",
-          "distance_km": 22.0,
-          "elevation_gain_m": 1200,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Učka Trail Ultra.Učka Loop Advanced 22km/2027/122975"
+          "name": "PAGGAIO TRAIL RUN 10",
+          "distance_km": 10.0,
+          "elevation_gain_m": 500,
+          "url": "https://itra.run/Races/RaceDetails/PAGGAIO TRAIL RUN.PAGGAIO TRAIL RUN 10/2027/127224"
         }
       ],
       "source": "itra.run",
-      "cover": {
-        "url": "https://itra.run/Files/Photos/da11f19bcb674d56bdd97d9fe9d8a7a9.jpg",
-        "source": "itra"
-      },
-      "website": "https://rika.hr/ucka-trail-ultra-from-coast-to-summit/"
+      "website": "https://www.eoskavalas.gr/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-120786",
@@ -2403,7 +2546,57 @@
       "cover": {
         "url": "https://ultratrail.hu/wp-content/uploads/2025/06/503586587_1150344110455697_1776488706510734416_n.jpg",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-122975",
+      "slug": "ucka-trail-ultra",
+      "name": "Učka Trail Ultra",
+      "country": "Croatia",
+      "country_code": "HR",
+      "city": "Moscenicka Draga",
+      "date_start": "2027-05-15",
+      "lat": 45.23923110961914,
+      "lng": 14.253373146057129,
+      "registration_url": "https://rika.hr/ucka-trail-ultra-from-coast-to-summit/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Učka Trail Ultra.Učka Trail Ultra 85 km/2027/122974",
+      "itra_points": 4,
+      "distances": [
+        {
+          "name": "Učka Trail Ultra 85 km",
+          "distance_km": 83.53,
+          "elevation_gain_m": 4537,
+          "itra_points": 4,
+          "url": "https://itra.run/Races/RaceDetails/Učka Trail Ultra.Učka Trail Ultra 85 km/2027/122974",
+          "time_limit_hours": 20.0
+        },
+        {
+          "name": "Učka Loop Challenge 42 km",
+          "distance_km": 42.0,
+          "elevation_gain_m": 2200,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Učka Trail Ultra.Učka Loop Challenge 42 km/2027/122973"
+        },
+        {
+          "name": "Učka Loop Advanced 22km",
+          "distance_km": 22.0,
+          "elevation_gain_m": 1200,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Učka Trail Ultra.Učka Loop Advanced 22km/2027/122975"
+        }
+      ],
+      "source": "itra.run",
+      "cover": {
+        "url": "https://itra.run/Files/Photos/da11f19bcb674d56bdd97d9fe9d8a7a9.jpg",
+        "source": "itra"
+      },
+      "website": "https://rika.hr/ucka-trail-ultra-from-coast-to-summit/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126385",
@@ -2433,7 +2626,10 @@
       "cover": {
         "url": "https://kassiosdias.com/wp-content/uploads/2019/03/KASSIOS-SHARE.jpg",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127129",
@@ -2458,7 +2654,39 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://south.pourliatrail.gr/"
+      "website": "https://south.pourliatrail.gr/",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-126501",
+      "slug": "30-kekes-csucsfutas",
+      "name": "30. Kékes Csúcsfutás",
+      "country": "Hungary",
+      "country_code": "HU",
+      "city": "Mátrafüred",
+      "date_start": "2027-05-22",
+      "lat": 47.8310546875,
+      "lng": 19.96989631652832,
+      "registration_url": "https://www.kekescsucsfutas.hu/kekes-csucsfutas-trail/",
+      "itra_url": "https://itra.run/Races/RaceDetails/30. Kékes Csúcsfutás.Kékes Csúcsfutás Trail/2027/126501",
+      "distances": [
+        {
+          "name": "Kékes Csúcsfutás Trail",
+          "distance_km": 11.36,
+          "elevation_gain_m": 711,
+          "url": "https://itra.run/Races/RaceDetails/30. Kékes Csúcsfutás.Kékes Csúcsfutás Trail/2027/126501",
+          "time_limit_hours": 2.5,
+          "itra_points": 0
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://www.kekescsucsfutas.hu/kekes-csucsfutas-trail/",
+      "itra_points": 0,
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-121828",
@@ -2497,7 +2725,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://www.kriskagora-trail.si/"
+      "website": "https://www.kriskagora-trail.si/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126108",
@@ -2534,33 +2765,10 @@
       "cover": {
         "url": "https://www.st-trail.at/fileadmin/_processed_/6/c/csm_ziel-jubel-sprung_a42add804b.jpg",
         "source": "website"
-      }
-    },
-    {
-      "id": "itra-126501",
-      "slug": "30-kekes-csucsfutas",
-      "name": "30. Kékes Csúcsfutás",
-      "country": "Hungary",
-      "country_code": "HU",
-      "city": "Mátrafüred",
-      "date_start": "2027-05-22",
-      "lat": 47.8310546875,
-      "lng": 19.96989631652832,
-      "registration_url": "https://www.kekescsucsfutas.hu/kekes-csucsfutas-trail/",
-      "itra_url": "https://itra.run/Races/RaceDetails/30. Kékes Csúcsfutás.Kékes Csúcsfutás Trail/2027/126501",
-      "distances": [
-        {
-          "name": "Kékes Csúcsfutás Trail",
-          "distance_km": 11.36,
-          "elevation_gain_m": 711,
-          "url": "https://itra.run/Races/RaceDetails/30. Kékes Csúcsfutás.Kékes Csúcsfutás Trail/2027/126501",
-          "time_limit_hours": 2.5,
-          "itra_points": 0
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://www.kekescsucsfutas.hu/kekes-csucsfutas-trail/",
-      "itra_points": 0
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-121303",
@@ -2586,7 +2794,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://www.ultrabug.ro"
+      "website": "https://www.ultrabug.ro",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-123476",
@@ -2644,7 +2855,10 @@
         "url": "https://itra.run/Files/Photos/4600a541a6f244ecb8e718226f1e6748.png",
         "source": "itra"
       },
-      "website": "https://www.transylvania100k.com/registration"
+      "website": "https://www.transylvania100k.com/registration",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127170",
@@ -2671,7 +2885,10 @@
       "cover": {
         "url": "https://mythical-odyssey.com/wp-content/uploads/2026/10/MO-OG-2027.png",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-122281",
@@ -2721,7 +2938,10 @@
       "cover": {
         "url": "https://busteniultrarace.ro/wp-content/uploads/2026/08/SEO-HeroKV.png",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-120584",
@@ -2754,7 +2974,52 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://ttura.hu/event/2025m115/registration"
+      "website": "https://ttura.hu/event/2025m115/registration",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-126931",
+      "slug": "tara-ultra-trail",
+      "name": "Tara Ultra Trail",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Raca",
+      "date_start": "2027-06-05",
+      "lat": 43.920963287353516,
+      "lng": 19.42394256591797,
+      "registration_url": "https://taraultratrail.rs/prijave/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Tara Ultra Trail.TUT 69/2027/126933",
+      "itra_points": 3,
+      "distances": [
+        {
+          "name": "TUT 69",
+          "distance_km": 68.95,
+          "elevation_gain_m": 3036,
+          "itra_points": 3,
+          "url": "https://itra.run/Races/RaceDetails/Tara Ultra Trail.TUT 69/2027/126933",
+          "time_limit_hours": 17.0
+        },
+        {
+          "name": "TUT 21",
+          "distance_km": 21.0,
+          "elevation_gain_m": 850,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Tara Ultra Trail.TUT 21/2027/126932"
+        },
+        {
+          "name": "TUT 12",
+          "distance_km": 12.0,
+          "elevation_gain_m": 440,
+          "url": "https://itra.run/Races/RaceDetails/Tara Ultra Trail.TUT 12/2027/126931"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://prijavise.net/event-details/39",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-121690",
@@ -2794,46 +3059,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://www.oetschertrail.run/"
-    },
-    {
-      "id": "itra-126931",
-      "slug": "tara-ultra-trail",
-      "name": "Tara Ultra Trail",
-      "country": "Serbia",
-      "country_code": "RS",
-      "city": "Raca",
-      "date_start": "2027-06-05",
-      "lat": 43.920963287353516,
-      "lng": 19.42394256591797,
-      "registration_url": "https://taraultratrail.rs/prijave/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Tara Ultra Trail.TUT 69/2027/126933",
-      "itra_points": 3,
-      "distances": [
-        {
-          "name": "TUT 69",
-          "distance_km": 68.95,
-          "elevation_gain_m": 3036,
-          "itra_points": 3,
-          "url": "https://itra.run/Races/RaceDetails/Tara Ultra Trail.TUT 69/2027/126933",
-          "time_limit_hours": 17.0
-        },
-        {
-          "name": "TUT 21",
-          "distance_km": 21.0,
-          "elevation_gain_m": 850,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Tara Ultra Trail.TUT 21/2027/126932"
-        },
-        {
-          "name": "TUT 12",
-          "distance_km": 12.0,
-          "elevation_gain_m": 440,
-          "url": "https://itra.run/Races/RaceDetails/Tara Ultra Trail.TUT 12/2027/126931"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://prijavise.net/event-details/39"
+      "website": "https://www.oetschertrail.run/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-125825",
@@ -2892,37 +3121,10 @@
         "url": "https://itra.run/Files/Photos/2c5852e7fe7743a4811156d88809ef71.jpg",
         "source": "itra"
       },
-      "website": "https://tihiorace.gr/"
-    },
-    {
-      "id": "itra-127272",
-      "slug": "vidra-gradac-trail",
-      "name": "Vidra Gradac Trail",
-      "country": "Serbia",
-      "country_code": "RS",
-      "city": "Deguric",
-      "date_start": "2027-06-12",
-      "lat": 44.242347717285156,
-      "lng": 19.894794464111328,
-      "registration_url": "https://trka.rs/events/960-gradac-vidra-trail/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Vidra Gradac Trail.Red Race/2027/127272",
-      "distances": [
-        {
-          "name": "Red Race",
-          "distance_km": 15.93,
-          "elevation_gain_m": 595,
-          "url": "https://itra.run/Races/RaceDetails/Vidra Gradac Trail.Red Race/2027/127272",
-          "time_limit_hours": 4.0,
-          "itra_points": 0
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://trka.rs/events/960-gradac-vidra-trail/",
-      "itra_points": 0,
-      "cover": {
-        "url": "https://files.racentr.com/media/uploads/2026/10/09/42.png",
-        "source": "website"
-      }
+      "website": "https://tihiorace.gr/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-124131",
@@ -2967,7 +3169,78 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://my.raceresult.com/423953/registration"
+      "website": "https://my.raceresult.com/423953/registration",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-127272",
+      "slug": "vidra-gradac-trail",
+      "name": "Vidra Gradac Trail",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Deguric",
+      "date_start": "2027-06-12",
+      "lat": 44.242347717285156,
+      "lng": 19.894794464111328,
+      "registration_url": "https://trka.rs/events/960-gradac-vidra-trail/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Vidra Gradac Trail.Red Race/2027/127272",
+      "distances": [
+        {
+          "name": "Red Race",
+          "distance_km": 15.93,
+          "elevation_gain_m": 595,
+          "url": "https://itra.run/Races/RaceDetails/Vidra Gradac Trail.Red Race/2027/127272",
+          "time_limit_hours": 4.0,
+          "itra_points": 0
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://trka.rs/events/960-gradac-vidra-trail/",
+      "itra_points": 0,
+      "cover": {
+        "url": "https://files.racentr.com/media/uploads/2026/10/09/42.png",
+        "source": "website"
+      },
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-126335",
+      "slug": "peja-trail-run",
+      "name": "PEJA TRAIL RUN",
+      "country": "Kosovo",
+      "country_code": "XK",
+      "city": "Peje",
+      "date_start": "2027-06-13",
+      "lat": 42.65904998779297,
+      "lng": 20.288450241088867,
+      "registration_url": "https://pejatrailrun.org/",
+      "itra_url": "https://itra.run/Races/RaceDetails/PEJA TRAIL RUN.LIVADHI ADILIT TRAIL 20 K/2027/126336",
+      "itra_points": 1,
+      "distances": [
+        {
+          "name": "LIVADHI ADILIT TRAIL 20 K",
+          "distance_km": 22.32,
+          "elevation_gain_m": 1039,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/PEJA TRAIL RUN.LIVADHI ADILIT TRAIL 20 K/2027/126336",
+          "time_limit_hours": 6.0
+        },
+        {
+          "name": "LIVADHI SAKES TRAIL 10K",
+          "distance_km": 11.0,
+          "elevation_gain_m": 436,
+          "url": "https://itra.run/Races/RaceDetails/PEJA TRAIL RUN.LIVADHI SAKES TRAIL 10K/2027/126335"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://pejatrailrun.org/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-120959",
@@ -3000,97 +3273,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.pelisterultra.run"
-    },
-    {
-      "id": "itra-126335",
-      "slug": "peja-trail-run",
-      "name": "PEJA TRAIL RUN",
-      "country": "Kosovo",
-      "country_code": "XK",
-      "city": "Peje",
-      "date_start": "2027-06-13",
-      "lat": 42.65904998779297,
-      "lng": 20.288450241088867,
-      "registration_url": "https://pejatrailrun.org/",
-      "itra_url": "https://itra.run/Races/RaceDetails/PEJA TRAIL RUN.LIVADHI ADILIT TRAIL 20 K/2027/126336",
-      "itra_points": 1,
-      "distances": [
-        {
-          "name": "LIVADHI ADILIT TRAIL 20 K",
-          "distance_km": 22.32,
-          "elevation_gain_m": 1039,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/PEJA TRAIL RUN.LIVADHI ADILIT TRAIL 20 K/2027/126336",
-          "time_limit_hours": 6.0
-        },
-        {
-          "name": "LIVADHI SAKES TRAIL 10K",
-          "distance_km": 11.0,
-          "elevation_gain_m": 436,
-          "url": "https://itra.run/Races/RaceDetails/PEJA TRAIL RUN.LIVADHI SAKES TRAIL 10K/2027/126335"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://pejatrailrun.org/"
-    },
-    {
-      "id": "itra-121721",
-      "slug": "vucko-trail",
-      "name": "Vučko Trail",
-      "country": "Bosnia and Herzegovina",
-      "country_code": "BA",
-      "city": "Sarajevo",
-      "date_start": "2027-06-18",
-      "date_end": "2027-06-19",
-      "lat": 43.7157096862793,
-      "lng": 18.284761428833008,
-      "registration_url": "https://vuckotrail.ba/13km-course/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Vučko Trail.105 km/2027/121721",
-      "itra_points": 5,
-      "distances": [
-        {
-          "name": "105 km",
-          "distance_km": 104.6,
-          "elevation_gain_m": 5350,
-          "itra_points": 5,
-          "url": "https://itra.run/Races/RaceDetails/Vučko Trail.105 km/2027/121721",
-          "time_limit_hours": 32.0
-        },
-        {
-          "name": "60 km",
-          "distance_km": 60.0,
-          "elevation_gain_m": 3810,
-          "itra_points": 3,
-          "url": "https://itra.run/Races/RaceDetails/Vučko Trail.60 km/2027/121718"
-        },
-        {
-          "name": "40 km",
-          "distance_km": 40.0,
-          "elevation_gain_m": 1646,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Vučko Trail.40 km/2027/121719"
-        },
-        {
-          "name": "27km",
-          "distance_km": 27.0,
-          "elevation_gain_m": 1300,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Vučko Trail.27km/2027/121722"
-        },
-        {
-          "name": "14 km",
-          "distance_km": 14.0,
-          "elevation_gain_m": 610,
-          "url": "https://itra.run/Races/RaceDetails/Vučko Trail.14 km/2027/121720"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://vuckotrail.ba/105km-course/",
-      "cover": {
-        "url": "https://vuckotrail.ba/wp-content/uploads/2025/11/black-course.webp",
-        "source": "website"
-      }
+      "website": "http://www.pelisterultra.run",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127232",
@@ -3148,7 +3334,114 @@
         "url": "https://itra.run/Files/Photos/dbf63beb48cb4e498a26b7af36a6381c.jpg",
         "source": "itra"
       },
-      "website": "http://www.alpeadriaultra.com/en/alpe-adria-ultra-120/"
+      "website": "http://www.alpeadriaultra.com/en/alpe-adria-ultra-120/",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-121721",
+      "slug": "vucko-trail",
+      "name": "Vučko Trail",
+      "country": "Bosnia and Herzegovina",
+      "country_code": "BA",
+      "city": "Sarajevo",
+      "date_start": "2027-06-18",
+      "date_end": "2027-06-19",
+      "lat": 43.7157096862793,
+      "lng": 18.284761428833008,
+      "registration_url": "https://vuckotrail.ba/13km-course/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Vučko Trail.105 km/2027/121721",
+      "itra_points": 5,
+      "distances": [
+        {
+          "name": "105 km",
+          "distance_km": 104.6,
+          "elevation_gain_m": 5350,
+          "itra_points": 5,
+          "url": "https://itra.run/Races/RaceDetails/Vučko Trail.105 km/2027/121721",
+          "time_limit_hours": 32.0
+        },
+        {
+          "name": "60 km",
+          "distance_km": 60.0,
+          "elevation_gain_m": 3810,
+          "itra_points": 3,
+          "url": "https://itra.run/Races/RaceDetails/Vučko Trail.60 km/2027/121718"
+        },
+        {
+          "name": "40 km",
+          "distance_km": 40.0,
+          "elevation_gain_m": 1646,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Vučko Trail.40 km/2027/121719"
+        },
+        {
+          "name": "27km",
+          "distance_km": 27.0,
+          "elevation_gain_m": 1300,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Vučko Trail.27km/2027/121722"
+        },
+        {
+          "name": "14 km",
+          "distance_km": 14.0,
+          "elevation_gain_m": 610,
+          "url": "https://itra.run/Races/RaceDetails/Vučko Trail.14 km/2027/121720"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://vuckotrail.ba/105km-course/",
+      "cover": {
+        "url": "https://vuckotrail.ba/wp-content/uploads/2025/11/black-course.webp",
+        "source": "website"
+      },
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-126050",
+      "slug": "olympus-marathon",
+      "name": "OLYMPUS MARATHON",
+      "country": "Greece",
+      "country_code": "GR",
+      "city": "Litochoro",
+      "date_start": "2027-06-26",
+      "lat": 40.175559997558594,
+      "lng": 22.493019104003906,
+      "registration_url": "https://www.olympus-marathon.com/index.php/en/race-registration/registration",
+      "itra_url": "https://itra.run/Races/RaceDetails/OLYMPUS MARATHON.Olympus Ultra 73k/2027/126050",
+      "itra_points": 4,
+      "distances": [
+        {
+          "name": "Olympus Ultra 73k",
+          "distance_km": 73.1,
+          "elevation_gain_m": 5536,
+          "itra_points": 4,
+          "url": "https://itra.run/Races/RaceDetails/OLYMPUS MARATHON.Olympus Ultra 73k/2027/126050",
+          "time_limit_hours": 19.0
+        },
+        {
+          "name": "Olympus Marathon 44k",
+          "distance_km": 44.0,
+          "elevation_gain_m": 3270,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/OLYMPUS MARATHON.Olympus Marathon 44k/2027/126049"
+        },
+        {
+          "name": "Winter Enipeas Canyon",
+          "distance_km": 25.0,
+          "elevation_gain_m": 1740,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/OLYMPUS MARATHON.Winter Enipeas Canyon/2027/126051"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://www.olympus-marathon.com/en/register-form/olympus-ultra",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-125814",
@@ -3218,147 +3511,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://soca-outdoor.com/en/registration/"
-    },
-    {
-      "id": "itra-126050",
-      "slug": "olympus-marathon",
-      "name": "OLYMPUS MARATHON",
-      "country": "Greece",
-      "country_code": "GR",
-      "city": "Litochoro",
-      "date_start": "2027-06-26",
-      "lat": 40.175559997558594,
-      "lng": 22.493019104003906,
-      "registration_url": "https://www.olympus-marathon.com/index.php/en/race-registration/registration",
-      "itra_url": "https://itra.run/Races/RaceDetails/OLYMPUS MARATHON.Olympus Ultra 73k/2027/126050",
-      "itra_points": 4,
-      "distances": [
-        {
-          "name": "Olympus Ultra 73k",
-          "distance_km": 73.1,
-          "elevation_gain_m": 5536,
-          "itra_points": 4,
-          "url": "https://itra.run/Races/RaceDetails/OLYMPUS MARATHON.Olympus Ultra 73k/2027/126050",
-          "time_limit_hours": 19.0
-        },
-        {
-          "name": "Olympus Marathon 44k",
-          "distance_km": 44.0,
-          "elevation_gain_m": 3270,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/OLYMPUS MARATHON.Olympus Marathon 44k/2027/126049"
-        },
-        {
-          "name": "Winter Enipeas Canyon",
-          "distance_km": 25.0,
-          "elevation_gain_m": 1740,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/OLYMPUS MARATHON.Winter Enipeas Canyon/2027/126051"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://www.olympus-marathon.com/en/register-form/olympus-ultra"
-    },
-    {
-      "id": "itra-126730",
-      "slug": "coinis-durmitor-trail",
-      "name": "Coinis Durmitor Trail",
-      "country": "Montenegro",
-      "country_code": "ME",
-      "city": "Žabljak",
-      "date_start": "2027-07-03",
-      "date_end": "2027-07-04",
-      "lat": 43.10155487060547,
-      "lng": 19.248212814331055,
-      "registration_url": "https://www.durmitortrail.run/en/register",
-      "itra_url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.100 KM/2027/126730",
-      "itra_points": 4,
-      "distances": [
-        {
-          "name": "100 KM",
-          "distance_km": 103.57,
-          "elevation_gain_m": 4130,
-          "itra_points": 4,
-          "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.100 KM/2027/126730",
-          "time_limit_hours": 12.0
-        },
-        {
-          "name": "50 KM",
-          "distance_km": 50.0,
-          "elevation_gain_m": 2720,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.50 KM/2027/126728"
-        },
-        {
-          "name": "21 KM Five lakes",
-          "distance_km": 21.0,
-          "elevation_gain_m": 1010,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.21 KM Five lakes/2027/126727"
-        },
-        {
-          "name": "14 KM Three lakes",
-          "distance_km": 14.0,
-          "elevation_gain_m": 480,
-          "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.14 KM Three lakes/2027/126729"
-        },
-        {
-          "name": "8 KM",
-          "distance_km": 8.0,
-          "elevation_gain_m": 280,
-          "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.8 KM/2027/126731"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://www.durmitortrail.run/",
-      "cover": {
-        "url": "https://cdn.prod.website-files.com/66098877b8d2e2ff85d16319/66439b6f9e6515ebc3d1a83f_Ilustracija%20sa%20natpisom%201200%20630.png",
-        "source": "website"
-      }
-    },
-    {
-      "id": "itra-121693",
-      "slug": "veitscher-skytrail",
-      "name": "Veitscher Skytrail",
-      "country": "Austria",
-      "country_code": "AT",
-      "city": "Brunnalm St. Barbara im Mürztal",
-      "date_start": "2027-07-03",
-      "lat": 47.632041931152344,
-      "lng": 15.429987907409668,
-      "registration_url": "https://www.veitscherskytrail.run/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Veitscher Skytrail.Marathon Trail/2027/121695",
-      "itra_points": 3,
-      "distances": [
-        {
-          "name": "Marathon Trail",
-          "distance_km": 54.04,
-          "elevation_gain_m": 2502,
-          "itra_points": 3,
-          "url": "https://itra.run/Races/RaceDetails/Veitscher Skytrail.Marathon Trail/2027/121695",
-          "time_limit_hours": 12.0
-        },
-        {
-          "name": "Skyrace",
-          "distance_km": 20.0,
-          "elevation_gain_m": 1920,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Veitscher Skytrail.Skyrace/2027/121694"
-        },
-        {
-          "name": "Speed Trail",
-          "distance_km": 16.0,
-          "elevation_gain_m": 1120,
-          "url": "https://itra.run/Races/RaceDetails/Veitscher Skytrail.Speed Trail/2027/121693"
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://www.veitscherskytrail.run/",
-      "cover": {
-        "url": "https://static.wixstatic.com/media/afb1d3_4e39bc2f5b78427aaa37d92f1df61ba6~mv2.jpg/v1/fill/w_1200,h_630,al_c/afb1d3_4e39bc2f5b78427aaa37d92f1df61ba6~mv2.jpg",
-        "source": "website"
-      }
+      "website": "https://soca-outdoor.com/en/registration/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-121647",
@@ -3429,37 +3585,116 @@
       "cover": {
         "url": "https://carpathiatrails.com/wp-content/uploads/2022/03/homepage_hero_1920x1100-min.jpg",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
-      "id": "itra-127273",
-      "slug": "sova-night-trail",
-      "name": "Sova Night Trail",
-      "country": "Serbia",
-      "country_code": "RS",
-      "city": "Divcibare",
-      "date_start": "2027-07-10",
-      "lat": 44.10472106933594,
-      "lng": 19.991559982299805,
-      "registration_url": "https://trka.rs/events/961-sova-night-trail/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Sova Night Trail.Red Race/2027/127273",
+      "id": "itra-126730",
+      "slug": "coinis-durmitor-trail",
+      "name": "Coinis Durmitor Trail",
+      "country": "Montenegro",
+      "country_code": "ME",
+      "city": "Žabljak",
+      "date_start": "2027-07-03",
+      "date_end": "2027-07-04",
+      "lat": 43.10155487060547,
+      "lng": 19.248212814331055,
+      "registration_url": "https://www.durmitortrail.run/en/register",
+      "itra_url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.100 KM/2027/126730",
+      "itra_points": 4,
       "distances": [
         {
-          "name": "Red Race",
-          "distance_km": 12.82,
-          "elevation_gain_m": 622,
-          "url": "https://itra.run/Races/RaceDetails/Sova Night Trail.Red Race/2027/127273",
-          "time_limit_hours": 4.0,
-          "itra_points": 0
+          "name": "100 KM",
+          "distance_km": 103.57,
+          "elevation_gain_m": 4130,
+          "itra_points": 4,
+          "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.100 KM/2027/126730",
+          "time_limit_hours": 12.0
+        },
+        {
+          "name": "50 KM",
+          "distance_km": 50.0,
+          "elevation_gain_m": 2720,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.50 KM/2027/126728"
+        },
+        {
+          "name": "21 KM Five lakes",
+          "distance_km": 21.0,
+          "elevation_gain_m": 1010,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.21 KM Five lakes/2027/126727"
+        },
+        {
+          "name": "14 KM Three lakes",
+          "distance_km": 14.0,
+          "elevation_gain_m": 480,
+          "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.14 KM Three lakes/2027/126729"
+        },
+        {
+          "name": "8 KM",
+          "distance_km": 8.0,
+          "elevation_gain_m": 280,
+          "url": "https://itra.run/Races/RaceDetails/Coinis Durmitor Trail.8 KM/2027/126731"
         }
       ],
       "source": "itra.run",
-      "website": "https://trka.rs/events/961-sova-night-trail/",
-      "itra_points": 0,
+      "website": "https://www.durmitortrail.run/",
       "cover": {
-        "url": "https://files.racentr.com/media/uploads/2026/10/09/43.png",
+        "url": "https://cdn.prod.website-files.com/66098877b8d2e2ff85d16319/66439b6f9e6515ebc3d1a83f_Ilustracija%20sa%20natpisom%201200%20630.png",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-121693",
+      "slug": "veitscher-skytrail",
+      "name": "Veitscher Skytrail",
+      "country": "Austria",
+      "country_code": "AT",
+      "city": "Brunnalm St. Barbara im Mürztal",
+      "date_start": "2027-07-03",
+      "lat": 47.632041931152344,
+      "lng": 15.429987907409668,
+      "registration_url": "https://www.veitscherskytrail.run/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Veitscher Skytrail.Marathon Trail/2027/121695",
+      "itra_points": 3,
+      "distances": [
+        {
+          "name": "Marathon Trail",
+          "distance_km": 54.04,
+          "elevation_gain_m": 2502,
+          "itra_points": 3,
+          "url": "https://itra.run/Races/RaceDetails/Veitscher Skytrail.Marathon Trail/2027/121695",
+          "time_limit_hours": 12.0
+        },
+        {
+          "name": "Skyrace",
+          "distance_km": 20.0,
+          "elevation_gain_m": 1920,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Veitscher Skytrail.Skyrace/2027/121694"
+        },
+        {
+          "name": "Speed Trail",
+          "distance_km": 16.0,
+          "elevation_gain_m": 1120,
+          "url": "https://itra.run/Races/RaceDetails/Veitscher Skytrail.Speed Trail/2027/121693"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://www.veitscherskytrail.run/",
+      "cover": {
+        "url": "https://static.wixstatic.com/media/afb1d3_4e39bc2f5b78427aaa37d92f1df61ba6~mv2.jpg/v1/fill/w_1200,h_630,al_c/afb1d3_4e39bc2f5b78427aaa37d92f1df61ba6~mv2.jpg",
+        "source": "website"
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-121901",
@@ -3498,7 +3733,43 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://predealforestrun.ro/inscrie-te/"
+      "website": "https://predealforestrun.ro/inscrie-te/",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-127273",
+      "slug": "sova-night-trail",
+      "name": "Sova Night Trail",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Divcibare",
+      "date_start": "2027-07-10",
+      "lat": 44.10472106933594,
+      "lng": 19.991559982299805,
+      "registration_url": "https://trka.rs/events/961-sova-night-trail/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Sova Night Trail.Red Race/2027/127273",
+      "distances": [
+        {
+          "name": "Red Race",
+          "distance_km": 12.82,
+          "elevation_gain_m": 622,
+          "url": "https://itra.run/Races/RaceDetails/Sova Night Trail.Red Race/2027/127273",
+          "time_limit_hours": 4.0,
+          "itra_points": 0
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://trka.rs/events/961-sova-night-trail/",
+      "itra_points": 0,
+      "cover": {
+        "url": "https://files.racentr.com/media/uploads/2026/10/09/43.png",
+        "source": "website"
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126588",
@@ -3558,7 +3829,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://www.uludagultra.com/"
+      "website": "https://www.uludagultra.com/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-126918",
@@ -3584,33 +3858,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://my.raceresult.com/426505/"
-    },
-    {
-      "id": "itra-126919",
-      "slug": "kosiak-panorama-trail-klt-35k",
-      "name": "Kosiak Panorama Trail KLT 35k",
-      "country": "Austria",
-      "country_code": "AT",
-      "city": "Feistritz im Rosental",
-      "date_start": "2027-07-31",
-      "lat": 46.51701354980469,
-      "lng": 14.16950798034668,
-      "registration_url": "https://my.raceresult.com/426505/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Kosiak Panorama Trail KLT 35k.Karawanken Löwen Trail 35k/2027/126919",
-      "itra_points": 2,
-      "distances": [
-        {
-          "name": "Karawanken Löwen Trail 35k",
-          "distance_km": 38.48,
-          "elevation_gain_m": 2394,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Kosiak Panorama Trail KLT 35k.Karawanken Löwen Trail 35k/2027/126919",
-          "time_limit_hours": 0.0
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://my.raceresult.com/426505/"
+      "website": "https://my.raceresult.com/426505/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-123822",
@@ -3643,7 +3894,39 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://my.raceresult.com/426505/"
+      "website": "https://my.raceresult.com/426505/",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-126919",
+      "slug": "kosiak-panorama-trail-klt-35k",
+      "name": "Kosiak Panorama Trail KLT 35k",
+      "country": "Austria",
+      "country_code": "AT",
+      "city": "Feistritz im Rosental",
+      "date_start": "2027-07-31",
+      "lat": 46.51701354980469,
+      "lng": 14.16950798034668,
+      "registration_url": "https://my.raceresult.com/426505/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Kosiak Panorama Trail KLT 35k.Karawanken Löwen Trail 35k/2027/126919",
+      "itra_points": 2,
+      "distances": [
+        {
+          "name": "Karawanken Löwen Trail 35k",
+          "distance_km": 38.48,
+          "elevation_gain_m": 2394,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Kosiak Panorama Trail KLT 35k.Karawanken Löwen Trail 35k/2027/126919",
+          "time_limit_hours": 0.0
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://my.raceresult.com/426505/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127498",
@@ -3690,7 +3973,43 @@
       "cover": {
         "url": "https://media.endu.net/editions/102468/covers/540e72ea-ca26-41de-ae36-cf57712a6f67.jpg?w=1200",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-127274",
+      "slug": "bobija-trail",
+      "name": "Bobija Trail",
+      "country": "Serbia",
+      "country_code": "RS",
+      "city": "Tornik",
+      "date_start": "2027-08-14",
+      "lat": 44.187904357910156,
+      "lng": 19.53493309020996,
+      "registration_url": "https://trka.rs/events/962-bobija-trail/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Bobija Trail.Red Race/2027/127274",
+      "distances": [
+        {
+          "name": "Red Race",
+          "distance_km": 16.42,
+          "elevation_gain_m": 743,
+          "url": "https://itra.run/Races/RaceDetails/Bobija Trail.Red Race/2027/127274",
+          "time_limit_hours": 5.0,
+          "itra_points": 0
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://trka.rs/events/962-bobija-trail/",
+      "itra_points": 0,
+      "cover": {
+        "url": "https://files.racentr.com/media/uploads/2026/10/09/44.png",
+        "source": "website"
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127663",
@@ -3729,37 +4048,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.retezat-maraton-rausor.ro"
-    },
-    {
-      "id": "itra-127274",
-      "slug": "bobija-trail",
-      "name": "Bobija Trail",
-      "country": "Serbia",
-      "country_code": "RS",
-      "city": "Tornik",
-      "date_start": "2027-08-14",
-      "lat": 44.187904357910156,
-      "lng": 19.53493309020996,
-      "registration_url": "https://trka.rs/events/962-bobija-trail/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Bobija Trail.Red Race/2027/127274",
-      "distances": [
-        {
-          "name": "Red Race",
-          "distance_km": 16.42,
-          "elevation_gain_m": 743,
-          "url": "https://itra.run/Races/RaceDetails/Bobija Trail.Red Race/2027/127274",
-          "time_limit_hours": 5.0,
-          "itra_points": 0
-        }
-      ],
-      "source": "itra.run",
-      "website": "https://trka.rs/events/962-bobija-trail/",
-      "itra_points": 0,
-      "cover": {
-        "url": "https://files.racentr.com/media/uploads/2026/10/09/44.png",
-        "source": "website"
-      }
+      "website": "http://www.retezat-maraton-rausor.ro",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-125167",
@@ -3810,7 +4102,10 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.sardon.run"
+      "website": "http://www.sardon.run",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-124047",
@@ -3843,7 +4138,72 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://ribncatrail.si/"
+      "website": "https://ribncatrail.si/",
+      "sources": [
+        "itra.run"
+      ]
+    },
+    {
+      "id": "itra-123749",
+      "slug": "torlauf-dachstein",
+      "name": "Torlauf Dachstein",
+      "country": "Austria",
+      "country_code": "AT",
+      "city": "Ramsau am Dachstein",
+      "date_start": "2027-09-04",
+      "lat": 47.422550201416016,
+      "lng": 13.654020309448242,
+      "registration_url": "https://www.torlauf-dachstein.info/infos",
+      "itra_url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Ultra/2027/123752",
+      "itra_points": 4,
+      "distances": [
+        {
+          "name": "Ultra",
+          "distance_km": 71.97,
+          "elevation_gain_m": 4307,
+          "itra_points": 4,
+          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Ultra/2027/123752",
+          "time_limit_hours": 15.0
+        },
+        {
+          "name": "Marathon",
+          "distance_km": 42.0,
+          "elevation_gain_m": 2590,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Marathon/2027/123748"
+        },
+        {
+          "name": "Halbmarathon",
+          "distance_km": 24.0,
+          "elevation_gain_m": 510,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Halbmarathon/2027/123749"
+        },
+        {
+          "name": "Skyrace Torlauf Dachstein",
+          "distance_km": 24.0,
+          "elevation_gain_m": 2210,
+          "itra_points": 2,
+          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Skyrace Torlauf Dachstein/2027/124680"
+        },
+        {
+          "name": "10k",
+          "distance_km": 10.0,
+          "elevation_gain_m": 150,
+          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.10k/2027/123750"
+        },
+        {
+          "name": "Torlauf Dachstein Teamrun",
+          "distance_km": 10.0,
+          "elevation_gain_m": 150,
+          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Torlauf Dachstein Teamrun/2027/123751"
+        }
+      ],
+      "source": "itra.run",
+      "website": "https://time2win.at/event/869/registration/identity",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-123590",
@@ -3910,66 +4270,37 @@
         }
       ],
       "source": "itra.run",
-      "website": "https://infinite-trails.com/en/registration/"
+      "website": "https://infinite-trails.com/en/registration/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
-      "id": "itra-123749",
-      "slug": "torlauf-dachstein",
-      "name": "Torlauf Dachstein",
-      "country": "Austria",
-      "country_code": "AT",
-      "city": "Ramsau am Dachstein",
-      "date_start": "2027-09-04",
-      "lat": 47.422550201416016,
-      "lng": 13.654020309448242,
-      "registration_url": "https://www.torlauf-dachstein.info/infos",
-      "itra_url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Ultra/2027/123752",
-      "itra_points": 4,
+      "id": "itra-120667",
+      "slug": "croatie-montenegro-trail-challenge-trail-to-be-alive",
+      "name": "Croatie Monténegro Trail Challenge Trail To Be Alive",
+      "country": "Croatia",
+      "country_code": "HR",
+      "city": "Dubrovnik",
+      "date_start": "2027-09-18",
+      "lat": 42.65066146850586,
+      "lng": 18.094423294067383,
+      "registration_url": "https://www.trailtobealive.com/",
+      "itra_url": "https://itra.run/Races/RaceDetails/Croatie Monténegro Trail Challenge Trail To Be Alive.Croatie Monténégro Trail Challenge /2027/120667",
       "distances": [
         {
-          "name": "Ultra",
-          "distance_km": 71.97,
-          "elevation_gain_m": 4307,
-          "itra_points": 4,
-          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Ultra/2027/123752",
-          "time_limit_hours": 15.0
-        },
-        {
-          "name": "Marathon",
-          "distance_km": 42.0,
-          "elevation_gain_m": 2590,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Marathon/2027/123748"
-        },
-        {
-          "name": "Halbmarathon",
-          "distance_km": 24.0,
-          "elevation_gain_m": 510,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Halbmarathon/2027/123749"
-        },
-        {
-          "name": "Skyrace Torlauf Dachstein",
-          "distance_km": 24.0,
-          "elevation_gain_m": 2210,
-          "itra_points": 2,
-          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Skyrace Torlauf Dachstein/2027/124680"
-        },
-        {
-          "name": "10k",
-          "distance_km": 10.0,
-          "elevation_gain_m": 150,
-          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.10k/2027/123750"
-        },
-        {
-          "name": "Torlauf Dachstein Teamrun",
-          "distance_km": 10.0,
-          "elevation_gain_m": 150,
-          "url": "https://itra.run/Races/RaceDetails/Torlauf Dachstein.Torlauf Dachstein Teamrun/2027/123751"
+          "name": "Croatie Monténégro Trail Challenge",
+          "distance_km": 96.0,
+          "elevation_gain_m": 3500,
+          "url": "https://itra.run/Races/RaceDetails/Croatie Monténegro Trail Challenge Trail To Be Alive.Croatie Monténégro Trail Challenge /2027/120667",
+          "time_limit_hours": 25.0
         }
       ],
       "source": "itra.run",
-      "website": "https://time2win.at/event/869/registration/identity"
+      "website": "https://www.trailtobealive.com/",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127145",
@@ -4002,31 +4333,56 @@
         }
       ],
       "source": "itra.run",
-      "website": "http://www.ungetuem.at"
+      "website": "http://www.ungetuem.at",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
-      "id": "itra-120667",
-      "slug": "croatie-montenegro-trail-challenge-trail-to-be-alive",
-      "name": "Croatie Monténegro Trail Challenge Trail To Be Alive",
-      "country": "Croatia",
-      "country_code": "HR",
-      "city": "Dubrovnik",
-      "date_start": "2027-09-18",
-      "lat": 42.65066146850586,
-      "lng": 18.094423294067383,
-      "registration_url": "https://www.trailtobealive.com/",
-      "itra_url": "https://itra.run/Races/RaceDetails/Croatie Monténegro Trail Challenge Trail To Be Alive.Croatie Monténégro Trail Challenge /2027/120667",
+      "id": "itra-125648",
+      "slug": "alpin-team-trail",
+      "name": "Alpin Team Trail",
+      "country": "Austria",
+      "country_code": "AT",
+      "city": "Werfenweng",
+      "date_start": "2027-09-25",
+      "lat": 47.46159744262695,
+      "lng": 13.256803512573242,
+      "registration_url": "https://www.alpinteamtrail.at",
+      "itra_url": "https://itra.run/Races/RaceDetails/Alpin Team Trail.ATT K50/2027/125649",
+      "itra_points": 3,
       "distances": [
         {
-          "name": "Croatie Monténégro Trail Challenge",
-          "distance_km": 96.0,
-          "elevation_gain_m": 3500,
-          "url": "https://itra.run/Races/RaceDetails/Croatie Monténegro Trail Challenge Trail To Be Alive.Croatie Monténégro Trail Challenge /2027/120667",
-          "time_limit_hours": 25.0
+          "name": "ATT K50",
+          "distance_km": 53.55,
+          "elevation_gain_m": 3556,
+          "itra_points": 3,
+          "url": "https://itra.run/Races/RaceDetails/Alpin Team Trail.ATT K50/2027/125649",
+          "time_limit_hours": 12.0
+        },
+        {
+          "name": "ATT K23",
+          "distance_km": 23.0,
+          "elevation_gain_m": 1520,
+          "itra_points": 1,
+          "url": "https://itra.run/Races/RaceDetails/Alpin Team Trail.ATT K23/2027/125648"
+        },
+        {
+          "name": "ATT K10",
+          "distance_km": 10.0,
+          "elevation_gain_m": 390,
+          "url": "https://itra.run/Races/RaceDetails/Alpin Team Trail.ATT K10/2027/125650"
         }
       ],
       "source": "itra.run",
-      "website": "https://www.trailtobealive.com/"
+      "cover": {
+        "url": "https://itra.run/Files/Photos/79870875584d44cdb050b75cace2e6cc.png",
+        "source": "itra"
+      },
+      "website": "http://www.alpinteamtrail.at",
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127278",
@@ -4056,7 +4412,10 @@
       "cover": {
         "url": "https://files.racentr.com/media/uploads/2026/10/09/46.png",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-124673",
@@ -4113,50 +4472,10 @@
       "cover": {
         "url": "https://k3ultra.bg/wp-content/uploads/2026/09/k3_program_bg.jpeg",
         "source": "website"
-      }
-    },
-    {
-      "id": "itra-125648",
-      "slug": "alpin-team-trail",
-      "name": "Alpin Team Trail",
-      "country": "Austria",
-      "country_code": "AT",
-      "city": "Werfenweng",
-      "date_start": "2027-09-25",
-      "lat": 47.46159744262695,
-      "lng": 13.256803512573242,
-      "registration_url": "https://www.alpinteamtrail.at",
-      "itra_url": "https://itra.run/Races/RaceDetails/Alpin Team Trail.ATT K50/2027/125649",
-      "itra_points": 3,
-      "distances": [
-        {
-          "name": "ATT K50",
-          "distance_km": 53.55,
-          "elevation_gain_m": 3556,
-          "itra_points": 3,
-          "url": "https://itra.run/Races/RaceDetails/Alpin Team Trail.ATT K50/2027/125649",
-          "time_limit_hours": 12.0
-        },
-        {
-          "name": "ATT K23",
-          "distance_km": 23.0,
-          "elevation_gain_m": 1520,
-          "itra_points": 1,
-          "url": "https://itra.run/Races/RaceDetails/Alpin Team Trail.ATT K23/2027/125648"
-        },
-        {
-          "name": "ATT K10",
-          "distance_km": 10.0,
-          "elevation_gain_m": 390,
-          "url": "https://itra.run/Races/RaceDetails/Alpin Team Trail.ATT K10/2027/125650"
-        }
-      ],
-      "source": "itra.run",
-      "cover": {
-        "url": "https://itra.run/Files/Photos/79870875584d44cdb050b75cace2e6cc.png",
-        "source": "itra"
       },
-      "website": "http://www.alpinteamtrail.at"
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127360",
@@ -4199,7 +4518,10 @@
       "cover": {
         "url": "https://www.rebeltrails.oldelm.eu/wp-content/uploads/2017/10/liniq.png",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127518",
@@ -4227,7 +4549,10 @@
       "cover": {
         "url": "https://files.racentr.com/media/uploads/2026/10/09/47.png",
         "source": "website"
-      }
+      },
+      "sources": [
+        "itra.run"
+      ]
     },
     {
       "id": "itra-127141",
@@ -4255,7 +4580,10 @@
         "url": "https://itra.run/Files/Photos/b3a5f5178c5643489129a10ddfb8218b.png",
         "source": "itra"
       },
-      "website": "http://www.digitalrace.it/gare"
+      "website": "http://www.digitalrace.it/gare",
+      "sources": [
+        "itra.run"
+      ]
     }
   ]
 }

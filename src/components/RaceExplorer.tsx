@@ -13,9 +13,10 @@ import {
   Select,
   Text,
 } from "@once-ui-system/core";
+import { useSearchParams } from "next/navigation";
 import { useMemo, useState, useSyncExternalStore } from "react";
-import { buckets, daysUntil, matches, toDate } from "../lib/race-utils";
-import type { DistanceBucket, Race, RaceFilters } from "../lib/types";
+import { buckets, daysUntil, matches, seriesName, toDate } from "../lib/race-utils";
+import type { DistanceBucket, Race, RaceFilters, RaceSeries } from "../lib/types";
 import { RaceCalendar } from "./RaceCalendar";
 import { RaceCards } from "./RaceCards";
 import { RaceList } from "./RaceList";
@@ -52,14 +53,27 @@ function saveView(view: View) {
   window.dispatchEvent(new Event(VIEW_KEY));
 }
 
-const defaultFilters: RaceFilters = { country: "all", distance: "all", itraOnly: false, search: "" };
+const defaultFilters: RaceFilters = { country: "all", series: "all", distance: "all", itraOnly: false, search: "" };
 
 const monthName = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" });
 const updatedFmt = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
 
-export function RaceExplorer({ races, crawledAt }: { races: Race[]; crawledAt: string }) {
+export function RaceExplorer({
+  races,
+  series,
+  crawledAt,
+}: {
+  races: Race[];
+  series: RaceSeries[];
+  crawledAt: string;
+}) {
   const view = useSyncExternalStore(subscribeView, readView, () => "list" as View);
-  const [filters, setFilters] = useState<RaceFilters>(defaultFilters);
+  // A race page links here with ?series=wst to show that series.
+  const seriesParam = useSearchParams().get("series");
+  const [filters, setFilters] = useState<RaceFilters>(() => ({
+    ...defaultFilters,
+    series: series.some((s) => s.slug === seriesParam) ? (seriesParam as string) : "all",
+  }));
   const [month, setMonth] = useState<Date>(() => {
     const first = races[0] ? toDate(races[0].date_start) : new Date();
     return new Date(first.getFullYear(), first.getMonth(), 1);
@@ -85,7 +99,7 @@ export function RaceExplorer({ races, crawledAt }: { races: Race[]; crawledAt: s
   }, [matching, monthOnly, month, view]);
   const next = races.find((r) => daysUntil(r.date_start) >= 0);
   const filtered =
-    monthOnly || filters.country !== "all" || filters.distance !== "all" || filters.itraOnly || filters.search !== "";
+    monthOnly || filters.country !== "all" || filters.series !== "all" || filters.distance !== "all" || filters.itraOnly || filters.search !== "";
   const clearAll = () => {
     setFilters(defaultFilters);
     setMonthOnly(false);
@@ -147,6 +161,25 @@ export function RaceExplorer({ races, crawledAt }: { races: Race[]; crawledAt: s
               options={[{ value: "all", label: "All countries" }, ...countries]}
             />
           </Row>
+          {series.length > 0 && (
+            <Row minWidth="12rem" s={{ minWidth: "0", width: "100%" }}>
+              <Select
+                id="race-series"
+                size="xxs"
+                label="Series"
+                value={filters.series}
+                onValueChange={(v) => set({ series: v as string })}
+                options={[
+                  { value: "all", label: "All series" },
+                  ...series.map((s) => ({
+                    value: s.slug,
+                    label: seriesName(s.title).short,
+                    description: seriesName(s.title).long,
+                  })),
+                ]}
+              />
+            </Row>
+          )}
           <Checkbox
             label="ITRA points only"
             checked={filters.itraOnly}
