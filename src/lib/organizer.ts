@@ -1,5 +1,6 @@
 import "server-only";
 
+import { cacheTag } from "next/cache";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { parseGpx } from "./gpx";
@@ -60,7 +61,7 @@ export async function storeUpload(id: string, file: File, name: string): Promise
 }
 
 export async function newSubmissionId(): Promise<string> {
-  const existing = new Set((await listSubmissions()).map((s) => s.id));
+  const existing = new Set((await readJson<Submission[]>(SUBMISSIONS, [])).map((s) => s.id));
   let id = reference();
   while (existing.has(id)) id = reference();
   return id;
@@ -73,7 +74,13 @@ export async function createSubmission(submission: Submission): Promise<Submissi
   return submission;
 }
 
+// Cached so pages can prerender; the server actions expire these tags on every write.
+export const SUBMISSIONS_TAG = "organizer-submissions";
+export const PUBLISHED_TAG = "organizer-published";
+
 export async function listSubmissions(status?: SubmissionStatus): Promise<Submission[]> {
+  "use cache";
+  cacheTag(SUBMISSIONS_TAG);
   const all = await readJson<Submission[]>(SUBMISSIONS, []);
   return all
     .filter((s) => !status || s.status === status)
@@ -86,6 +93,8 @@ export async function getSubmission(id: string): Promise<Submission | null> {
 
 /** Races organisers published, keyed by race id; they override the demo data. */
 export async function getPublished(): Promise<Race[]> {
+  "use cache";
+  cacheTag(PUBLISHED_TAG);
   return readJson<Race[]>(PUBLISHED, []);
 }
 
@@ -177,7 +186,7 @@ export async function reviewSubmission(
   if (!s) throw new Error(`No submission ${id}`);
 
   if (decision === "approved") {
-    const published = await getPublished();
+    const published = await readJson<Race[]>(PUBLISHED, []);
     const existing = s.claim ? (published.find((r) => r.id === s.claim?.raceId) ?? (await findListed(s.claim.raceId))) : undefined;
     const race = await toRace(s, existing);
     const taken = new Set(published.filter((r) => r.id !== race.id).map((r) => r.slug));
@@ -191,4 +200,12 @@ export async function reviewSubmission(
   s.review_note = note || undefined;
   await writeJson(SUBMISSIONS, all);
   return s;
+}
+
+/** The elevation track of an uploaded GPX, for the review preview. */
+export async function readUploadedTrack(gpxUrl: string) {
+  "use cache";
+  cacheTag(SUBMISSIONS_TAG);
+  const xml = await readFile(path.join(process.cwd(), "public", gpxUrl), "utf8").catch(() => "");
+  return xml ? parseGpx(xml) : null;
 }

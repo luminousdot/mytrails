@@ -1,13 +1,17 @@
+import { getDictionary, intlLocale, type Locale } from "../i18n";
 import type { DistanceBucket, Race, RaceFilters } from "./types";
 
 type Tone = "neutral" | "brand" | "accent" | "info" | "success" | "warning" | "danger";
 
-export const buckets: Record<DistanceBucket, { label: string; range: string; tone: Tone }> = {
-  short: { label: "Short", range: "under 21 km", tone: "success" },
-  marathon: { label: "Marathon", range: "21–44 km", tone: "accent" },
-  long: { label: "Long", range: "45–79 km", tone: "warning" },
-  ultra: { label: "Ultra", range: "80 km+", tone: "danger" },
+/** Distance buckets and their fixed colours; the words are in the dictionaries (t.buckets). */
+export const buckets: Record<DistanceBucket, { tone: Tone }> = {
+  short: { tone: "success" },
+  marathon: { tone: "accent" },
+  long: { tone: "warning" },
+  ultra: { tone: "danger" },
 };
+
+export const bucketKeys = Object.keys(buckets) as DistanceBucket[];
 
 export function longest(race: Race) {
   return race.distances[0];
@@ -51,43 +55,64 @@ export function toDate(iso: string): Date {
   return new Date(y, m - 1, d);
 }
 
-const dayFmt = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short" });
-const fullFmt = new Intl.DateTimeFormat("en-GB", {
-  weekday: "short",
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-});
+const formats = new Map<string, Intl.DateTimeFormat>();
+function dateFmt(lang: Locale, kind: "day" | "full" | "dayYear"): Intl.DateTimeFormat {
+  const key = `${lang}:${kind}`;
+  if (!formats.has(key)) {
+    const opts: Intl.DateTimeFormatOptions =
+      kind === "full"
+        ? { weekday: "short", day: "numeric", month: "long", year: "numeric" }
+        : kind === "dayYear"
+          ? { day: "numeric", month: "short", year: "numeric" }
+          : { day: "numeric", month: "short" };
+    formats.set(key, new Intl.DateTimeFormat(intlLocale[lang], opts));
+  }
+  return formats.get(key)!;
+}
+
+/** A date in the given language with the given Intl options (months, weekdays…). */
+export function formatDate(lang: Locale, date: Date, opts: Intl.DateTimeFormatOptions): string {
+  return new Intl.DateTimeFormat(intlLocale[lang], opts).format(date);
+}
 
 /**
- * "28 Nov", or "7 Mar 2027" with `withYear` when the race is not this year
- * (the calendar runs a year ahead, so a bare "7 Mar" is ambiguous).
+ * "28 Nov" / "28. nov", or with `withYear` "7 Mar 2027" when the race is not
+ * this year (the calendar runs a year ahead, so a bare "7 Mar" is ambiguous).
  */
-export function formatDates(race: Race, full = false, withYear = false): string {
-  const fmt = full ? fullFmt : dayFmt;
+export function formatDates(race: Race, lang: Locale, full = false, withYear: boolean | "always" = false): string {
   const start = toDate(race.date_start);
   const end = race.date_end ? toDate(race.date_end) : null;
-  const year = withYear && !full && (end ?? start).getFullYear() !== new Date().getFullYear()
-    ? ` ${(end ?? start).getFullYear()}`
-    : "";
-  if (!end) return `${fmt.format(start)}${year}`;
-  return `${dayFmt.format(start)} – ${fmt.format(end)}${year}`;
+  // "always" needs no clock, so server components can prerender with it.
+  const otherYear =
+    !full && (withYear === "always" || (withYear && (end ?? start).getFullYear() !== new Date().getFullYear()));
+  const last = full ? dateFmt(lang, "full") : otherYear ? dateFmt(lang, "dayYear") : dateFmt(lang, "day");
+  if (!end) return last.format(start);
+  return `${dateFmt(lang, "day").format(start)} – ${last.format(end)}`;
 }
 
-export function formatKm(km?: number): string {
+export function formatNumber(n: number, lang: Locale, digits = 0): string {
+  return new Intl.NumberFormat(intlLocale[lang], { maximumFractionDigits: digits }).format(n);
+}
+
+export function formatKm(km: number | undefined, lang: Locale): string {
   if (km == null) return "–";
-  return `${Number.isInteger(km) ? km : km.toFixed(1)} km`;
+  return `${formatNumber(km, lang, 1)} km`;
 }
 
-export function formatGain(m?: number): string {
+export function formatGain(m: number | undefined, lang: Locale): string {
   if (m == null) return "–";
-  return `${m.toLocaleString("en-GB")} m D+`;
+  return `${formatNumber(m, lang)} m D+`;
 }
 
-export function place(race: Race): string {
+export function countryName(country: string, lang: Locale): string {
+  return getDictionary(lang).countries[country] ?? country;
+}
+
+export function place(race: Race, lang: Locale): string {
   // ITRA sometimes puts a full street address in the city field.
   const city = race.city && race.city.length < 30 ? race.city : undefined;
-  return city ? `${city}, ${race.country}` : race.country;
+  const country = countryName(race.country, lang);
+  return city ? `${city}, ${country}` : country;
 }
 
 export function daysUntil(iso: string, now = new Date()): number {

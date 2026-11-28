@@ -1,12 +1,15 @@
 "use client";
 
-import { Card, Column, Grid, Row, Tag, Text } from "@once-ui-system/core";
-import { buckets, daysUntil, seriesName, formatGain, formatKm, longest, place, raceBucket, toDate } from "../lib/race-utils";
+import {BucketTag, ItraTag, SeriesTag } from "./RaceTags";
+import { Card, Column, Grid, Row, Text } from "@once-ui-system/core";
+import { daysUntil, formatDate, formatGain, formatKm, longest, place, raceBucket, toDate } from "../lib/race-utils";
+import { fill, localePath } from "../i18n";
+import { useI18n } from "../i18n/I18nProvider";
+import { startsIn } from "../i18n/words";
 import type { Race } from "../lib/types";
+import { Hint } from "./Hint";
 import { RaceCover } from "./RaceCover";
 
-const dayFmt = new Intl.DateTimeFormat("en-GB", { day: "numeric" });
-const monthFmt = new Intl.DateTimeFormat("en-GB", { month: "short" });
 
 export function RaceCards({ races }: { races: Race[] }) {
   return (
@@ -21,14 +24,15 @@ export function RaceCards({ races }: { races: Race[] }) {
 }
 
 function RaceCard({ race }: { race: Race }) {
+  const { lang, t } = useI18n();
   const top = longest(race);
-  const b = buckets[raceBucket(race)];
+  const bucket = raceBucket(race);
   const start = toDate(race.date_start);
   const days = daysUntil(race.date_start);
   const others = race.distances.length - 1;
 
   return (
-    <Card href={`/races/${race.slug}`} fillHeight direction="column" style={{ width: "100%", overflow: "hidden" }}>
+    <Card href={localePath(lang, `/races/${race.slug}`)} fillHeight direction="column" style={{ width: "100%", overflow: "hidden" }}>
       <Column fillWidth height="160px">
         <RaceCover race={race} />
       </Column>
@@ -44,10 +48,10 @@ function RaceCard({ race }: { race: Race }) {
             aria-hidden
           >
             <Text textVariant="heading-strong-l" onBackground="brand-strong">
-              {dayFmt.format(start)}
+              {formatDate(lang, start, { day: "numeric" })}
             </Text>
             <Text textVariant="label-default-s" onBackground="brand-medium">
-              {monthFmt.format(start)}
+              {formatDate(lang, start, { month: "short" })}
             </Text>
             {start.getFullYear() !== new Date().getFullYear() && (
               <Text textVariant="label-default-xs" onBackground="brand-medium">
@@ -60,7 +64,7 @@ function RaceCard({ race }: { race: Race }) {
               {race.name}
             </Text>
             <Text textVariant="body-default-s" onBackground="neutral-weak">
-              {place(race)}
+              {place(race, lang)}
             </Text>
           </Column>
         </Row>
@@ -68,39 +72,35 @@ function RaceCard({ race }: { race: Race }) {
         <Row gap="24" vertical="end" marginTop="auto">
           <Column gap="2">
             <Text textVariant="label-default-s" onBackground="neutral-weak">
-              Longest
+              {t.common.longest}
             </Text>
-            <Text textVariant="heading-strong-s">{formatKm(top?.distance_km)}</Text>
+            <Text textVariant="heading-strong-s">{formatKm(top?.distance_km, lang)}</Text>
           </Column>
           <Column gap="2">
-            <Text textVariant="label-default-s" onBackground="neutral-weak">
-              Climb
-            </Text>
-            <Text textVariant="heading-strong-s">{formatGain(top?.elevation_gain_m)}</Text>
+            <Hint text={t.hints.climb}>
+              <Text textVariant="label-default-s" onBackground="neutral-weak">
+                {t.common.climb}
+              </Text>
+            </Hint>
+            <Text textVariant="heading-strong-s">{formatGain(top?.elevation_gain_m, lang)}</Text>
           </Column>
         </Row>
 
         <Row gap="8" wrap vertical="center" borderTop paddingTop="12">
-          <Tag size="s" tone={b.tone}>
-            {b.label}
-          </Tag>
+          <BucketTag bucket={bucket} />
           {race.series?.map((s) => (
-            <Tag key={s.slug} size="s" tone="brand" prefixIcon="flag">
-              {seriesName(s.title).short}
-            </Tag>
+            <SeriesTag key={s.slug} title={s.title} />
           ))}
           {race.itra_points ? (
-            <Tag size="s" prefixIcon="medal">
-              {`${race.itra_points} ITRA`}
-            </Tag>
+            <ItraTag points={race.itra_points} />
           ) : null}
           {others > 0 && (
             <Text textVariant="body-default-s" onBackground="neutral-weak">
-              +{others} shorter
+              {fill(t.common.shorter, { n: others })}
             </Text>
           )}
           <Text textVariant="body-default-s" onBackground="neutral-weak" style={{ marginLeft: "auto" }}>
-            {days === 0 ? "Today" : days === 1 ? "Tomorrow" : `In ${days} days`}
+            {startsIn(lang, days)}
           </Text>
         </Row>
       </Column>

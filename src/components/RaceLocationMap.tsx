@@ -3,9 +3,12 @@
 import { Column } from "@once-ui-system/core";
 import { Map as TrailMap, MapMarkers, MapPin } from "@once-ui-system/core/map";
 import { buckets, raceBucket } from "../lib/race-utils";
+import { fill } from "../i18n";
+import { useI18n } from "../i18n/I18nProvider";
 import type { Race } from "../lib/types";
 
 export function RaceLocationMap({ race }: { race: Race }) {
+  const { t } = useI18n();
   const position: [number, number] = [race.lng, race.lat];
   return (
     <Column height="24rem" radius="l" border overflow="hidden">
@@ -13,7 +16,7 @@ export function RaceLocationMap({ race }: { race: Race }) {
         <MapMarkers
           items={[{ id: race.id, position }]}
           renderItem={() => (
-            <MapPin icon="flag" tone={buckets[raceBucket(race)].tone} aria-label={`${race.name} start area`} />
+            <MapPin icon="flag" tone={buckets[raceBucket(race)].tone} aria-label={fill(t.race.startArea2, { name: race.name })} />
           )}
         />
       </TrailMap>

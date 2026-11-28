@@ -51,7 +51,8 @@ export function MapCover({ race }: { race: Race }) {
             width: COLS * TILE,
             height: ROWS * TILE,
             flexWrap: "wrap",
-            transform: `translate(calc(50cqw - ${offsetX}px), calc(50cqh - ${offsetY}px))`,
+            // Rounded so the server and the browser print the same number (no hydration mismatch).
+            transform: `translate(calc(50cqw - ${offsetX.toFixed(1)}px), calc(50cqh - ${offsetY.toFixed(1)}px))`,
           }}
         >
           {tiles.map((t) => (

@@ -1,10 +1,21 @@
 import { Column } from "@once-ui-system/core";
-import { RaceHeader } from "../components/RaceHeader";
-import { RaceExplorer } from "../components/RaceExplorer";
-import { TopBar } from "../components/TopBar";
-import { getRaces } from "../lib/races";
+import { RaceHeader } from "../../components/RaceHeader";
+import { RaceExplorer } from "../../components/RaceExplorer";
+import { TopBar } from "../../components/TopBar";
+import { getRaces } from "../../lib/races";
 import { Suspense } from "react";
 import Loading from "./loading";
+import type { Metadata } from "next";
+import { intlLocale, locales } from "../../i18n";
+import { pageLang } from "../../i18n/server";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { t } = await pageLang(params);
+  return {
+    description: t.meta.description,
+    alternates: { languages: Object.fromEntries(locales.map((l) => [intlLocale[l], `/${l}`])) },
+  };
+}
 
 export default async function Home() {
   const { races, series, crawled_at } = await getRaces();

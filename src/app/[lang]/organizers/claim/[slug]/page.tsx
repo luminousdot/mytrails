@@ -1,20 +1,25 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { OrganizerShell } from "../../../../components/organizer/OrganizerShell";
-import { PageIntro } from "../../../../components/organizer/PageIntro";
-import { RaceForm } from "../../../../components/organizer/RaceForm";
-import { emptyDistance, type RaceDraft } from "../../../../lib/organizer-types";
-import { getRace, getRaces } from "../../../../lib/races";
-import type { Race } from "../../../../lib/types";
+import { OrganizerShell } from "../../../../../components/organizer/OrganizerShell";
+import { PageIntro } from "../../../../../components/organizer/PageIntro";
+import { RaceForm } from "../../../../../components/organizer/RaceForm";
+import { emptyDistance, type RaceDraft } from "../../../../../lib/organizer-types";
+import { getRace, getRaces } from "../../../../../lib/races";
+import type { Race } from "../../../../../lib/types";
+import { fill, localePath, locales } from "../../../../../i18n";
+import { pageLang } from "../../../../../i18n/server";
+
+type Props = { params: Promise<{ lang: string; slug: string }> };
 
 export async function generateStaticParams() {
   const { races } = await getRaces();
-  return races.map((r) => ({ slug: r.slug }));
+  return locales.flatMap((lang) => races.map((r) => ({ lang, slug: r.slug })));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { t } = await pageLang(params);
   const race = await getRace((await params).slug);
-  return { title: race ? `Claim ${race.name}` : "Claim a race" };
+  return { title: race ? fill(t.org.claimPageTitle, { name: race.name }) : t.org.claimCrumb };
 }
 
 /** What we list today, as a starting point the organiser corrects. */
@@ -42,7 +47,8 @@ function toDraft(race: Race): RaceDraft {
   };
 }
 
-export default async function ClaimPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ClaimPage({ params }: Props) {
+  const { lang, t } = await pageLang(params);
   const race = await getRace((await params).slug);
   if (!race) notFound();
 
@@ -50,12 +56,12 @@ export default async function ClaimPage({ params }: { params: Promise<{ slug: st
     <OrganizerShell>
       <PageIntro
         crumbs={[
-          { label: "For organisers", href: "/organizers" },
-          { label: race.name, href: `/races/${race.slug}` },
-          { label: "Claim" },
+          { label: t.org.crumb, href: localePath(lang, "/organizers") },
+          { label: race.name, href: localePath(lang, `/races/${race.slug}`) },
+          { label: t.org.claimCrumb },
         ]}
-        title={`Claim ${race.name}`}
-        lead="We filled this in from what we list today. Correct anything that's wrong, add your course files, aid stations and photos, and we'll switch the page to your details once we've confirmed it's yours."
+        title={fill(t.org.claimPageTitle, { name: race.name })}
+        lead={t.org.claimLead}
       />
       <RaceForm mode="claim" initial={toDraft(race)} claim={{ slug: race.slug, name: race.name }} />
     </OrganizerShell>
