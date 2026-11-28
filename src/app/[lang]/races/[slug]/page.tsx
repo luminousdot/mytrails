@@ -99,8 +99,8 @@ export default async function RacePage({ params }: { params: Params }) {
           {raceSeries.map((s) => (
             <Row
               key={s.slug}
-              background="brand-alpha-weak"
-              border="brand-alpha-medium"
+              background="accent-alpha-weak"
+              border="accent-alpha-medium"
               radius="l"
               paddingX="20"
               paddingY="16"
@@ -110,7 +110,7 @@ export default async function RacePage({ params }: { params: Params }) {
               s={{ direction: "column", horizontal: "start" }}
             >
               <Column gap="4">
-                <Text textVariant="label-default-s" onBackground="brand-medium">
+                <Text textVariant="label-default-s" onBackground="accent-medium">
                   {r.partOfSeries}
                 </Text>
                 <Text textVariant="heading-strong-m">

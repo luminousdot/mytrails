@@ -163,13 +163,16 @@ export function RaceExplorer({
   const distanceControl = (wide: boolean) => (
     <SegmentedControl
       fillWidth={wide}
+      // Without the sliding indicator, the selected option shows its own brand tone.
+      sliding={false}
       semantics="radio"
       aria-label={t.filters.distance}
       value={filters.distance}
       onValueChange={(v) => set({ distance: v as RaceFilters["distance"] })}
       buttons={[
-        { value: "all", label: wide ? t.filters.any : t.filters.anyDistance },
+        { value: "all", label: wide ? t.filters.any : t.filters.anyDistance, tone: "brand" as const },
         ...bucketKeys.map((b) => ({
+          tone: "brand" as const,
           value: b,
           label: t.buckets[b].label,
           tooltip: t.buckets[b].range,
@@ -182,14 +185,15 @@ export function RaceExplorer({
       // The saved view is only known after hydration; remount so the indicator follows it.
       key={`view-${view}`}
       fillWidth={wide}
+      sliding={false}
       aria-label={t.filters.view}
       value={view}
       onValueChange={(v) => saveView(v as View)}
       buttons={[
-        { value: "list", label: t.filters.list, prefixIcon: "list" },
-        { value: "cards", label: t.filters.cards, prefixIcon: "grid" },
-        { value: "map", label: t.filters.map, prefixIcon: "map" },
-        { value: "calendar", label: t.filters.calendar, prefixIcon: "calendar" },
+        { tone: "brand" as const, value: "list", label: t.filters.list, prefixIcon: "list" },
+        { tone: "brand" as const, value: "cards", label: t.filters.cards, prefixIcon: "grid" },
+        { tone: "brand" as const, value: "map", label: t.filters.map, prefixIcon: "map" },
+        { tone: "brand" as const, value: "calendar", label: t.filters.calendar, prefixIcon: "calendar" },
       ]}
     />
   );

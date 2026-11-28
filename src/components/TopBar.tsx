@@ -49,11 +49,12 @@ export function TopBar() {
           <SegmentedControl
             fillWidth={false}
             compact
+            sliding={false}
             semantics="radio"
             aria-label={t.nav.language}
             value={lang}
             onValueChange={(v) => router.push(switchLocale(pathname, v as Locale))}
-            buttons={locales.map((l) => ({ value: l, label: l.toUpperCase() }))}
+            buttons={locales.map((l) => ({ value: l, label: l.toUpperCase(), tone: "brand" as const }))}
           />
           <ThemeSwitcher
             collapsed
